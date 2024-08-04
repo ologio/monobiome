@@ -7,7 +7,7 @@ resemble) are designed to achieve identical contrast with the accents, and thus 
 the four can be selected to change the feeling of the palette without sacrificing
 readability.
 
-![Diagram of palette accents and monotones](images/palette.svg)
+![Diagram of palette accents and monotones](images/palette.png)
 
 The name "monobiome" connects the palette to its two key sources of inspiration:
 
@@ -22,7 +22,7 @@ The name "monobiome" connects the palette to its two key sources of inspiration:
 Each biome ("flavor") has 3 levels of "harshness": soft, regular (default), hard. The
 harshness level determines the extent of the bg/fg extremes. 
 
-![Diagram of the 24 available concrete theme options](images/themes.svg)
+![Diagram of the 24 available concrete theme options](images/themes.png)
 
 The following general
 constraints are followed as palette options are mapping onto concrete themes:

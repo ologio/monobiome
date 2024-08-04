@@ -1,1 +1,1 @@
-![How themes are created](images/theme_creation.svg)
+![How themes are created](images/theme_creation.png)
