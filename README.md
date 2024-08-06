@@ -70,7 +70,7 @@ these identifiers, after which any of the 24 theme options can applied immediate
 Read more about how themes are created in [DESIGN](DESIGN.md).
 
 # Usage
-This repo provides the 24 theme files for `kitty`, `vim`/`neovim`, and
+This repo provides the 24 theme files for `kitty`, `vim`/`neovim`, [`vim-airline`][2], and
 `fzf`. We also provide the raw palette colors if you want to use them to define themes for
 other applications.
 
@@ -78,7 +78,10 @@ other applications.
 
 ## `vim`/`neovim`
 
+## `vim-airline`
+
 ## `fzf`
 
 
 [1]: https://github.com/isa/TextMate-Themes/blob/master/monoindustrial.tmTheme
+[2]: https://github.com/vim-airline/vim-airline

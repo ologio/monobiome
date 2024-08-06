@@ -1,5 +1,5 @@
 # Theme constraints
-The following general constraints are followed as palette options are mapping onto
+The following general constraints are followed as palette options are mapped onto
 concrete themes:
 
 + Harshness levels have monotone differences of a single shade. 
