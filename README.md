@@ -8,14 +8,17 @@ the four can be selected to change the feeling of the palette without sacrificin
 readability.
 
 ![Light biomes](images/light_code_caps.png)
-![Dark biomes](images/light_code_caps.png)
+_(Default light theme variants)_
+
+![Dark biomes](images/dark_code_caps.png)
+_(Default dark theme variants)_
 
 See screenshots for the full set of theme variants in [THEMES](THEMES.md) (also discussed
 below).
 
 The name "monobiome" connects the palette to its two key sources of inspiration:
 
-- `mono-`: `monobiome` is inspired by the `monoindustrial` theme, and attempts to extend
+- `mono-`: `monobiome` is inspired by the [`monoindustrial` theme][1], and attempts to extend
   and balance its accents while retaining similar color identities.
 - `-biome`: the desire for several distinct monotone options entailed finding a way to ground the
   subtle color variations that were needed, and I liked the idea of tying the choices to
@@ -76,3 +79,6 @@ other applications.
 ## `vim`/`neovim`
 
 ## `fzf`
+
+
+[1]: https://github.com/isa/TextMate-Themes/blob/master/monoindustrial.tmTheme
