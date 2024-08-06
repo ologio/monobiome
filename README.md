@@ -7,7 +7,11 @@ resemble) are designed to achieve identical contrast with the accents, and thus 
 the four can be selected to change the feeling of the palette without sacrificing
 readability.
 
-![Diagram of palette accents and monotones](images/palette.png)
+![Light biomes](images/light_code_caps.png)
+![Dark biomes](images/light_code_caps.png)
+
+See screenshots for the full set of theme variants in [THEMES](THEMES.md) (also discussed
+below).
 
 The name "monobiome" connects the palette to its two key sources of inspiration:
 
@@ -18,110 +22,57 @@ The name "monobiome" connects the palette to its two key sources of inspiration:
   naturally occurring environmental variation like Earth's biomes (even if it is a very
   loose affiliation, e.g., green-ish = grass, basically).
 
-# Concrete themes
-Each biome ("flavor") has 3 levels of "harshness": soft, regular (default), hard. The
-harshness level determines the extent of the bg/fg extremes. 
+## Palette
+The `monobiome` palette consists of four monotone bases and five accent colors, each of
+which is anchored by hue and spread uniformly across lightness levels 15 to 95 (in OKLCH
+space). 
+
+![Diagram of palette accents and monotones](images/palette.png)
+
+The chroma curve for each accent is carefully designed to vary smoothly across the
+lightness spectrum, with the goal of retaining strong color identity in all settings.
+Additionally, as alluded to above, the (WCAG 2) contrast ratio between any choice of
+monotone background at a given lightness level and the accent colors is virtually
+identical ($\pm 0.1$). Put another way, the relative contrast between accents depends only
+on the _lightness_ of the background monotone, not its hue.
+
+## Concrete themes
+Themes are derived from the `monobiome` palette by varying both the monotone hue (the
+"biome") and the extent of the background/foreground lightness (the "harshness"). This is
+done for both light and dark schemes, and in each case accent colors are selected at a
+lightness level that ensures each meet a minimum contrast relative to the primary
+background. The following diagram shows each of the 24 resulting combinations:
 
 ![Diagram of the 24 available concrete theme options](images/themes.png)
 
-The following general
-constraints are followed as palette options are mapping onto concrete themes:
+The "soft" harshness level uses monotone shades closer to the mid-shade (lightness level
+55), whereas "hard" harshness uses shades further from it. Once the biome and harshness
+level are chosen, we're left with a bounded monotone range over which common theme
+elements can be defined. For example, the following demonstrates how background and
+foreground elements are chosen for the `monobiome` Vim themes:
 
-+ Harshness levels have monotone differences of a single shade. 
-+ "Hard" themes anchor their background to the most extreme shade appropriate for the
-  scheme (i.e., lightest shade for "light," darkest shade for "dark"), ensuring the
-  palette's "monotone width" is fully spanned by the theme options.
-+ App-specific monotone settings have differences of a single shade compared to the
-  system monotone settings.
-+ Shade differences between corresponding background/foreground settings should be
-  constant (e.g., between `bg0` and `fg3`, `bg1` and `fg2`, etc)
+![
+  Diagram depicting how themes colors are selected by harshness and mapped onto
+  application-specific elements
+](images/vim_theme_elements.png)
 
-The primary goal of these constraints is to ensure each theme in a collection defined
-around a single palette is sufficiently _distinct_ and attains sufficient _breadth_
-under the palette.
+Note how theme elements are mapped onto the general identifiers `bg0-bg3` for backgrounds,
+`fg0-fg3` for foregrounds, and `gray` for a central gray tone. The relative properties
+(lightness differences, contrast ratios) between colors assigned to these identifiers are
+preserved regardless of biome or harshness (e.g., `bg3` and `grey` are _always_ separated
+by 20 lightness points in any theme). As a result, applying `monobiome` themes to specific
+applications can effectively boil down to defining a single "relative template" that uses
+these identifiers, after which any of the 24 theme options can applied immediately.
 
-## Example
-The following is a natural solution to these constraints, demonstrated on a general
-example setting: A possible useful analogy is a sliding window that, on its own spans a
-given theme's bg0 - fg0 settings, while globally sliding across all available values in
-the palette. If associating integers 0-10 to indices in a list of monotone shades, and
-`bg-fg` is the syntax used to indicate that theme's shade range, we might have the
-following for dark mode themes across harshness levels:
+Read more about how themes are created in [DESIGN](DESIGN.md).
 
-```
-Dark (system) 0-7 ; 1-8 ; 2-9
-Dark (app)    1-8 ; 2-9 ; 3-10
-```
+# Usage
+This repo provides the 24 theme files for `kitty`, `vim`/`neovim`, and
+`fzf`. We also provide the raw palette colors if you want to use them to define themes for
+other applications.
 
-There are sliding windows at both the system-app level *and* the harshness-level, in a
-sense. Constraints are followed:
+## `kitty`
 
-+ Harshness levels, separated by semicolon, differ by a single shade from hard to soft.
-+ The hard theme anchors its background to the darkest available shade.
-+ Monotones between system and app differ by a single shade.
-+ Differences between bg/fg (value of 7) remains constant across all themes.
+## `vim`/`neovim`
 
-Mapping this onto the common values used in my theme definition files: 
-
-```
-System, dark
-| Hard       | Regular    | Soft
-| bg0 <- l15 | bg0 <- l20 | bg0 <- l25
-| fg0 <- l80 | fg0 <- l85 | fg0 <- l90
-
-App, dark
-| Hard       | Regular    | Soft
-| bg0 <- l20 | bg0 <- l25 | bg0 <- l30
-| fg0 <- l85 | fg0 <- l90 | fg0 <- l95
-
-System, light
-| Hard       | Regular    | Soft
-| bg0 <- l95 | bg0 <- l90 | bg0 <- l85
-| fg0 <- l25 | fg0 <- l20 | fg0 <- l15
-```
-
-# MONOBIOME SPECIFIC
-
-## Accent contrast
-Each group of biome monotones have nearly identical (WCAG 2) contrast ratios against
-white/black for all lightness levels (ratios identical between biomes). These are
-selected in a heavily constrained OKLCH context, and given the perceptual uniformity
-attached to lightness, we can expect very similar contrast ratios for each accent under
-a given biome lightness (e.g., the `l65` red tone will have the same ratio under the
-grassland, tundra, and savanna monotones).
-
-In terms of selecting accents for themes (by harshness and scheme), what matters is
-at what lightness level all accent colors meet/exceed a particular contrast threshold.
-Again, the ratios themselves are effectively constant across biome monotones, and thus
-dependent entirely on the monotone lightness being used. This of course is determined
-primarily by whether the theme is a light or dark one, and what level of harshness is
-being used. The following are the relevant values for making a decision. We want to
-ensure all accents can reach >4.5 WCAG 2 contrast ratio (the standard requirement for
-small text on the web) against all biome monotones for each theme:
-
-+ For BG l20 (harsh, dark) -> l65 is min lightness where all accents have CR >=4.5
-+ For BG l25 (regular, dark) -> l65 is min lightness where all accents have CR >=4.5
-+ For BG l30 (soft, dark) -> l70 is min lightness where all accents have CR >=4.5
-
-+ For BG l90 (harsh, dark) -> l45 is max lightness where all accents have CR >=4.5
-+ For BG l85 (regular, dark) -> l45 is min lightness where all accents have CR >=4.5
-+ For BG l80 (soft, dark) -> l40 is min lightness where all accents have CR >=4.5
-
-For the monotone boundaries (l15 and l95, neither of which are possible backgrounds for
-terminal or nvim in the current theme definitions), the relevant lightness levels are
-l60 and l50, respectively.
-
-While not necessary, it feels intuitive for us to shift the accent colors up/down by the
-relative change in monotones across harshness levels. This has led to the choice of l60
-accents for the harsh-dark theme, l65 for regular-dark, and l70 for soft-dark. This
-technically breaks the 4.5 ratio requirement, though, for the harsh theme, so you
-ultimately need to pick one: either soften the contrast constraint, or allow different
-harshness levels to use the same accent lightness. I think either is acceptable, but for
-now I've gone with the former, loosening the contrast to a ratio of >4.0 with respect to
-the background. This allows for the slightly tighter group of accent lightnesses:
-l45-l50-l55 for light, l60-l65-l70 for dark. Note that the "center shade" of the l15-l95
-shade group is l55, meaning these groups are very central (the light triplet could move
-down by one shade step, but we want these accents to be as bright as we can get away
-with; otherwise, they are extremely dull in the light modes, and we thus don't mind bias
-toward a brighter lightness).
-
+## `fzf`
