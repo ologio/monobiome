@@ -7,11 +7,8 @@ resemble) are designed to achieve identical contrast with the accents, and thus 
 the four can be selected to change the feeling of the palette without sacrificing
 readability.
 
-![Light biomes](images/light_code_caps.png)
-_(Default light theme variants)_
-
-![Dark biomes](images/dark_code_caps.png)
-_(Default dark theme variants)_
+![Theme preview](images/repo_preview.png)
+_(Preview of default light and dark theme variants)_
 
 See screenshots for the full set of theme variants in [THEMES](THEMES.md) (also discussed
 below).
@@ -40,6 +37,12 @@ identical ($\pm 0.1$). Put another way, the relative contrast between accents de
 on the _lightness_ of the background monotone, not its hue.
 
 ## Concrete themes
+![Light biomes](images/light_code_caps.png)
+_(Default light theme variants)_
+
+![Dark biomes](images/dark_code_caps.png)
+_(Default dark theme variants)_
+
 Themes are derived from the `monobiome` palette by varying both the monotone hue (the
 "biome") and the extent of the background/foreground lightness (the "harshness"). This is
 done for both light and dark schemes, and in each case accent colors are selected at a
@@ -81,6 +84,8 @@ other applications.
 ## `vim-airline`
 
 ## `fzf`
+
+(add `synconf` here)
 
 
 [1]: https://github.com/isa/TextMate-Themes/blob/master/monoindustrial.tmTheme

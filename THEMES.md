@@ -6,7 +6,7 @@ below, displaying a few lines from a Python file in Neovim.
 You can find the 24 raw screenshots for each theme in `images/theme_caps` under the
 repository root (with filenames `<harshness>-<biome>-<scheme>.png`).
 
-## Default variants
+## Default (gray) variants
 ![Default light and dark variants](images/biome_variants/default_variants.png)
 
 ## Grassland biome
