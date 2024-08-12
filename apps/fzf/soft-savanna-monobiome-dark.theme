@@ -1,0 +1,22 @@
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+  --color=fg:#f1eee6
+  --color=fg+:#e1ded6
+  --color=bg:#302e28
+  --color=bg+:#3d3a34
+
+  --color=hl:#799ee3
+  --color=hl+:#a2bef2
+  --color=info:#a7a15f
+  --color=marker:#94cf9c
+
+  --color=prompt:#f37060
+  --color=spinner:#a7a15f
+  --color=pointer:#f37060
+  --color=header:#94cf9c
+
+  --color=border:#3d3a34
+  --color=label:#aeaeae
+  --color=query:#f1eee6
+
+  --preview-window="border-bold" --prompt="> " --marker=">" --pointer="◆"
+  --separator="" --scrollbar="│"'
