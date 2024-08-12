@@ -1,0 +1,72 @@
+bg0 = "f{{savanna.l95}}" # darkest
+bg1 = "f{{savanna.l90}}"
+bg2 = "f{{savanna.l85}}"
+bg3 = "f{{savanna.l80}}"
+
+grey = "f{{savanna.l65}}" # <bg3 - 15>
+
+fg3 = "f{{savanna.l45}}"
+fg2 = "f{{savanna.l40}}"
+fg1 = "f{{savanna.l35}}"
+fg0 = "f{{savanna.l30}}" # lightest
+
+red     = "f{{red.l55}}"
+orange  = "f{{orange.l55}}"
+yellow  = "f{{yellow.l55}}"
+green   = "f{{green.l55}}"
+cyan    = "f{{green.l55}}"
+blue    = "f{{blue.l55}}"
+violet  = "f{{blue.l55}}"
+magenta = "f{{red.l55}}"
+
+[term]
+background        = "f{{savanna.l90}}" # <bg0 - 5>
+foreground        = "f{{savanna.l25}}" # <fg0 - 5>
+
+selection_bg      = "f{{savanna.l85}}" # <bg1 - 5>
+selection_fg      = "f{{savanna.l30}}" # <fg1 - 5>
+
+cursor            = "f{{savanna.l30}}" # <fg1 - 5>
+cursor_text_color = "f{{savanna.l85}}" # <bg1 - 5>
+
+[term.normal]
+black  = "f{{savanna.l25}}" # <foreground>
+red    = "f{{red.l55}}"
+green  = "f{{green.l55}}"
+yellow = "f{{yellow.l55}}"
+blue   = "f{{blue.l55}}"
+purple = "f{{orange.l55}}"
+cyan   = "f{{blue.l55}}"
+white  = "f{{savanna.l80}}" # <background - 10>
+
+[term.bright]
+black  = "f{{savanna.l35}}" # <foreground + 10>
+red    = "f{{red.l55}}"
+green  = "f{{green.l55}}"
+yellow = "f{{yellow.l55}}"
+blue   = "f{{blue.l55}}"
+purple = "f{{orange.l55}}"
+cyan   = "f{{blue.l55}}"
+white  = "f{{savanna.l90}}" # <background>
+
+[vim]
+bg0 = "f{{savanna.l90}}" # <bg0 - 5>
+bg1 = "f{{savanna.l85}}" # <bg1 - 5>
+bg2 = "f{{savanna.l80}}" # <bg2 - 5>
+bg3 = "f{{savanna.l75}}" # <bg3 - 5>
+
+grey = "f{{savanna.l55}}" # <grey - 5>
+
+fg3 = "f{{savanna.l40}}" # <fg0 - 5>
+fg2 = "f{{savanna.l35}}" # <fg1 - 5>
+fg1 = "f{{savanna.l30}}" # <fg2 - 5>
+fg0 = "f{{savanna.l25}}" # <fg3 - 5>
+
+red     = "f{{red.l55}}"
+orange  = "f{{orange.l55}}"
+yellow  = "f{{yellow.l55}}"
+green   = "f{{green.l55}}"
+cyan    = "f{{green.l55}}"
+blue    = "f{{blue.l55}}"
+violet  = "f{{blue.l55}}"
+magenta = "f{{red.l55}}"

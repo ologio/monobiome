@@ -1,0 +1,72 @@
+bg0 = "f{{default.l20}}" # darkest
+bg1 = "f{{default.l25}}"
+bg2 = "f{{default.l30}}"
+bg3 = "f{{default.l35}}"
+
+grey = "f{{default.l50}}" # <bg3 + 15>
+
+fg3 = "f{{default.l70}}"
+fg2 = "f{{default.l75}}"
+fg1 = "f{{default.l80}}"
+fg0 = "f{{default.l85}}" # lightest
+
+red     = "f{{red.l65}}"
+orange  = "f{{orange.l65}}"
+yellow  = "f{{yellow.l65}}"
+green   = "f{{green.l65}}"
+cyan    = "f{{green.l65}}"
+blue    = "f{{blue.l65}}"
+violet  = "f{{blue.l65}}"
+magenta = "f{{red.l65}}"
+
+[term]
+background        = "f{{default.l25}}" # <bg0 + 5>
+foreground        = "f{{default.l90}}" # <fg0 + 5>
+
+selection_bg      = "f{{default.l30}}" # <bg1 + 5>
+selection_fg      = "f{{default.l85}}" # <fg1 + 5>
+
+cursor            = "f{{default.l85}}" # <fg1 + 5>
+cursor_text_color = "f{{default.l30}}" # <bg1 + 5>
+
+[term.normal]
+black  = "f{{default.l25}}" # <background>
+red    = "f{{red.l65}}"
+green  = "f{{green.l65}}"
+yellow = "f{{yellow.l65}}"
+blue   = "f{{blue.l65}}"
+purple = "f{{orange.l65}}"
+cyan   = "f{{blue.l65}}"
+white  = "f{{default.l80}}" # <foreground - 10>
+
+[term.bright]
+black  = "f{{default.l35}}" # <background + 10>
+red    = "f{{red.l75}}"
+green  = "f{{green.l75}}"
+yellow = "f{{yellow.l75}}"
+blue   = "f{{blue.l75}}"
+purple = "f{{orange.l75}}"
+cyan   = "f{{blue.l75}}"
+white  = "f{{default.l90}}" # <foreground>
+
+[vim]
+bg0 = "f{{default.l25}}" # <bg0 + 5>
+bg1 = "f{{default.l30}}" # <bg1 + 5>
+bg2 = "f{{default.l35}}" # <bg2 + 5>
+bg3 = "f{{default.l40}}" # <bg3 + 5>
+
+grey = "f{{default.l60}}" # <grey + 5>
+
+fg3 = "f{{default.l75}}" # <fg0 + 5>
+fg2 = "f{{default.l80}}" # <fg1 + 5>
+fg1 = "f{{default.l85}}" # <fg2 + 5>
+fg0 = "f{{default.l90}}" # <fg3 + 5>
+
+red     = "f{{red.l65}}"
+orange  = "f{{orange.l65}}"
+yellow  = "f{{yellow.l65}}"
+green   = "f{{green.l65}}"
+cyan    = "f{{green.l65}}"
+blue    = "f{{blue.l65}}"
+violet  = "f{{blue.l65}}"
+magenta = "f{{red.l65}}"

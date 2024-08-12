@@ -1,0 +1,72 @@
+bg0 = "f{{tundra.l25}}" # darkest
+bg1 = "f{{tundra.l30}}"
+bg2 = "f{{tundra.l35}}"
+bg3 = "f{{tundra.l40}}"
+
+grey = "f{{tundra.l55}}" # <bg3 + 15>
+
+fg3 = "f{{tundra.l75}}"
+fg2 = "f{{tundra.l80}}"
+fg1 = "f{{tundra.l85}}"
+fg0 = "f{{tundra.l90}}" # lightest
+
+red     = "f{{red.l70}}"
+orange  = "f{{orange.l70}}"
+yellow  = "f{{yellow.l70}}"
+green   = "f{{green.l70}}"
+cyan    = "f{{green.l70}}"
+blue    = "f{{blue.l70}}"
+violet  = "f{{blue.l70}}"
+magenta = "f{{red.l70}}"
+
+[term]
+background        = "f{{tundra.l30}}" # <bg0 + 5>
+foreground        = "f{{tundra.l95}}" # <fg0 + 5>
+
+selection_bg      = "f{{tundra.l35}}" # <bg1 + 5>
+selection_fg      = "f{{tundra.l90}}" # <fg1 + 5>
+
+cursor            = "f{{tundra.l90}}" # <fg1 + 5>
+cursor_text_color = "f{{tundra.l35}}" # <bg1 + 5>
+
+[term.normal]
+black  = "f{{tundra.l30}}" # <background>
+red    = "f{{red.l70}}"
+green  = "f{{green.l70}}"
+yellow = "f{{yellow.l70}}"
+blue   = "f{{blue.l70}}"
+purple = "f{{orange.l70}}"
+cyan   = "f{{blue.l70}}"
+white  = "f{{tundra.l85}}" # <foreground - 10>
+
+[term.bright]
+black  = "f{{tundra.l40}}" # <background + 10>
+red    = "f{{red.l80}}"
+green  = "f{{green.l80}}"
+yellow = "f{{yellow.l80}}"
+blue   = "f{{blue.l80}}"
+purple = "f{{orange.l80}}"
+cyan   = "f{{blue.l80}}"
+white  = "f{{tundra.l95}}" # <foreground>
+
+[vim]
+bg0 = "f{{tundra.l30}}" # <bg0 + 5>
+bg1 = "f{{tundra.l35}}" # <bg1 + 5>
+bg2 = "f{{tundra.l40}}" # <bg2 + 5>
+bg3 = "f{{tundra.l45}}" # <bg3 + 5>
+
+grey = "f{{tundra.l65}}" # <grey + 5>
+
+fg3 = "f{{tundra.l80}}" # <fg0 + 5>
+fg2 = "f{{tundra.l85}}" # <fg1 + 5>
+fg1 = "f{{tundra.l90}}" # <fg2 + 5>
+fg0 = "f{{tundra.l95}}" # <fg3 + 5>
+
+red     = "f{{red.l70}}"
+orange  = "f{{orange.l70}}"
+yellow  = "f{{yellow.l70}}"
+green   = "f{{green.l70}}"
+cyan    = "f{{green.l70}}"
+blue    = "f{{blue.l70}}"
+violet  = "f{{blue.l70}}"
+magenta = "f{{red.l70}}"

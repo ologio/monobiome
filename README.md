@@ -74,19 +74,108 @@ Read more about how themes are created in [DESIGN](DESIGN.md).
 
 # Usage
 This repo provides the 24 theme files for `kitty`, `vim`/`neovim`, [`vim-airline`][2], and
-`fzf`. We also provide the raw palette colors if you want to use them to define themes for
-other applications.
+`fzf` in the `apps/` directory. You can also find raw palette colors in
+`colors/monobiome.toml` if you want to use them to define themes for other applications.
+
+Each of the files in the `apps/` directory are named according to
+
+```sh
+<harshness>-<biome>-monobiome-<mode>.<config>
+```
+
+For example, `soft-tundra-monobiome-dark.vim` is the Vim theme file for the dark `tundra`
+variant with the soft harshness level.
 
 ## `kitty`
+Find `kitty` themes in `apps/kitty`. Themes can be activated in your `kitty.conf` with
+
+```sh
+include <theme-file>
+```
 
 ## `vim`/`neovim`
+Find `vim`/`neovim` themes in `apps/nvim`. Themes can be activated by placing a theme file
+on Vim's runtime path and setting it in your `.vimrc`/`init.vim` with
+
+```sh
+colorscheme <theme-name>
+```
 
 ## `vim-airline`
+If you use [`vim-airline`][2], you can find statusline themes in `apps/vim-airline`.
+Place a theme file in the `airline` theme folder, and activate it in
+your `.vimrc`/`init.vim` with
+
+```sh
+let g:airline_theme='<theme-name>'
+```
 
 ## `fzf`
+In `apps/fzf`, you can find scripts that can be ran to export FZF theme variables. In your
+shell config (e.g., `.bashrc` or `.zshrc`), you can source these files to apply them in
+your terminal:
 
-(add `synconf` here)
+```sh
+source <theme-file>
+```
+
+# Switching themes
+[`symconf`][3] is a general-purpose application config manager that can be used to
+generate all `monobiome` variants from a single palette file, and set themes for all apps
+at once. You can find example theme templates in `apps/symconf` which provide general
+theme variables you can use in your own config templates.
+
+For instance, in an app like `kitty`, you can define a template like
+
+```conf
+# base settings
+background           f{{theme.term.background}}
+foreground           f{{theme.term.foreground}}
+
+selection_background f{{theme.term.selection_bg}}
+selection_foreground f{{theme.term.selection_fg}}
+
+cursor               f{{theme.term.cursor}}
+cursor_text_color    f{{theme.term.cursor_text_color}}
+
+# black
+color0               f{{theme.term.normal.black}}
+color8               f{{theme.term.bright.black}}
+
+# red
+color1               f{{theme.term.normal.red}}
+color9               f{{theme.term.bright.red}}
+
+# green
+color2               f{{theme.term.normal.green}}
+color10              f{{theme.term.bright.green}}
+
+# yellow
+color3               f{{theme.term.normal.yellow}}
+color11              f{{theme.term.bright.yellow}}
+
+# blue
+color4               f{{theme.term.normal.blue}}
+color12              f{{theme.term.bright.blue}}
+
+# purple (red)
+color5               f{{theme.term.normal.purple}}
+color13              f{{theme.term.bright.purple}}
+
+# cyan (blue)
+color6               f{{theme.term.normal.cyan}}
+color14              f{{theme.term.bright.cyan}}
+
+## white
+color7               f{{theme.term.normal.white}}
+color15              f{{theme.term.bright.white}}
+```
+
+and use `symconf` to dynamically fill these variables based on a selected
+biome/harshness/mode. This can be done for any app config file.
 
 
 [1]: https://github.com/isa/TextMate-Themes/blob/master/monoindustrial.tmTheme
 [2]: https://github.com/vim-airline/vim-airline
+[3]: https://github.com/ologio/symconf
+ 
