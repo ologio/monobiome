@@ -119,6 +119,23 @@ your terminal:
 source <theme-file>
 ```
 
+## Firefox
+Find links to install available light/dark Firefox themes for each biome in
+[FIREFOX](/FIREFOX.md). You can also download raw XPI files for each theme in
+`apps/firefox/`.
+
+![Default monobiome](images/firefox/default-split.png)
+_Default monobiome_
+
+![Grassland monobiome](images/firefox/grassland-split.png)
+_Grassland monobiome_
+
+![Tundra monobiome](images/firefox/tundra-split.png)
+_Tundra monobiome_
+
+![Savanna monobiome](images/firefox/savanna-split.png)
+_Savanna monobiome_
+
 # Switching themes
 [`symconf`][3] is a general-purpose application config manager that can be used to
 generate all `monobiome` variants from a single palette file, and set themes for all apps
@@ -178,4 +195,11 @@ biome/harshness/mode. This can be done for any app config file.
 [1]: https://github.com/isa/TextMate-Themes/blob/master/monoindustrial.tmTheme
 [2]: https://github.com/vim-airline/vim-airline
 [3]: https://github.com/ologio/symconf
- 
+[4]: https://addons.mozilla.org/en-US/firefox/addon/monobiome-dark/ 
+[5]: https://addons.mozilla.org/en-US/firefox/addon/monobiome-light/ 
+[6]: https://addons.mozilla.org/en-US/firefox/addon/grassland-monobiome-dark/ 
+[7]: https://addons.mozilla.org/en-US/firefox/addon/grassland-monobiome-light/ 
+[8]: https://addons.mozilla.org/en-US/firefox/addon/tundra-monobiome-dark/ 
+[9]: https://addons.mozilla.org/en-US/firefox/addon/tundra-monobiome-light/ 
+[10]: https://addons.mozilla.org/en-US/firefox/addon/savanna-monobiome-dark/ 
+[11]: https://addons.mozilla.org/en-US/firefox/addon/savanna-monobiome-light/ 
