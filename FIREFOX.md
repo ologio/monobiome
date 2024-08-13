@@ -22,3 +22,12 @@
 
 ![Savanna monobiome light](images/firefox/savanna-monobiome-light.png)
 [_Savanna monobiome light_][11]
+
+[4]: https://addons.mozilla.org/en-US/firefox/addon/monobiome-dark/ 
+[5]: https://addons.mozilla.org/en-US/firefox/addon/monobiome-light/ 
+[6]: https://addons.mozilla.org/en-US/firefox/addon/grassland-monobiome-dark/ 
+[7]: https://addons.mozilla.org/en-US/firefox/addon/grassland-monobiome-light/ 
+[8]: https://addons.mozilla.org/en-US/firefox/addon/tundra-monobiome-dark/ 
+[9]: https://addons.mozilla.org/en-US/firefox/addon/tundra-monobiome-light/ 
+[10]: https://addons.mozilla.org/en-US/firefox/addon/savanna-monobiome-dark/ 
+[11]: https://addons.mozilla.org/en-US/firefox/addon/savanna-monobiome-light/ 

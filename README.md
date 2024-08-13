@@ -195,11 +195,3 @@ biome/harshness/mode. This can be done for any app config file.
 [1]: https://github.com/isa/TextMate-Themes/blob/master/monoindustrial.tmTheme
 [2]: https://github.com/vim-airline/vim-airline
 [3]: https://github.com/ologio/symconf
-[4]: https://addons.mozilla.org/en-US/firefox/addon/monobiome-dark/ 
-[5]: https://addons.mozilla.org/en-US/firefox/addon/monobiome-light/ 
-[6]: https://addons.mozilla.org/en-US/firefox/addon/grassland-monobiome-dark/ 
-[7]: https://addons.mozilla.org/en-US/firefox/addon/grassland-monobiome-light/ 
-[8]: https://addons.mozilla.org/en-US/firefox/addon/tundra-monobiome-dark/ 
-[9]: https://addons.mozilla.org/en-US/firefox/addon/tundra-monobiome-light/ 
-[10]: https://addons.mozilla.org/en-US/firefox/addon/savanna-monobiome-dark/ 
-[11]: https://addons.mozilla.org/en-US/firefox/addon/savanna-monobiome-light/ 
