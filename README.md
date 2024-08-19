@@ -22,6 +22,8 @@ The name "monobiome" connects the palette to its two key sources of inspiration:
   naturally occurring environmental variation like Earth's biomes (even if it is a very
   loose affiliation, e.g., green-ish = grass, basically).
 
+
+
 ## Palette
 The `monobiome` palette consists of four monotone bases and five accent colors, each of
 which is anchored by hue and spread uniformly across lightness levels 15 to 95 (in OKLCH

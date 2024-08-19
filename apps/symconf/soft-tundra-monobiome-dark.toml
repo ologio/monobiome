@@ -1,72 +1,87 @@
-bg0 = "f{{tundra.l25}}" # darkest
-bg1 = "f{{tundra.l30}}"
-bg2 = "f{{tundra.l35}}"
-bg3 = "f{{tundra.l40}}"
+# - META -------------------------------------
+# MONOBIOME          :mode=dark :contrast=soft
+# TUNDRA 
+#
+# pat  ::  < 0-bg-3 > | gra | acc | < 3-fg-0 >
+# abs  ::  min -- +15 | +30 | +40 | +50 -- +65
+# rel  ::  min -- +15 | +15 | +10 | +10 -- +15
+# sys  ::  l25 -- l40 | l55 | l65 | l75 -- l90
+# app  ::  l30 -- l45 | l60 | l70 | l80 -- l95
+# --------------------------------------------
 
-grey = "f{{tundra.l55}}" # <bg3 + 15>
+# - SYS --------------------------------------
+bg0          = "f{{tundra.l25}}"     # < MIN >
+bg1          = "f{{tundra.l30}}"     # < +05 >
+bg2          = "f{{tundra.l35}}"     # < +10 >
+bg3          = "f{{tundra.l30}}"     # < +15 >
 
-fg3 = "f{{tundra.l75}}"
-fg2 = "f{{tundra.l80}}"
-fg1 = "f{{tundra.l85}}"
-fg0 = "f{{tundra.l90}}" # lightest
+grey         = "f{{tundra.l55}}"     # < +30 >
 
-red     = "f{{red.l70}}"
-orange  = "f{{orange.l70}}"
-yellow  = "f{{yellow.l70}}"
-green   = "f{{green.l70}}"
-cyan    = "f{{green.l70}}"
-blue    = "f{{blue.l70}}"
-violet  = "f{{blue.l70}}"
-magenta = "f{{red.l70}}"
+red          = "f{{red.l65}}"        # < +40 >
+orange       = "f{{orange.l65}}"     # < +40 >
+yellow       = "f{{yellow.l65}}"     # < +40 >
+green        = "f{{green.l65}}"      # < +40 >
+cyan         = "f{{green.l65}}"      # < +40 >
+blue         = "f{{blue.l65}}"       # < +40 >
+violet       = "f{{blue.l65}}"       # < +40 >
+magenta      = "f{{red.l65}}"        # < +40 >
 
+fg3          = "f{{tundra.l75}}"     # < +50 >
+fg2          = "f{{tundra.l80}}"     # < +55 >
+fg1          = "f{{tundra.l85}}"     # < +60 >
+fg0          = "f{{tundra.l90}}"     # < MAX >
+# --------------------------------------------
+
+# - APP --------------------------------------
 [term]
-background        = "f{{tundra.l30}}" # <bg0 + 5>
-foreground        = "f{{tundra.l95}}" # <fg0 + 5>
+foreground   = "f{{tundra.l95}}"     # < MAX >
+selection_fg = "f{{tundra.l90}}"     # < -05 >
 
-selection_bg      = "f{{tundra.l35}}" # <bg1 + 5>
-selection_fg      = "f{{tundra.l90}}" # <fg1 + 5>
+background   = "f{{tundra.l30}}"     # < MIN >
+selection_bg = "f{{tundra.l35}}"     # < +05 >
 
-cursor            = "f{{tundra.l90}}" # <fg1 + 5>
-cursor_text_color = "f{{tundra.l35}}" # <bg1 + 5>
+cursor       = "f{{tundra.l90}}"     # <MAX-5>
+cursor_text  = "f{{tundra.l35}}"     # <MIN+5>
 
 [term.normal]
-black  = "f{{tundra.l30}}" # <background>
-red    = "f{{red.l70}}"
-green  = "f{{green.l70}}"
-yellow = "f{{yellow.l70}}"
-blue   = "f{{blue.l70}}"
-purple = "f{{orange.l70}}"
-cyan   = "f{{blue.l70}}"
-white  = "f{{tundra.l85}}" # <foreground - 10>
+black        = "f{{tundra.l30}}"     # < MIN >
+red          = "f{{red.l70}}"        # < +40 >
+green        = "f{{green.l70}}"      # < +40 >
+yellow       = "f{{yellow.l70}}"     # < +40 >
+blue         = "f{{blue.l70}}"       # < +40 >
+magenta      = "f{{orange.l70}}"     # < +40 >
+cyan         = "f{{blue.l70}}"       # < +40 >
+white        = "f{{tundra.l85}}"     # < +55 >
 
 [term.bright]
-black  = "f{{tundra.l40}}" # <background + 10>
-red    = "f{{red.l80}}"
-green  = "f{{green.l80}}"
-yellow = "f{{yellow.l80}}"
-blue   = "f{{blue.l80}}"
-purple = "f{{orange.l80}}"
-cyan   = "f{{blue.l80}}"
-white  = "f{{tundra.l95}}" # <foreground>
+black        = "f{{tundra.l40}}"     # < +10 >
+red          = "f{{red.l80}}"        # < +50 >
+green        = "f{{green.l80}}"      # < +50 >
+yellow       = "f{{yellow.l80}}"     # < +50 >
+blue         = "f{{blue.l80}}"       # < +50 >
+magenta      = "f{{orange.l80}}"     # < +50 >
+cyan         = "f{{blue.l80}}"       # < +50 >
+white        = "f{{tundra.l95}}"     # < MAX >
 
 [vim]
-bg0 = "f{{tundra.l30}}" # <bg0 + 5>
-bg1 = "f{{tundra.l35}}" # <bg1 + 5>
-bg2 = "f{{tundra.l40}}" # <bg2 + 5>
-bg3 = "f{{tundra.l45}}" # <bg3 + 5>
+bg0          = "f{{tundra.l30}}"     # < MIN >
+bg1          = "f{{tundra.l35}}"     # < +05 >
+bg2          = "f{{tundra.l40}}"     # < +10 >
+bg3          = "f{{tundra.l45}}"     # < +15 >
 
-grey = "f{{tundra.l65}}" # <grey + 5>
+grey         = "f{{tundra.l60}}"     # < +30 >
 
-fg3 = "f{{tundra.l80}}" # <fg0 + 5>
-fg2 = "f{{tundra.l85}}" # <fg1 + 5>
-fg1 = "f{{tundra.l90}}" # <fg2 + 5>
-fg0 = "f{{tundra.l95}}" # <fg3 + 5>
+red          = "f{{red.l70}}"        # < +40 >
+orange       = "f{{orange.l70}}"     # < +40 >
+yellow       = "f{{yellow.l70}}"     # < +40 >
+green        = "f{{green.l70}}"      # < +40 >
+cyan         = "f{{green.l70}}"      # < +40 >
+blue         = "f{{blue.l70}}"       # < +40 >
+violet       = "f{{blue.l70}}"       # < +40 >
+magenta      = "f{{red.l70}}"        # < +40 >
 
-red     = "f{{red.l70}}"
-orange  = "f{{orange.l70}}"
-yellow  = "f{{yellow.l70}}"
-green   = "f{{green.l70}}"
-cyan    = "f{{green.l70}}"
-blue    = "f{{blue.l70}}"
-violet  = "f{{blue.l70}}"
-magenta = "f{{red.l70}}"
+fg3          = "f{{tundra.l80}}"     # < +50 >
+fg2          = "f{{tundra.l85}}"     # < +55 >
+fg1          = "f{{tundra.l90}}"     # < +60 >
+fg0          = "f{{tundra.l95}}"     # < MAX >
+# --------------------------------------------

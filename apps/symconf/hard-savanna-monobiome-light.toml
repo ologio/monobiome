@@ -1,72 +1,87 @@
-bg0 = "f{{savanna.l95}}" # darkest
-bg1 = "f{{savanna.l90}}"
-bg2 = "f{{savanna.l85}}"
-bg3 = "f{{savanna.l80}}"
+# - META -------------------------------------
+# MONOBIOME         :mode=light :contrast=hard
+# SAVANNA
+#
+# pat  ::  < 0-bg-3 > | gra | acc | < 3-fg-0 >
+# abs  ::  max -- -15 | -30 | -40 | -50 -- -65
+# rel  ::  max -- -15 | -15 | -10 | -10 -- -15
+# sys  ::  l90 -- l75 | l60 | l50 | l40 -- l25
+# app  ::  l95 -- l80 | l65 | l55 | l45 -- l30
+# --------------------------------------------
 
-grey = "f{{savanna.l65}}" # <bg3 - 15>
+# - SYS --------------------------------------
+bg0          = "f{{savanna.l90}}"    # < MAX >
+bg1          = "f{{savanna.l85}}"    # < -05 >
+bg2          = "f{{savanna.l80}}"    # < -10 >
+bg3          = "f{{savanna.l75}}"    # < -15 >
 
-fg3 = "f{{savanna.l45}}"
-fg2 = "f{{savanna.l40}}"
-fg1 = "f{{savanna.l35}}"
-fg0 = "f{{savanna.l30}}" # lightest
+grey         = "f{{savanna.l60}}"    # < -30 >
 
-red     = "f{{red.l55}}"
-orange  = "f{{orange.l55}}"
-yellow  = "f{{yellow.l55}}"
-green   = "f{{green.l55}}"
-cyan    = "f{{green.l55}}"
-blue    = "f{{blue.l55}}"
-violet  = "f{{blue.l55}}"
-magenta = "f{{red.l55}}"
+red          = "f{{red.l50}}"        # < -40 >
+orange       = "f{{orange.l50}}"     # < -40 >
+yellow       = "f{{yellow.l50}}"     # < -40 >
+green        = "f{{green.l50}}"      # < -40 >
+cyan         = "f{{green.l50}}"      # < -40 >
+blue         = "f{{blue.l50}}"       # < -40 >
+violet       = "f{{blue.l50}}"       # < -40 >
+magenta      = "f{{red.l50}}"        # < -40 >
 
+fg3          = "f{{savanna.l40}}"    # < -50 >
+fg2          = "f{{savanna.l35}}"    # < -55 >
+fg1          = "f{{savanna.l30}}"    # < -60 >
+fg0          = "f{{savanna.l25}}"    # < MIN >
+# --------------------------------------------
+
+# - APP --------------------------------------
 [term]
-background        = "f{{savanna.l90}}" # <bg0 - 5>
-foreground        = "f{{savanna.l25}}" # <fg0 - 5>
+foreground   = "f{{savanna.l30}}"    # < MIN >
+selection_fg = "f{{savanna.l35}}"    # < +05 >
 
-selection_bg      = "f{{savanna.l85}}" # <bg1 - 5>
-selection_fg      = "f{{savanna.l30}}" # <fg1 - 5>
+background   = "f{{savanna.l95}}"    # < MAX >
+selection_bg = "f{{savanna.l90}}"    # < -05 >
 
-cursor            = "f{{savanna.l30}}" # <fg1 - 5>
-cursor_text_color = "f{{savanna.l85}}" # <bg1 - 5>
+cursor       = "f{{savanna.l35}}"    # <MIN+5>
+cursor_text  = "f{{savanna.l90}}"    # <MAX-5>
 
 [term.normal]
-black  = "f{{savanna.l25}}" # <foreground>
-red    = "f{{red.l55}}"
-green  = "f{{green.l55}}"
-yellow = "f{{yellow.l55}}"
-blue   = "f{{blue.l55}}"
-purple = "f{{orange.l55}}"
-cyan   = "f{{blue.l55}}"
-white  = "f{{savanna.l80}}" # <background - 10>
+black        = "f{{savanna.l95}}"    # < MAX >
+red          = "f{{red.l55}}"        # < -40 >
+green        = "f{{green.l55}}"      # < -40 >
+yellow       = "f{{yellow.l55}}"     # < -40 >
+blue         = "f{{blue.l55}}"       # < -40 >
+magenta      = "f{{orange.l55}}"     # < -40 >
+cyan         = "f{{blue.l55}}"       # < -40 >
+white        = "f{{savanna.l40}}"    # < -55 >
 
 [term.bright]
-black  = "f{{savanna.l35}}" # <foreground + 10>
-red    = "f{{red.l55}}"
-green  = "f{{green.l55}}"
-yellow = "f{{yellow.l55}}"
-blue   = "f{{blue.l55}}"
-purple = "f{{orange.l55}}"
-cyan   = "f{{blue.l55}}"
-white  = "f{{savanna.l90}}" # <background>
+black        = "f{{savanna.l85}}"    # < -10 >
+red          = "f{{red.l45}}"        # < -50 >
+green        = "f{{green.l45}}"      # < -50 >
+yellow       = "f{{yellow.l45}}"     # < -50 >
+blue         = "f{{blue.l45}}"       # < -50 >
+magenta      = "f{{orange.l45}}"     # < -50 >
+cyan         = "f{{blue.l45}}"       # < -50 >
+white        = "f{{savanna.l30}}"    # < MIN >
 
 [vim]
-bg0 = "f{{savanna.l90}}" # <bg0 - 5>
-bg1 = "f{{savanna.l85}}" # <bg1 - 5>
-bg2 = "f{{savanna.l80}}" # <bg2 - 5>
-bg3 = "f{{savanna.l75}}" # <bg3 - 5>
+bg0          = "f{{savanna.l95}}"    # < MAX >
+bg1          = "f{{savanna.l90}}"    # < -05 >
+bg2          = "f{{savanna.l85}}"    # < -10 >
+bg3          = "f{{savanna.l80}}"    # < -15 >
 
-grey = "f{{savanna.l55}}" # <grey - 5>
+grey         = "f{{savanna.l65}}"    # < -30 >
 
-fg3 = "f{{savanna.l40}}" # <fg0 - 5>
-fg2 = "f{{savanna.l35}}" # <fg1 - 5>
-fg1 = "f{{savanna.l30}}" # <fg2 - 5>
-fg0 = "f{{savanna.l25}}" # <fg3 - 5>
+red          = "f{{red.l55}}"        # < -40 >
+orange       = "f{{orange.l55}}"     # < -40 >
+yellow       = "f{{yellow.l55}}"     # < -40 >
+green        = "f{{green.l55}}"      # < -40 >
+cyan         = "f{{green.l55}}"      # < -40 >
+blue         = "f{{blue.l55}}"       # < -40 >
+violet       = "f{{blue.l55}}"       # < -40 >
+magenta      = "f{{red.l55}}"        # < -40 >
 
-red     = "f{{red.l55}}"
-orange  = "f{{orange.l55}}"
-yellow  = "f{{yellow.l55}}"
-green   = "f{{green.l55}}"
-cyan    = "f{{green.l55}}"
-blue    = "f{{blue.l55}}"
-violet  = "f{{blue.l55}}"
-magenta = "f{{red.l55}}"
+fg3          = "f{{savanna.l45}}"    # < -50 >
+fg2          = "f{{savanna.l40}}"    # < -55 >
+fg1          = "f{{savanna.l35}}"    # < -60 >
+fg0          = "f{{savanna.l30}}"    # < MIN >
+# --------------------------------------------

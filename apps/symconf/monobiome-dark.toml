@@ -1,72 +1,87 @@
-bg0 = "f{{default.l20}}" # darkest
-bg1 = "f{{default.l25}}"
-bg2 = "f{{default.l30}}"
-bg3 = "f{{default.l35}}"
+# - META ------------------------------------
+# MONOBIOME      :mode=dark :contrast=default
+# DEFAULT  
+#
+# pat  ::  < 0-bg-3 > | gra | acc | < 3-fg-0 >
+# abs  ::  min -- +15 | +30 | +40 | +50 -- +65
+# rel  ::  min -- +15 | +15 | +10 | +10 -- +15
+# sys  ::  l20 -- l35 | l50 | l60 | l70 -- l85
+# app  ::  l25 -- l40 | l55 | l65 | l75 -- l90
+# --------------------------------------------
 
-grey = "f{{default.l50}}" # <bg3 + 15>
+# - SYS --------------------------------------
+bg0          = "f{{default.l20}}"    # < MIN >
+bg1          = "f{{default.l25}}"    # < +05 >
+bg2          = "f{{default.l30}}"    # < +10 >
+bg3          = "f{{default.l35}}"    # < +15 >
 
-fg3 = "f{{default.l70}}"
-fg2 = "f{{default.l75}}"
-fg1 = "f{{default.l80}}"
-fg0 = "f{{default.l85}}" # lightest
+grey         = "f{{default.l50}}"    # < +30 >
 
-red     = "f{{red.l65}}"
-orange  = "f{{orange.l65}}"
-yellow  = "f{{yellow.l65}}"
-green   = "f{{green.l65}}"
-cyan    = "f{{green.l65}}"
-blue    = "f{{blue.l65}}"
-violet  = "f{{blue.l65}}"
-magenta = "f{{red.l65}}"
+red          = "f{{red.l60}}"        # < +40 >
+orange       = "f{{orange.l60}}"     # < +40 >
+yellow       = "f{{yellow.l60}}"     # < +40 >
+green        = "f{{green.l60}}"      # < +40 >
+cyan         = "f{{green.l60}}"      # < +40 >
+blue         = "f{{blue.l60}}"       # < +40 >
+violet       = "f{{blue.l60}}"       # < +40 >
+magenta      = "f{{red.l60}}"        # < +40 >
 
+fg3          = "f{{default.l70}}"    # < +50 >
+fg2          = "f{{default.l75}}"    # < +55 >
+fg1          = "f{{default.l80}}"    # < +60 >
+fg0          = "f{{default.l85}}"    # < MAX >
+# --------------------------------------------
+
+# - APP --------------------------------------
 [term]
-background        = "f{{default.l25}}" # <bg0 + 5>
-foreground        = "f{{default.l90}}" # <fg0 + 5>
+foreground   = "f{{default.l90}}"    # < MAX >
+selection_fg = "f{{default.l85}}"    # < -05 >
 
-selection_bg      = "f{{default.l30}}" # <bg1 + 5>
-selection_fg      = "f{{default.l85}}" # <fg1 + 5>
+background   = "f{{default.l25}}"    # < MIN >
+selection_bg = "f{{default.l30}}"    # < +05 >
 
-cursor            = "f{{default.l85}}" # <fg1 + 5>
-cursor_text_color = "f{{default.l30}}" # <bg1 + 5>
+cursor       = "f{{default.l85}}"    # <MAX-5>
+cursor_text  = "f{{default.l30}}"    # <MIN+5>
 
 [term.normal]
-black  = "f{{default.l25}}" # <background>
-red    = "f{{red.l65}}"
-green  = "f{{green.l65}}"
-yellow = "f{{yellow.l65}}"
-blue   = "f{{blue.l65}}"
-purple = "f{{orange.l65}}"
-cyan   = "f{{blue.l65}}"
-white  = "f{{default.l80}}" # <foreground - 10>
+black        = "f{{default.l25}}"    # < MIN >
+red          = "f{{red.l65}}"        # < +40 >
+green        = "f{{green.l65}}"      # < +40 >
+yellow       = "f{{yellow.l65}}"     # < +40 >
+blue         = "f{{blue.l65}}"       # < +40 >
+magenta      = "f{{orange.l65}}"     # < +40 >
+cyan         = "f{{blue.l65}}"       # < +40 >
+white        = "f{{default.l80}}"    # < +55 >
 
 [term.bright]
-black  = "f{{default.l35}}" # <background + 10>
-red    = "f{{red.l75}}"
-green  = "f{{green.l75}}"
-yellow = "f{{yellow.l75}}"
-blue   = "f{{blue.l75}}"
-purple = "f{{orange.l75}}"
-cyan   = "f{{blue.l75}}"
-white  = "f{{default.l90}}" # <foreground>
+black        = "f{{default.l35}}"    # < +10 >
+red          = "f{{red.l75}}"        # < +50 >
+green        = "f{{green.l75}}"      # < +50 >
+yellow       = "f{{yellow.l75}}"     # < +50 >
+blue         = "f{{blue.l75}}"       # < +50 >
+magenta      = "f{{orange.l75}}"     # < +50 >
+cyan         = "f{{blue.l75}}"       # < +50 >
+white        = "f{{default.l90}}"    # < MAX >
 
 [vim]
-bg0 = "f{{default.l25}}" # <bg0 + 5>
-bg1 = "f{{default.l30}}" # <bg1 + 5>
-bg2 = "f{{default.l35}}" # <bg2 + 5>
-bg3 = "f{{default.l40}}" # <bg3 + 5>
+bg0          = "f{{default.l25}}"    # < MIN >
+bg1          = "f{{default.l30}}"    # < +05 >
+bg2          = "f{{default.l35}}"    # < +10 >
+bg3          = "f{{default.l40}}"    # < +15 >
 
-grey = "f{{default.l60}}" # <grey + 5>
+grey         = "f{{default.l55}}"    # < +30 >
 
-fg3 = "f{{default.l75}}" # <fg0 + 5>
-fg2 = "f{{default.l80}}" # <fg1 + 5>
-fg1 = "f{{default.l85}}" # <fg2 + 5>
-fg0 = "f{{default.l90}}" # <fg3 + 5>
+red          = "f{{red.l65}}"        # < +40 >
+orange       = "f{{orange.l65}}"     # < +40 >
+yellow       = "f{{yellow.l65}}"     # < +40 >
+green        = "f{{green.l65}}"      # < +40 >
+cyan         = "f{{green.l65}}"      # < +40 >
+blue         = "f{{blue.l65}}"       # < +40 >
+violet       = "f{{blue.l65}}"       # < +40 >
+magenta      = "f{{red.l65}}"        # < +40 >
 
-red     = "f{{red.l65}}"
-orange  = "f{{orange.l65}}"
-yellow  = "f{{yellow.l65}}"
-green   = "f{{green.l65}}"
-cyan    = "f{{green.l65}}"
-blue    = "f{{blue.l65}}"
-violet  = "f{{blue.l65}}"
-magenta = "f{{red.l65}}"
+fg3          = "f{{default.l75}}"    # < +50 >
+fg2          = "f{{default.l80}}"    # < +55 >
+fg1          = "f{{default.l85}}"    # < +60 >
+fg0          = "f{{default.l90}}"    # < MAX >
+# --------------------------------------------
