@@ -36,14 +36,16 @@ lightness spectrum, with the goal of retaining strong color identity in all sett
 Additionally, as alluded to above, the (WCAG 2) contrast ratio between any choice of
 monotone background at a given lightness level and the accent colors is virtually
 identical ($\pm 0.1$). Put another way, the relative contrast between accents depends only
-on the _lightness_ of the background monotone, not its hue.
+on the _lightness_ of the background monotone, not its hue. *(Note that this is
+not generally the case; at a fixed lightness level, the contrast between two
+colors depends on their hue.)*
 
 ## Concrete themes
 ![Light biomes](images/light_code_caps.png)
-_(Default light theme variants)_
+*(Default light theme variants)*
 
 ![Dark biomes](images/dark_code_caps.png)
-_(Default dark theme variants)_
+*(Default dark theme variants)*
 
 Themes are derived from the `monobiome` palette by varying both the monotone hue (the
 "biome") and the extent of the background/foreground lightness (the "harshness"). This is
@@ -127,16 +129,16 @@ Find links to install available light/dark Firefox themes for each biome in
 `apps/firefox/`.
 
 ![Default monobiome](images/firefox/default-split.png)
-_Default monobiome_
+*Default monobiome*
 
 ![Grassland monobiome](images/firefox/grassland-split.png)
-_Grassland monobiome_
+*Grassland monobiome*
 
 ![Tundra monobiome](images/firefox/tundra-split.png)
-_Tundra monobiome_
+*Tundra monobiome*
 
 ![Savanna monobiome](images/firefox/savanna-split.png)
-_Savanna monobiome_
+*Savanna monobiome*
 
 # Switching themes
 [`symconf`][3] is a general-purpose application config manager that can be used to
