@@ -2,10 +2,10 @@
 `monobiome` is a minimal, balanced color palette for use in terminals and text
 editors. It was designed in OKLCH space to achieve perceptual uniformity across
 all hues at various levels of luminance, and does so for _five_ monotone bases
-and _five_ accent colors (plus one grey "default"). Each of the monotone base
+and _five_ accent colors (plus one gray "default"). Each of the monotone base
 colors (named according to a natural biome whose colors they loosely resemble)
 are designed to achieve identical contrast with the accents, and thus any one
-of the four can be selected to change the feeling of the palette without
+of the options can be selected to change the feeling of the palette without
 sacrificing readability.
 
 ![Theme preview](images/repo_preview_minimal.png)
@@ -54,9 +54,9 @@ hue (the "biome") and the extent of the background/foreground lightness (the
 "harshness"). This is done for both light and dark schemes, and in each case
 accent colors are selected at a lightness level that ensures each meet a
 minimum contrast relative to the primary background. The following diagram
-shows each of the 24 resulting combinations:
+shows each of the 36 resulting combinations:
 
-![Diagram of the 24 available concrete theme options](images/themes.png)
+![Diagram of the 36 available concrete theme options](images/themes.png)
 
 The "soft" harshness level uses monotone shades closer to the mid-shade
 (lightness level 55), whereas "hard" harshness uses shades further from it.
@@ -74,10 +74,10 @@ Note how theme elements are mapped onto the general identifiers `bg0-bg3` for
 backgrounds, `fg0-fg3` for foregrounds, and `gray` for a central gray tone. The
 relative properties (lightness differences, contrast ratios) between colors
 assigned to these identifiers are preserved regardless of biome or harshness
-(e.g., `bg3` and `grey` are _always_ separated by 20 lightness points in any
+(e.g., `bg3` and `gray` are _always_ separated by 20 lightness points in any
 theme). As a result, applying `monobiome` themes to specific applications can
 effectively boil down to defining a single "relative template" that uses these
-identifiers, after which any of the 24 theme options can applied immediately.
+identifiers, after which any of the 36 theme options can applied immediately.
 
 Read more about how themes are created in [DESIGN](DESIGN.md).
 
@@ -97,7 +97,7 @@ For example, `soft-tundra-monobiome-dark.vim` is the Vim theme file for the
 dark `tundra` variant with the soft harshness level.
 
 ## `kitty`
-Find `kitty` themes in `apps/kitty`. Themes can be activated in your
+Find `kitty` themes in `app-config/kitty`. Themes can be activated in your
 `kitty.conf` with
 
 ```sh
@@ -105,7 +105,7 @@ include <theme-file>
 ```
 
 ## `vim`/`neovim`
-Find `vim`/`neovim` themes in `apps/nvim`. Themes can be activated by placing a
+Find `vim`/`neovim` themes in `app-config/nvim`. Themes can be activated by placing a
 theme file on Vim's runtime path and setting it in your `.vimrc`/`init.vim`
 with
 
@@ -113,17 +113,8 @@ with
 colorscheme <theme-name>
 ```
 
-## `vim-airline`
-If you use [`vim-airline`][2], you can find statusline themes in
-`apps/vim-airline`. Place a theme file in the `airline` theme folder, and
-activate it in your `.vimrc`/`init.vim` with
-
-```sh
-let g:airline_theme='<theme-name>'
-```
-
 ## `fzf`
-In `apps/fzf`, you can find scripts that can be ran to export FZF theme
+In `app-config/fzf`, you can find scripts that can be ran to export FZF theme
 variables. In your shell config (e.g., `.bashrc` or `.zshrc`), you can source
 these files to apply them in your terminal:
 
@@ -134,7 +125,7 @@ source <theme-file>
 ## Firefox
 Find links to install available light/dark Firefox themes for each biome in
 [FIREFOX](/FIREFOX.md). You can also download raw XPI files for each theme in
-`apps/firefox/`.
+`app-config/firefox/`.
 
 ![Default monobiome](images/firefox/default-split.png)
 *Default monobiome*
@@ -151,8 +142,9 @@ Find links to install available light/dark Firefox themes for each biome in
 # Switching themes
 [`symconf`][3] is a general-purpose application config manager that can be used
 to generate all `monobiome` variants from a single palette file, and set themes
-for all apps at once. You can find example theme templates in `apps/symconf`
-which provide general theme variables you can use in your own config templates.
+for all apps at once. You can find example theme templates in
+`templates/groups/theme`, which provide general theme variables you can use in
+your own config templates.
 
 For instance, in an app like `kitty`, you can define a template like
 
