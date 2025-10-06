@@ -1,0 +1,87 @@
+# - META -------------------------------------
+# MONOBIOME         :mode=light :contrast=hard
+# BADLANDS
+#
+# pat  ::  < 0-bg-3 > | gra | acc | < 3-fg-0 >
+# abs  ::  max -- -15 | -30 | -40 | -50 -- -65
+# rel  ::  max -- -15 | -15 | -10 | -10 -- -15
+# sys  ::  l90 -- l75 | l60 | l50 | l40 -- l25
+# app  ::  l95 -- l80 | l65 | l55 | l45 -- l30
+# --------------------------------------------
+
+# - SYS --------------------------------------
+bg0          = "f{{badlands.l90}}"   # < MAX >
+bg1          = "f{{badlands.l85}}"   # < -05 >
+bg2          = "f{{badlands.l80}}"   # < -10 >
+bg3          = "f{{badlands.l75}}"   # < -15 >
+
+grey         = "f{{badlands.l60}}"   # < -30 >
+
+red          = "f{{red.l50}}"        # < -40 >
+orange       = "f{{orange.l50}}"     # < -40 >
+yellow       = "f{{yellow.l50}}"     # < -40 >
+green        = "f{{green.l50}}"      # < -40 >
+cyan         = "f{{green.l50}}"      # < -40 >
+blue         = "f{{blue.l50}}"       # < -40 >
+violet       = "f{{blue.l50}}"       # < -40 >
+magenta      = "f{{red.l50}}"        # < -40 >
+
+fg3          = "f{{badlands.l40}}"   # < -50 >
+fg2          = "f{{badlands.l35}}"   # < -55 >
+fg1          = "f{{badlands.l30}}"   # < -60 >
+fg0          = "f{{badlands.l25}}"   # < MIN >
+# --------------------------------------------
+
+# - APP --------------------------------------
+[term]
+foreground   = "f{{badlands.l30}}"   # < MIN >
+selection_fg = "f{{badlands.l35}}"   # < +05 >
+
+background   = "f{{badlands.l95}}"   # < MAX >
+selection_bg = "f{{badlands.l90}}"   # < -05 >
+
+cursor       = "f{{badlands.l35}}"   # <MIN+5>
+cursor_text  = "f{{badlands.l90}}"   # <MAX-5>
+
+[term.normal]
+black        = "f{{badlands.l95}}"   # < MAX >
+red          = "f{{red.l55}}"        # < -40 >
+green        = "f{{green.l55}}"      # < -40 >
+yellow       = "f{{yellow.l55}}"     # < -40 >
+blue         = "f{{blue.l55}}"       # < -40 >
+magenta      = "f{{orange.l55}}"     # < -40 >
+cyan         = "f{{blue.l55}}"       # < -40 >
+white        = "f{{badlands.l40}}"   # < -55 >
+
+[term.bright]
+black        = "f{{badlands.l85}}"   # < -10 >
+red          = "f{{red.l45}}"        # < -50 >
+green        = "f{{green.l45}}"      # < -50 >
+yellow       = "f{{yellow.l45}}"     # < -50 >
+blue         = "f{{blue.l45}}"       # < -50 >
+magenta      = "f{{orange.l45}}"     # < -50 >
+cyan         = "f{{blue.l45}}"       # < -50 >
+white        = "f{{badlands.l30}}"   # < MIN >
+
+[vim]
+bg0          = "f{{badlands.l95}}"   # < MAX >
+bg1          = "f{{badlands.l90}}"   # < -05 >
+bg2          = "f{{badlands.l85}}"   # < -10 >
+bg3          = "f{{badlands.l80}}"   # < -15 >
+
+grey         = "f{{badlands.l65}}"   # < -30 >
+
+red          = "f{{red.l55}}"        # < -40 >
+orange       = "f{{orange.l55}}"     # < -40 >
+yellow       = "f{{yellow.l55}}"     # < -40 >
+green        = "f{{green.l55}}"      # < -40 >
+cyan         = "f{{green.l55}}"      # < -40 >
+blue         = "f{{blue.l55}}"       # < -40 >
+violet       = "f{{blue.l55}}"       # < -40 >
+magenta      = "f{{red.l55}}"        # < -40 >
+
+fg3          = "f{{badlands.l45}}"   # < -50 >
+fg2          = "f{{badlands.l40}}"   # < -55 >
+fg1          = "f{{badlands.l35}}"   # < -60 >
+fg0          = "f{{badlands.l30}}"   # < MIN >
+# --------------------------------------------
