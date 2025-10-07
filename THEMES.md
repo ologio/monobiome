@@ -1,10 +1,11 @@
 # Themes
-The currently available theme variants across biomes (`default`, `grassland`, `tundra`,
-`savanna`), harshness (`hard`, `default`, `soft`), and scheme (`light`, `dark`) are shown
-below, displaying a few lines from a Python file in Neovim.
+The currently available theme variants across biomes (`default`, `grassland`,
+`tundra`, `savanna`), harshness (`hard`, `default`, `soft`), and scheme
+(`light`, `dark`) are shown below, displaying a few lines from a Python file in
+Neovim.
 
-You can find the 24 raw screenshots for each theme in `images/theme_caps` under the
-repository root (with filenames `<harshness>-<biome>-<scheme>.png`).
+You can find the 24 raw screenshots for each theme in `images/theme_caps` under
+the repository root (with filenames `<harshness>-<biome>-<scheme>.png`).
 
 ## Default (gray) variants
 ![Default light and dark variants](images/biome_variants/default_variants.png)
