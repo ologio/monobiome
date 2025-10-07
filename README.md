@@ -8,7 +8,7 @@ are designed to achieve identical contrast with the accents, and thus any one
 of the options can be selected to change the feeling of the palette without
 sacrificing readability.
 
-![Theme preview](images/repo_preview_minimal.png)
+![Theme preview](images/repo_preview_four_split.png)
 _(Preview of default light and dark theme variants)_
 
 See screenshots for the full set of theme variants in [THEMES](THEMES.md) (also
@@ -43,11 +43,8 @@ monotone, not its hue. *(Note that this is not generally the case; at a fixed
 lightness level, the contrast between two colors depends on their hue.)*
 
 ## Concrete themes
-![Light biomes](images/light_code_caps.png)
-*(Default light theme variants)*
-
-![Dark biomes](images/dark_code_caps.png)
-*(Default dark theme variants)*
+![Split view of Alpine and Tundra biomes](images/theme-split-view.png)
+*(Light and dark theme splits of Alpine and Tundra biomes)*
 
 Themes are derived from the `monobiome` palette by varying both the monotone
 hue (the "biome") and the extent of the background/foreground lightness (the
@@ -90,10 +87,10 @@ applications.
 Each of the files in the `app-config/` directory are named according to
 
 ```sh
-<harshness>-<biome>-monobiome-<mode>.<config>
+monobiome-<biome>-<mode>-<harshness>.<ext>
 ```
 
-For example, `soft-tundra-monobiome-dark.vim` is the Vim theme file for the
+For example, `monobiome-tundra-dark-soft.vim` is the Vim theme file for the
 dark `tundra` variant with the soft harshness level.
 
 ## `kitty`
