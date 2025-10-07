@@ -43,7 +43,9 @@ monotone, not its hue. *(Note that this is not generally the case; at a fixed
 lightness level, the contrast between two colors depends on their hue.)*
 
 ## Concrete themes
+
 ![Split view of Alpine and Tundra biomes](images/theme-split-view.png)
+
 *(Light and dark theme splits of Alpine and Tundra biomes)*
 
 Themes are derived from the `monobiome` palette by varying both the monotone
