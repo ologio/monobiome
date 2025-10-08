@@ -1,0 +1,91 @@
+# - META -------------------------------------
+# MONOBIOME      :mode=light :contrast=default
+# ALPINE
+#
+# pat  ::  < 0-bg-3 > | gra | acc | < 3-fg-0 >
+# abs  ::  max -- -15 | -30 | -40 | -50 -- -65
+# rel  ::  max -- -15 | -15 | -10 | -10 -- -15
+# sys  ::  l85 -- l70 | l55 | l45 | l35 -- l20
+# app  ::  l90 -- l75 | l60 | l50 | l40 -- l25
+
+mode         = "light"
+biome        = "alpine"
+contrast     = "default"
+# --------------------------------------------
+
+# - SYS --------------------------------------
+bg0          = "f{{default.l85}}"    # < MAX >
+bg1          = "f{{default.l80}}"    # < -05 >
+bg2          = "f{{default.l75}}"    # < -10 >
+bg3          = "f{{default.l70}}"    # < -15 >
+
+grey         = "f{{default.l55}}"    # < -30 >
+
+red          = "f{{red.l45}}"        # < -40 >
+orange       = "f{{orange.l45}}"     # < -40 >
+yellow       = "f{{yellow.l45}}"     # < -40 >
+green        = "f{{green.l45}}"      # < -40 >
+cyan         = "f{{green.l45}}"      # < -40 >
+blue         = "f{{blue.l45}}"       # < -40 >
+violet       = "f{{blue.l45}}"       # < -40 >
+magenta      = "f{{red.l45}}"        # < -40 >
+
+fg3          = "f{{default.l35}}"    # < -50 >
+fg2          = "f{{default.l30}}"    # < -55 >
+fg1          = "f{{default.l25}}"    # < -60 >
+fg0          = "f{{default.l20}}"    # < MIN >
+# --------------------------------------------
+
+# - APP --------------------------------------
+[term]
+foreground   = "f{{default.l25}}"    # < MIN >
+selection_fg = "f{{default.l30}}"    # < +05 >
+
+background   = "f{{default.l90}}"    # < MAX >
+selection_bg = "f{{default.l85}}"    # < -05 >
+
+cursor       = "f{{default.l30}}"    # <MIN+5>
+cursor_text  = "f{{default.l85}}"    # <MAX-5>
+
+[term.normal]
+black        = "f{{default.l90}}"    # < MAX >
+red          = "f{{red.l50}}"        # < -40 >
+green        = "f{{green.l50}}"      # < -40 >
+yellow       = "f{{yellow.l50}}"     # < -40 >
+blue         = "f{{blue.l50}}"       # < -40 >
+magenta      = "f{{orange.l50}}"     # < -40 >
+cyan         = "f{{blue.l50}}"       # < -40 >
+white        = "f{{default.l35}}"    # < -55 >
+
+[term.bright]
+black        = "f{{default.l80}}"    # < -10 >
+red          = "f{{red.l40}}"        # < -50 >
+green        = "f{{green.l40}}"      # < -50 >
+yellow       = "f{{yellow.l40}}"     # < -50 >
+blue         = "f{{blue.l40}}"       # < -50 >
+magenta      = "f{{orange.l40}}"     # < -50 >
+cyan         = "f{{blue.l40}}"       # < -50 >
+white        = "f{{default.l25}}"    # < MIN >
+
+[vim]
+bg0          = "f{{default.l90}}"    # < MAX >
+bg1          = "f{{default.l85}}"    # < -05 >
+bg2          = "f{{default.l80}}"    # < -10 >
+bg3          = "f{{default.l75}}"    # < -15 >
+
+grey         = "f{{default.l60}}"    # < -30 >
+
+red          = "f{{red.l50}}"        # < -40 >
+orange       = "f{{orange.l50}}"     # < -40 >
+yellow       = "f{{yellow.l50}}"     # < -40 >
+green        = "f{{green.l50}}"      # < -40 >
+cyan         = "f{{green.l50}}"      # < -40 >
+blue         = "f{{blue.l50}}"       # < -40 >
+violet       = "f{{blue.l50}}"       # < -40 >
+magenta      = "f{{red.l50}}"        # < -40 >
+
+fg3          = "f{{default.l40}}"    # < -50 >
+fg2          = "f{{default.l35}}"    # < -55 >
+fg1          = "f{{default.l30}}"    # < -60 >
+fg0          = "f{{default.l25}}"    # < MIN >
+# --------------------------------------------

@@ -1,0 +1,41 @@
+# base settings
+background           #1f2227
+foreground           #dadee6
+
+selection_background #2b2e33
+selection_foreground #caced5
+
+cursor               #caced5
+cursor_text          #2b2e33
+
+# black
+color0               #1f2227
+color8               #373b40
+
+# red
+color1               #e95949
+color9               #fa897a
+
+# green
+color2               #5da268
+color10              #80c089
+
+# yellow
+color3               #989250
+color11              #b7b170
+
+# blue
+color4               #658ed9
+color12              #8daeeb
+
+# magenta (red)
+color5               #c97920
+color13              #e79a51
+
+# cyan (blue)
+color6               #658ed9
+color14              #8daeeb
+
+## white
+color7               #babec5
+color15              #dadee6

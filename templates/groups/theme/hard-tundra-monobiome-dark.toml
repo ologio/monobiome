@@ -1,0 +1,91 @@
+# - META -------------------------------------
+# MONOBIOME          :mode=dark :contrast=hard
+# TUNDRA   
+#
+# pat  ::  < 0-bg-3 > | gra | acc | < 3-fg-0 >
+# abs  ::  min -- +15 | +30 | +40 | +50 -- +65
+# rel  ::  min -- +15 | +15 | +10 | +10 -- +15
+# sys  ::  l15 -- l30 | l45 | l55 | l65 -- l80
+# app  ::  l20 -- l35 | l50 | l60 | l70 -- l85
+
+mode         = "dark"
+biome        = "tundra"
+contrast     = "hard"
+# --------------------------------------------
+
+# - SYS --------------------------------------
+bg0          = "f{{tundra.l15}}"     # < MIN >
+bg1          = "f{{tundra.l20}}"     # < +05 >
+bg2          = "f{{tundra.l25}}"     # < +10 >
+bg3          = "f{{tundra.l30}}"     # < +15 >
+
+grey         = "f{{tundra.l45}}"     # < +30 >
+
+red          = "f{{red.l55}}"        # < +40 >
+orange       = "f{{orange.l55}}"     # < +40 >
+yellow       = "f{{yellow.l55}}"     # < +40 >
+green        = "f{{green.l55}}"      # < +40 >
+cyan         = "f{{green.l55}}"      # < +40 >
+blue         = "f{{blue.l55}}"       # < +40 >
+violet       = "f{{blue.l55}}"       # < +40 >
+magenta      = "f{{red.l55}}"        # < +40 >
+
+fg3          = "f{{tundra.l65}}"     # < +50 >
+fg2          = "f{{tundra.l70}}"     # < +55 >
+fg1          = "f{{tundra.l75}}"     # < +60 >
+fg0          = "f{{tundra.l80}}"     # < MAX >
+# --------------------------------------------
+
+# - APP --------------------------------------
+[term]
+foreground   = "f{{tundra.l85}}"     # < MAX >
+selection_fg = "f{{tundra.l80}}"     # < -05 >
+
+background   = "f{{tundra.l20}}"     # < MIN >
+selection_bg = "f{{tundra.l25}}"     # < +05 >
+
+cursor       = "f{{tundra.l80}}"     # <MAX-5>
+cursor_text  = "f{{tundra.l25}}"     # <MIN+5>
+
+[term.normal]
+black        = "f{{tundra.l20}}"     # < MIN >
+red          = "f{{red.l60}}"        # < +40 >
+green        = "f{{green.l60}}"      # < +40 >
+yellow       = "f{{yellow.l60}}"     # < +40 >
+blue         = "f{{blue.l60}}"       # < +40 >
+magenta      = "f{{orange.l60}}"     # < +40 >
+cyan         = "f{{blue.l60}}"       # < +40 >
+white        = "f{{tundra.l75}}"     # < +55 >
+
+[term.bright]
+black        = "f{{tundra.l30}}"     # < +10 >
+red          = "f{{red.l70}}"        # < +50 >
+green        = "f{{green.l70}}"      # < +50 >
+yellow       = "f{{yellow.l70}}"     # < +50 >
+blue         = "f{{blue.l70}}"       # < +50 >
+magenta      = "f{{orange.l70}}"     # < +50 >
+cyan         = "f{{blue.l70}}"       # < +50 >
+white        = "f{{tundra.l85}}"     # < MAX >
+
+[vim]
+bg0          = "f{{tundra.l20}}"     # < MIN >
+bg1          = "f{{tundra.l25}}"     # < +05 >
+bg2          = "f{{tundra.l30}}"     # < +10 >
+bg3          = "f{{tundra.l35}}"     # < +15 >
+
+grey         = "f{{tundra.l50}}"     # < +30 >
+
+red          = "f{{red.l60}}"        # < +40 >
+orange       = "f{{orange.l60}}"     # < +40 >
+yellow       = "f{{yellow.l60}}"     # < +40 >
+green        = "f{{green.l60}}"      # < +40 >
+cyan         = "f{{green.l60}}"      # < +40 >
+blue         = "f{{blue.l60}}"       # < +40 >
+violet       = "f{{blue.l60}}"       # < +40 >
+magenta      = "f{{red.l60}}"        # < +40 >
+
+fg3          = "f{{tundra.l70}}"     # < +50 >
+fg2          = "f{{tundra.l75}}"     # < +55 >
+fg1          = "f{{tundra.l80}}"     # < +60 >
+fg0          = "f{{tundra.l85}}"     # < MAX >
+# --------------------------------------------

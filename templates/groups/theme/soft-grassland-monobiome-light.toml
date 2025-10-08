@@ -1,0 +1,91 @@
+# - META -------------------------------------
+# MONOBIOME         :mode=light :contrast=soft
+# GRASSLAND
+#
+# pat  ::  < 0-bg-3 > | gra | acc | < 3-fg-0 >
+# abs  ::  max -- -15 | -30 | -40 | -50 -- -65
+# rel  ::  max -- -15 | -15 | -10 | -10 -- -15
+# sys  ::  l80 -- l65 | l50 | l40 | l30 -- l15
+# app  ::  l85 -- l70 | l55 | l45 | l35 -- l20
+
+mode         = "light"
+biome        = "grassland"
+contrast     = "soft"
+# --------------------------------------------
+
+# - SYS --------------------------------------
+bg0          = "f{{grassland.l80}}"  # < MAX >
+bg1          = "f{{grassland.l75}}"  # < -05 >
+bg2          = "f{{grassland.l70}}"  # < -10 >
+bg3          = "f{{grassland.l65}}"  # < -15 >
+
+grey         = "f{{grassland.l50}}"  # < -30 >
+
+red          = "f{{red.l40}}"        # < -40 >
+orange       = "f{{orange.l40}}"     # < -40 >
+yellow       = "f{{yellow.l40}}"     # < -40 >
+green        = "f{{green.l40}}"      # < -40 >
+cyan         = "f{{green.l40}}"      # < -40 >
+blue         = "f{{blue.l40}}"       # < -40 >
+violet       = "f{{blue.l40}}"       # < -40 >
+magenta      = "f{{red.l40}}"        # < -40 >
+
+fg3          = "f{{grassland.l30}}"  # < -50 >
+fg2          = "f{{grassland.l25}}"  # < -55 >
+fg1          = "f{{grassland.l20}}"  # < -60 >
+fg0          = "f{{grassland.l15}}"  # < MIN >
+# --------------------------------------------
+
+# - APP --------------------------------------
+[term]
+foreground   = "f{{grassland.l20}}"  # < MIN >
+selection_fg = "f{{grassland.l25}}"  # < +05 >
+
+background   = "f{{grassland.l85}}"  # < MAX >
+selection_bg = "f{{grassland.l80}}"  # < -05 >
+
+cursor       = "f{{grassland.l25}}"  # <MIN+5>
+cursor_text  = "f{{grassland.l80}}"  # <MAX-5>
+
+[term.normal]
+black        = "f{{grassland.l85}}"  # < MAX >
+red          = "f{{red.l45}}"        # < -40 >
+green        = "f{{green.l45}}"      # < -40 >
+yellow       = "f{{yellow.l45}}"     # < -40 >
+blue         = "f{{blue.l45}}"       # < -40 >
+magenta      = "f{{orange.l45}}"     # < -40 >
+cyan         = "f{{blue.l45}}"       # < -40 >
+white        = "f{{grassland.l30}}"  # < -55 >
+
+[term.bright]
+black        = "f{{grassland.l75}}"  # < -10 >
+red          = "f{{red.l35}}"        # < -50 >
+green        = "f{{green.l35}}"      # < -50 >
+yellow       = "f{{yellow.l35}}"     # < -50 >
+blue         = "f{{blue.l35}}"       # < -50 >
+magenta      = "f{{orange.l35}}"     # < -50 >
+cyan         = "f{{blue.l35}}"       # < -50 >
+white        = "f{{grassland.l25}}"  # < MIN >
+
+[vim]
+bg0          = "f{{grassland.l85}}"  # < MAX >
+bg1          = "f{{grassland.l80}}"  # < -05 >
+bg2          = "f{{grassland.l75}}"  # < -10 >
+bg3          = "f{{grassland.l70}}"  # < -15 >
+
+grey         = "f{{grassland.l55}}"  # < -30 >
+
+red          = "f{{red.l45}}"        # < -40 >
+orange       = "f{{orange.l45}}"     # < -40 >
+yellow       = "f{{yellow.l45}}"     # < -40 >
+green        = "f{{green.l45}}"      # < -40 >
+cyan         = "f{{green.l45}}"      # < -40 >
+blue         = "f{{blue.l45}}"       # < -40 >
+violet       = "f{{blue.l45}}"       # < -40 >
+magenta      = "f{{red.l45}}"        # < -40 >
+
+fg3          = "f{{grassland.l35}}"  # < -50 >
+fg2          = "f{{grassland.l30}}"  # < -55 >
+fg1          = "f{{grassland.l25}}"  # < -60 >
+fg0          = "f{{grassland.l20}}"  # < MIN >
+# --------------------------------------------
