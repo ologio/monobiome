@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "version": "1.0.2",
-  "name": "monobiome-f{{theme.biome}}-f{{theme.mode}}-f{{theme.contrast}}",
+  "version": "1.1.0",
+  "name": "monobiome-f{{theme.biome}}",
   "theme": {
     "colors": {
         "toolbar": "rgbx{{ tuple(int(f{{theme.vim.fg0}}[1:][i:i+2],16) for i in (0,2,4)) }}",
