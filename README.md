@@ -89,7 +89,7 @@ applications.
 Each of the files in the `app-config/` directory are named according to
 
 ```sh
-monobiome-<biome>-<mode>-<harshness>.<ext>
+<harshness>-<biome>-monobiome-<mode>.<ext>
 ```
 
 For example, `monobiome-tundra-dark-soft.vim` is the Vim theme file for the
