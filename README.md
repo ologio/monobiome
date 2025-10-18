@@ -95,48 +95,54 @@ Each of the files in the `app-config/` directory are named according to
 For example, `monobiome-tundra-dark-soft.vim` is the Vim theme file for the
 dark `tundra` variant with the soft harshness level.
 
-## `kitty`
-Find `kitty` themes in `app-config/kitty`. Themes can be activated in your
-`kitty.conf` with
+## Applications
+- `kitty`
 
-```sh
-include <theme-file>
-```
+  Find `kitty` themes in `app-config/kitty`. Themes can be activated in your
+  `kitty.conf` with
+  
+  ```sh
+  include <theme-file>
+  ```
 
-## `vim`/`neovim`
-Find `vim`/`neovim` themes in `app-config/nvim`. Themes can be activated by placing a
-theme file on Vim's runtime path and setting it in your `.vimrc`/`init.vim`
-with
+  Themes are generated using the [`kitty` theme
+  template](templates/apps/kitty/templates/active.theme).
 
-```sh
-colorscheme <theme-name>
-```
+- `vim`/`neovim`
 
-## `fzf`
-In `app-config/fzf`, you can find scripts that can be ran to export FZF theme
-variables. In your shell config (e.g., `.bashrc` or `.zshrc`), you can source
-these files to apply them in your terminal:
+  Find `vim`/`neovim` themes in `app-config/nvim`. Themes can be activated by placing a
+  theme file on Vim's runtime path and setting it in your `.vimrc`/`init.vim`
+  with
+  
+  ```sh
+  colorscheme <theme-name>
+  ```
 
-```sh
-source <theme-file>
-```
+  Themes are generated using the [`vim` theme
+  template](templates/apps/nvim/templates/theme.vim).
 
-## Firefox
-Find links to install available light/dark Firefox themes for each biome in
-[FIREFOX](/FIREFOX.md). You can also download raw XPI files for each theme in
-`app-config/firefox/`.
+- `fzf`
 
-![Default monobiome](images/firefox/default-split.png)
-*Default monobiome*
+  In `app-config/fzf`, you can find scripts that can be ran to export FZF theme
+  variables. In your shell config (e.g., `.bashrc` or `.zshrc`), you can source
+  these files to apply them in your terminal:
+  
+  ```sh
+  source <theme-file>
+  ```
 
-![Grassland monobiome](images/firefox/grassland-split.png)
-*Grassland monobiome*
+  Themes are generated using the [`fzf` theme
+  template](templates/apps/fzf/templates/active.theme).
 
-![Tundra monobiome](images/firefox/tundra-split.png)
-*Tundra monobiome*
+- Firefox
 
-![Savanna monobiome](images/firefox/savanna-split.png)
-*Savanna monobiome*
+  Firefox themes for all monotone backgrounds are publicly listed as [Mozilla
+  add-ons][2], and switch between light/dark schemes based on system settings.
+  You can also download raw XPI files for each theme in `app-config/firefox/`,
+  each of which is generated using the [Firefox `manifest.json`
+  template](templates/apps/firefox/templates/none-dark.manifest.json).
+
+  ![Firefox theme previews](images/firefox/themes.png)
 
 # Switching themes
 [`symconf`][3] is a general-purpose application config manager that can be used
@@ -196,4 +202,5 @@ biome/harshness/mode. This can be done for any app config file.
 
 
 [1]: https://github.com/isa/TextMate-Themes/blob/master/monoindustrial.tmTheme
+[2]: https://addons.mozilla.org/en-US/firefox/collections/18495484/monobiome/
 [3]: https://github.com/ologio/symconf
