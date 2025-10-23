@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "version": "1.1.0",
+  "version": "1.1.1",
   "name": "monobiome-f{{theme.biome}}",
   "theme": {
     "colors": {
@@ -14,7 +14,7 @@
         "popup": "rgbx{{ tuple(int(f{{theme.vim.fg0}}[1:][i:i+2],16) for i in (0,2,4)) }}",
         "popup_text": "rgbx{{ tuple(int(f{{theme.vim.bg0}}[1:][i:i+2],16) for i in (0,2,4)) }}",
         "ntp_background": "rgbx{{ tuple(int(f{{theme.vim.fg2}}[1:][i:i+2],16) for i in (0,2,4)) }}",
-        "popup_border": "rgbx{{ tuple(int(f{{theme.vim.fg3}}[1:][i:i+2],16) for i in (0,2,4)) }}",
+        "popup_border": "rgbx{{ tuple(int(f{{theme.vim.grey}}[1:][i:i+2],16) for i in (0,2,4)) }}",
         "popup_highlight_text": "rgbx{{ tuple(int(f{{theme.vim.bg0}}[1:][i:i+2],16) for i in (0,2,4)) }}",
         "popup_highlight": "rgbx{{ tuple(int(f{{theme.vim.fg0}}[1:][i:i+2],16) for i in (0,2,4)) }}",
         "toolbar_bottom_separator": "rgbx{{ tuple(int(f{{theme.vim.grey}}[1:][i:i+2],16) for i in (0,2,4)) }}",
@@ -37,7 +37,7 @@
         "popup": "rgbx{{ tuple(int(f{{theme.vim.bg2}}[1:][i:i+2],16) for i in (0,2,4)) }}",
         "popup_text": "rgbx{{ tuple(int(f{{theme.vim.fg0}}[1:][i:i+2],16) for i in (0,2,4)) }}",
         "ntp_background": "rgbx{{ tuple(int(f{{theme.vim.bg0}}[1:][i:i+2],16) for i in (0,2,4)) }}",
-        "popup_border": "rgbx{{ tuple(int(f{{theme.vim.bg3}}[1:][i:i+2],16) for i in (0,2,4)) }}",
+        "popup_border": "rgbx{{ tuple(int(f{{theme.vim.grey}}[1:][i:i+2],16) for i in (0,2,4)) }}",
         "popup_highlight_text": "rgbx{{ tuple(int(f{{theme.vim.fg0}}[1:][i:i+2],16) for i in (0,2,4)) }}",
         "popup_highlight": "rgbx{{ tuple(int(f{{theme.vim.bg2}}[1:][i:i+2],16) for i in (0,2,4)) }}",
         "toolbar_bottom_separator": "rgbx{{ tuple(int(f{{theme.vim.grey}}[1:][i:i+2],16) for i in (0,2,4)) }}",
