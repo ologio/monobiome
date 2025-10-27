@@ -14,12 +14,12 @@ contrast     = "hard"
 # --------------------------------------------
 
 # - SYS --------------------------------------
-bg0          = "f{{default.l15}}"    # < MIN >
-bg1          = "f{{default.l20}}"    # < +05 >
-bg2          = "f{{default.l25}}"    # < +10 >
-bg3          = "f{{default.l30}}"    # < +15 >
+bg0          = "f{{alpine.l15}}"     # < MIN >
+bg1          = "f{{alpine.l20}}"     # < +05 >
+bg2          = "f{{alpine.l25}}"     # < +10 >
+bg3          = "f{{alpine.l30}}"     # < +15 >
 
-grey         = "f{{default.l45}}"    # < +30 >
+grey         = "f{{alpine.l45}}"     # < +30 >
 
 red          = "f{{red.l55}}"        # < +40 >
 orange       = "f{{orange.l55}}"     # < +40 >
@@ -30,50 +30,50 @@ blue         = "f{{blue.l55}}"       # < +40 >
 violet       = "f{{blue.l55}}"       # < +40 >
 magenta      = "f{{red.l55}}"        # < +40 >
 
-fg3          = "f{{default.l65}}"    # < +50 >
-fg2          = "f{{default.l70}}"    # < +55 >
-fg1          = "f{{default.l75}}"    # < +60 >
-fg0          = "f{{default.l80}}"    # < MAX >
+fg3          = "f{{alpine.l65}}"     # < +50 >
+fg2          = "f{{alpine.l70}}"     # < +55 >
+fg1          = "f{{alpine.l75}}"     # < +60 >
+fg0          = "f{{alpine.l80}}"     # < MAX >
 # --------------------------------------------
 
 # - APP --------------------------------------
 [term]
-foreground   = "f{{default.l85}}"    # < MAX >
-selection_fg = "f{{default.l80}}"    # < -05 >
+foreground   = "f{{alpine.l85}}"     # < MAX >
+selection_fg = "f{{alpine.l80}}"     # < -05 >
 
-background   = "f{{default.l20}}"    # < MIN >
-selection_bg = "f{{default.l25}}"    # < +05 >
+background   = "f{{alpine.l20}}"     # < MIN >
+selection_bg = "f{{alpine.l25}}"     # < +05 >
 
-cursor       = "f{{default.l80}}"    # <MAX-5>
-cursor_text  = "f{{default.l25}}"    # <MIN+5>
+cursor       = "f{{alpine.l80}}"     # <MAX-5>
+cursor_text  = "f{{alpine.l25}}"     # <MIN+5>
 
 [term.normal]
-black        = "f{{default.l20}}"    # < MIN >
+black        = "f{{alpine.l20}}"     # < MIN >
 red          = "f{{red.l60}}"        # < +40 >
 green        = "f{{green.l60}}"      # < +40 >
 yellow       = "f{{yellow.l60}}"     # < +40 >
 blue         = "f{{blue.l60}}"       # < +40 >
 magenta      = "f{{orange.l60}}"     # < +40 >
 cyan         = "f{{blue.l60}}"       # < +40 >
-white        = "f{{default.l75}}"    # < +55 >
+white        = "f{{alpine.l75}}"     # < +55 >
 
 [term.bright]
-black        = "f{{default.l30}}"    # < +10 >
+black        = "f{{alpine.l30}}"     # < +10 >
 red          = "f{{red.l70}}"        # < +50 >
 green        = "f{{green.l70}}"      # < +50 >
 yellow       = "f{{yellow.l70}}"     # < +50 >
 blue         = "f{{blue.l70}}"       # < +50 >
 magenta      = "f{{orange.l70}}"     # < +50 >
 cyan         = "f{{blue.l70}}"       # < +50 >
-white        = "f{{default.l85}}"    # < MAX >
+white        = "f{{alpine.l85}}"     # < MAX >
 
 [vim]
-bg0          = "f{{default.l20}}"    # < MIN >
-bg1          = "f{{default.l25}}"    # < +05 >
-bg2          = "f{{default.l30}}"    # < +10 >
-bg3          = "f{{default.l35}}"    # < +15 >
+bg0          = "f{{alpine.l20}}"     # < MIN >
+bg1          = "f{{alpine.l25}}"     # < +05 >
+bg2          = "f{{alpine.l30}}"     # < +10 >
+bg3          = "f{{alpine.l35}}"     # < +15 >
 
-grey         = "f{{default.l50}}"    # < +30 >
+grey         = "f{{alpine.l50}}"     # < +30 >
 
 red          = "f{{red.l60}}"        # < +40 >
 orange       = "f{{orange.l60}}"     # < +40 >
@@ -84,8 +84,8 @@ blue         = "f{{blue.l60}}"       # < +40 >
 violet       = "f{{blue.l60}}"       # < +40 >
 magenta      = "f{{red.l60}}"        # < +40 >
 
-fg3          = "f{{default.l70}}"    # < +50 >
-fg2          = "f{{default.l75}}"    # < +55 >
-fg1          = "f{{default.l80}}"    # < +60 >
-fg0          = "f{{default.l85}}"    # < MAX >
+fg3          = "f{{alpine.l70}}"     # < +50 >
+fg2          = "f{{alpine.l75}}"     # < +55 >
+fg1          = "f{{alpine.l80}}"     # < +60 >
+fg0          = "f{{alpine.l85}}"     # < MAX >
 # --------------------------------------------

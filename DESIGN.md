@@ -85,13 +85,19 @@ the relevant values for making a decision. We want to ensure all accents can
 reach >4.5 WCAG 2 contrast ratio (the standard requirement for small text on
 the web) against all biome monotones for each theme:
 
-+ For BG l20 (harsh, dark) -> l65 is min lightness where all accents have CR >=4.5
-+ For BG l25 (regular, dark) -> l65 is min lightness where all accents have CR >=4.5
-+ For BG l30 (soft, dark) -> l70 is min lightness where all accents have CR >=4.5
++ For BG l20 (harsh, dark) -> l65 is min lightness where all accents have CR
+  >=4.5
++ For BG l25 (regular, dark) -> l65 is min lightness where all accents have CR
+  >=4.5
++ For BG l30 (soft, dark) -> l70 is min lightness where all accents have CR
+  >=4.5
 
-+ For BG l90 (harsh, dark) -> l45 is max lightness where all accents have CR >=4.5
-+ For BG l85 (regular, dark) -> l45 is min lightness where all accents have CR >=4.5
-+ For BG l80 (soft, dark) -> l40 is min lightness where all accents have CR >=4.5
++ For BG l90 (harsh, dark) -> l45 is max lightness where all accents have CR
+  >=4.5
++ For BG l85 (regular, dark) -> l45 is min lightness where all accents have CR
+  >=4.5
++ For BG l80 (soft, dark) -> l40 is min lightness where all accents have CR
+  >=4.5
 
 For the monotone boundaries (l15 and l95, neither of which are possible
 backgrounds for terminal or nvim in the current theme definitions), the
@@ -112,9 +118,9 @@ shade" of the l15-l95 shade group is l55, meaning these groups are very central
 to be as bright as we can get away with; otherwise, they are extremely dull in
 the light modes, and we thus don't mind bias toward a brighter lightness).
 
-The following table shows the lightness thresholds of accent colors required to achieve various
-contrast ratios under different lightness levels of monotone backgrounds. These
-ratios correspond to WCAG 2.2 standards:
+The following table shows the lightness thresholds of accent colors required to
+achieve various contrast ratios under different lightness levels of monotone
+backgrounds. These ratios correspond to WCAG 2.2 standards:
 
 - WCAG AA: contrast ratio ≥3:1 for large text, ≥4.5:1 for normal text
 - WCAG AAA: contrast ratio ≥4.5:1 for large text, ≥7:1 for normal text
