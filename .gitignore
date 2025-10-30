@@ -5,6 +5,7 @@ __pycache__/
 .ipynb_checkpoints/
 .pytest_cache/
 .python-version
+.venv/
 
 # vendor and build files
 dist/
@@ -14,7 +15,6 @@ docs/_autosummary/
 docs/_build/
 
 # local
-notebooks/
 /Makefile
 
 data/

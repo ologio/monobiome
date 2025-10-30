@@ -86,18 +86,18 @@ reach >4.5 WCAG 2 contrast ratio (the standard requirement for small text on
 the web) against all biome monotones for each theme:
 
 + For BG l20 (harsh, dark) -> l65 is min lightness where all accents have CR
-  >=4.5
+  ≥4.5
 + For BG l25 (regular, dark) -> l65 is min lightness where all accents have CR
-  >=4.5
+  ≥4.5
 + For BG l30 (soft, dark) -> l70 is min lightness where all accents have CR
-  >=4.5
+  ≥4.5
 
 + For BG l90 (harsh, dark) -> l45 is max lightness where all accents have CR
-  >=4.5
+  ≥4.5
 + For BG l85 (regular, dark) -> l45 is min lightness where all accents have CR
-  >=4.5
+  ≥4.5
 + For BG l80 (soft, dark) -> l40 is min lightness where all accents have CR
-  >=4.5
+  ≥4.5
 
 For the monotone boundaries (l15 and l95, neither of which are possible
 backgrounds for terminal or nvim in the current theme definitions), the
