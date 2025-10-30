@@ -1,6 +1,6 @@
 # - META -------------------------------------
-# MONOBIOME          :mode=dark :contrast=soft
-# CHAPARRAL
+# MONOBIOME         :mode=dark :harshness=soft
+# CHAPARRAL              :contrast=WCAG 2.2 AA
 #
 # pat  ::  < 0-bg-3 > | gra | acc | < 3-fg-0 >
 # abs  ::  min -- +15 | +30 | +40 | +50 -- +65

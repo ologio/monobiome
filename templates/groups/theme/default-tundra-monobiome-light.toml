@@ -1,6 +1,6 @@
 # - META -------------------------------------
-# MONOBIOME      :mode=light :contrast=default
-# TUNDRA 
+# MONOBIOME     :mode=light :harshness=default
+# TUNDRA                 :contrast=WCAG 2.2 AA
 #
 # pat  ::  < 0-bg-3 > | gra | acc | < 3-fg-0 >
 # abs  ::  max -- -15 | -30 | -40 | -50 -- -65
