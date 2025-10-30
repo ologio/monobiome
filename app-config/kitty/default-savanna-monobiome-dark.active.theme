@@ -13,28 +13,28 @@ color0               #22221c
 color8               #3b3b34
 
 # red
-color1               #e95949
-color9               #fa897a
+color1               #e65b4c
+color9               #fa8979
 
 # green
-color2               #5da268
-color10              #80c089
+color2               #6a9e71
+color10              #8dbc93
 
 # yellow
-color3               #989250
-color11              #b7b170
+color3               #959263
+color11              #b4b084
 
 # blue
-color4               #658ed9
-color12              #8daeeb
+color4               #5f8de4
+color12              #85aef9
 
 # magenta (red)
-color5               #c97920
-color13              #e79a51
+color5               #c07e3f
+color13              #daa06c
 
 # cyan (blue)
-color6               #658ed9
-color14              #8daeeb
+color6               #5f8de4
+color14              #85aef9
 
 ## white
 color7               #bfbeb6

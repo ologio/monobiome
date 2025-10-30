@@ -10,8 +10,9 @@ for f in *; do
 done
 
 # consolidate firefox artifacts
-rm *.manifest.json
+rm *.*-manifest.json
 rm hard-* soft-*
 rm *-light.*
-perl-rename 's/^([^-.]+)-([^-.]+)-([^-.]+)-([^-.]+)\..*\.xpi/$2-$3.xpi/' *
+perl-rename 's/^([^-.]+)-([^-.]+)-([^-.]+)-([^-.]+)\..*\.([^-.]+)-manifest\.xpi/$2-$3-$5.xpi/' *
+perl-rename 's/^([^-.]+)-([^-.]+)-auto\.xpi/$1-$2.xpi/' *
 
