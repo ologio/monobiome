@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+# note: this script is not portable; to be run in the monobiome scripts/
+# directory (notice the `rm` invocations)
+
 rm -rf app-config/*
 symconf -c templates/ generate -o app-config
 
