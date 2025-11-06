@@ -142,6 +142,8 @@ dark `tundra` variant with the soft harshness level.
   each of which is generated using the [Firefox `manifest.json`
   template](templates/apps/firefox/templates/none-dark.manifest.json).
 
+  Static [light][4] and [dark][5] are additionally available.
+
   ![Firefox theme previews](images/firefox/themes.png)
 
 # Switching themes
@@ -204,3 +206,5 @@ biome/harshness/mode. This can be done for any app config file.
 [1]: https://github.com/isa/TextMate-Themes/blob/master/monoindustrial.tmTheme
 [2]: https://addons.mozilla.org/en-US/firefox/collections/18495484/monobiome/
 [3]: https://github.com/ologio/symconf
+[4]: https://addons.mozilla.org/en-US/firefox/collections/18495484/monobiome-light/
+[5]: https://addons.mozilla.org/en-US/firefox/collections/18495484/monobiome-dark/
