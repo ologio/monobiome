@@ -4,12 +4,14 @@
 
 set -euo pipefail
 w=${1:?width}; h=${2:?height}
-out="kitty-$(date +%Y%m%d-%H%M%S).png"
-shift 2 || true
+out=${3:?file};
+#out="kitty-$(date +%Y%m%d-%H%M%S).png"
+shift 3 || true
 
 # spawn a kitty window w/ a mark
 title="kitty-$(date +%s%N)"
-kitty --title "$title" "$@" &
+sock="$XDG_RUNTIME_DIR/kitty-$title.sock"
+kitty -o allow_remote_control=yes --listen-on "unix:$sock" --title "$title" "$@" &
 
 # create a targeted rule for the marked window and resize
 sleep 2
@@ -24,12 +26,15 @@ read gx gy _ < <(awk -F'[ ,x]' '{print $1,$2}' <<<"$geom")
 read wx wy ww wh < <(awk -F'[ ,x]' '{print $1,$2,$3,$4}' <<<"$wgeom")
 inner_geom="$((gx+wx)),$((gy+wy)) ${ww}x${wh}"
 
-echo title=$title
-echo geom=$geom
-echo out=$out
+echo "+ title=$title"
+echo "+ geom=$geom"
+echo "+ out=$out"
 
 # take a screenshot
 mkdir -p "$(dirname "$out")"
 grim -g "$inner_geom" "$out"
 echo "saved: $out"
+
+# close the kitty window
+kitty @ --to "unix:$sock" close-window
 
