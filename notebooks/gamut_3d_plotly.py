@@ -10,6 +10,7 @@ import math
 import plotly.io as io
 import os
 import json
+import numpy as np
 
 sys.path.insert(0, os.getcwd())
 
@@ -1016,6 +1017,440 @@ def main():
         return 0
     return 1
 
+def plot_sphere_in_oklch(
+    fig,
+    center,
+    radius,
+    gmap,
+    filters=(),
+    resolution=24,
+    opacity=0.4,
+    edges=False,
+    faces=False,
+    ecolor=None,
+    fcolor=None,
+    equal_metric=False    # <- new flag, see below
+):
+    space = 'oklch'
+    target = Color.CS_MAP[space]
+    flags = {
+        'is_cyl': target.is_polar(),
+        'is_labish': isinstance(target, Labish),
+        'is_lchish': isinstance(target, LChish),
+        'is_hslish': isinstance(target, HSLish),
+        'is_hwbish': isinstance(target, HWBish),
+        'is_hsvish': isinstance(target, HSVish)
+    }
 
+    # Center in OKLab (Euclidean space behind OKLCH)
+    c_center = Color(center).convert('oklab', in_place=True).normalize(nans=False)
+    L0, a0, b0 = c_center[0], c_center[1], c_center[2]
+
+    # Parametric sphere in (L, a, b)
+    thetas = np.linspace(0.0, np.pi, resolution)
+    phis = np.linspace(0.0, 2.0 * np.pi, 2 * resolution, endpoint=False)
+    TT, PP = np.meshgrid(thetas, phis)
+    TT_flat = TT.ravel()
+    PP_flat = PP.ravel()
+
+    L_vals = L0 + radius * np.cos(TT_flat)
+    a_vals = a0 + radius * np.sin(TT_flat) * np.cos(PP_flat)
+    b_vals = b0 + radius * np.sin(TT_flat) * np.sin(PP_flat)
+
+    x = []
+    y = []
+    z = []
+    cmap = []
+    inside_mask = []
+
+    for Lv, av, bv in zip(L_vals, a_vals, b_vals):
+        c = Color('oklab', [Lv, av, bv]).convert(space, in_place=True).normalize(nans=False)
+
+        # Basic L sanity; out-of-range L is definitely not useful
+        if not (0.0 <= c[0] <= 1.0):
+            inside_mask.append(False)
+            x.append(0.0); y.append(0.0); z.append(0.0)
+            cmap.append('#000000')
+            continue
+
+        store_coords(c, x, y, z, flags)
+
+        s = c.convert('srgb')
+        in_gamut = s.in_gamut()
+        inside_mask.append(in_gamut)
+
+        if in_gamut:
+            if not s.in_gamut():
+                s.fit(**gmap)
+            else:
+                s.clip()
+            if filters:
+                s.filter(filters[0], **filters[1], in_place=True, out_space=s.space()).clip()
+            cmap.append(s.to_string(hex=True, alpha=False))
+        else:
+            cmap.append('#000000')
+
+    inside_mask = np.asarray(inside_mask, dtype=bool)
+
+    # Triangulate parameter space (theta, phi)
+    uv = np.column_stack([TT_flat, PP_flat])
+    tri = Delaunay(uv)
+    simplices = tri.simplices
+
+    # Keep only triangles whose vertices are all in gamut
+    keep = inside_mask[simplices].all(axis=1)
+    simplices = simplices[keep]
+    if simplices.size == 0:
+        return
+
+    # Compact vertices to those actually used in kept simplices
+    used = np.unique(simplices.ravel())
+    idx_map = {old: i for i, old in enumerate(used)}
+    simplices_comp = np.vectorize(idx_map.__getitem__)(simplices)
+
+    x2 = [x[i] for i in used]
+    y2 = [y[i] for i in used]
+    z2 = [z[i] for i in used]
+    cmap2 = [cmap[i] for i in used]
+
+    class _Tri:
+        def __init__(self, simplices):
+            self.simplices = simplices
+
+    tri2 = _Tri(simplices_comp)
+
+    create3d(
+        fig,
+        x2,
+        y2,
+        z2,
+        tri2,
+        cmap2,
+        edges=edges,
+        faces=faces,
+        ecolor=ecolor,
+        fcolor=fcolor,
+        opacity=opacity,
+        filters=filters
+    )
+
+    if equal_metric:
+        set_equal_metric_aspect(fig)
+
+def plot_sphere_in_oklch2(
+    fig,
+    center,              # Color spec, interpreted via Color()
+    radius,              # OKLab radius
+    gmap,
+    filters=(),
+    resolution=24,
+    opacity=0.2,
+    edges=False,
+    faces=False,
+    ecolor=None,
+    fcolor=None,
+    outside_color='#000000'
+):
+    space = 'oklch'
+    target = Color.CS_MAP[space]
+    flags = {
+        'is_cyl': target.is_polar(),
+        'is_labish': isinstance(target, Labish),
+        'is_lchish': isinstance(target, LChish),
+        'is_hslish': isinstance(target, HSLish),
+        'is_hwbish': isinstance(target, HWBish),
+        'is_hsvish': isinstance(target, HSVish)
+    }
+
+    # Center in OKLab (Euclidean)
+    c_center = Color(center).convert('oklab', in_place=True).normalize(nans=False)
+    L0, a0, b0 = c_center[0], c_center[1], c_center[2]
+
+    # Parametric sphere in (L, a, b)
+    thetas = np.linspace(0.0, np.pi, resolution)
+    phis = np.linspace(0.0, 2.0 * np.pi, 2 * resolution, endpoint=False)
+    TT, PP = np.meshgrid(thetas, phis)
+    TT_flat = TT.ravel()
+    PP_flat = PP.ravel()
+
+    L_vals = L0 + radius * np.cos(TT_flat)
+    a_vals = a0 + radius * np.sin(TT_flat) * np.cos(PP_flat)
+    b_vals = b0 + radius * np.sin(TT_flat) * np.sin(PP_flat)
+
+    x, y, z, cmap = [], [], [], []
+
+    for Lv, av, bv in zip(L_vals, a_vals, b_vals):
+        # Build OKLab color, convert to OKLCH for consistency with the space
+        c = Color('oklab', [Lv, av, bv]).convert(space, in_place=True).normalize(nans=False)
+
+        # Map to plotted coordinates (LCh → Lab embedding)
+        store_coords(c, x, y, z, flags)
+
+        # Decide vertex color based on sRGB gamut
+        s = c.convert('srgb')
+        if s.in_gamut():
+            if not s.in_gamut():
+                s.fit(**gmap)
+            else:
+                s.clip()
+            if filters:
+                s.filter(filters[0], **filters[1], in_place=True, out_space=s.space()).clip()
+            cmap.append(s.to_string(hex=True, alpha=False))
+        else:
+            cmap.append(outside_color)
+
+    # Triangulate parameter space (theta, phi).
+    # NOTE: we DO NOT filter simplices here: full sphere is drawn,
+    # just colored differently inside vs outside.
+    uv = np.column_stack([TT_flat, PP_flat])
+    tri = Delaunay(uv)
+
+    create3d(
+        fig,
+        x,
+        y,
+        z,
+        tri,
+        cmap,
+        edges=edges,
+        faces=faces,
+        ecolor=ecolor,
+        fcolor=fcolor,
+        opacity=opacity,
+        filters=filters
+    )
+
+def plot_sphere_in_oklch3(
+    fig,
+    center,
+    radius,
+    gmap,
+    filters=(),
+    resolution=24,
+    opacity=0.4,
+    edges=False,
+    faces=False,
+    ecolor=None,
+    fcolor=None,
+    draw_boundary=True,
+    boundary_color='black',
+    boundary_width=3
+):
+    space = 'oklch'
+    target = Color.CS_MAP[space]
+    flags = {
+        'is_cyl': target.is_polar(),
+        'is_labish': isinstance(target, Labish),
+        'is_lchish': isinstance(target, LChish),
+        'is_hslish': isinstance(target, HSLish),
+        'is_hwbish': isinstance(target, HWBish),
+        'is_hsvish': isinstance(target, HSVish)
+    }
+
+    # 1) Center in OKLab (Euclidean)
+    c_center = Color(center).convert('oklab', in_place=True).normalize(nans=False)
+    L0, a0, b0 = c_center[0], c_center[1], c_center[2]
+
+    # 2) Parametric sphere in (L, a, b)
+    thetas = np.linspace(0.0, np.pi, resolution)
+    phis = np.linspace(0.0, 2.0 * np.pi, 2 * resolution, endpoint=False)
+    TT, PP = np.meshgrid(thetas, phis)
+    TT_flat = TT.ravel()
+    PP_flat = PP.ravel()
+
+    L_vals = L0 + radius * np.cos(TT_flat)
+    a_vals = a0 + radius * np.sin(TT_flat) * np.cos(PP_flat)
+    b_vals = b0 + radius * np.sin(TT_flat) * np.sin(PP_flat)
+
+    x = []
+    y = []
+    z = []
+    cmap = []
+    inside_mask = []
+
+    for Lv, av, bv in zip(L_vals, a_vals, b_vals):
+        # OKLab -> OKLCH (for consistency with space)
+        c = Color('oklab', [Lv, av, bv]).convert(space, in_place=True).normalize(nans=False)
+
+        # Optionally reject totally crazy L, but not strictly required
+        if not (0.0 <= c[0] <= 1.0):
+            inside_mask.append(False)
+            x.append(0.0); y.append(0.0); z.append(0.0)
+            cmap.append('#000000')
+            continue
+
+        # Map to 3D coords used in gamut plotting
+        store_coords(c, x, y, z, flags)
+
+        # sRGB for display + in-gamut test
+        s = c.convert('srgb')
+        in_gamut = s.in_gamut()
+        inside_mask.append(in_gamut)
+
+        if in_gamut:
+            if not s.in_gamut():
+                s.fit(**gmap)
+            else:
+                s.clip()
+            if filters:
+                s.filter(filters[0], **filters[1], in_place=True, out_space=s.space()).clip()
+            cmap.append(s.to_string(hex=True, alpha=False))
+        else:
+            # color won't be used for clipped mesh, but keep list aligned
+            cmap.append('#000000')
+
+    inside_mask = np.asarray(inside_mask, dtype=bool)
+
+    # 3) Triangulate parameter space
+    uv = np.column_stack([TT_flat, PP_flat])
+    tri_all = Delaunay(uv)
+    simplices_all = tri_all.simplices
+
+    # ----- 3a) Build clipped mesh: only triangles fully inside gamut -----
+    keep = inside_mask[simplices_all].all(axis=1)
+    simplices = simplices_all[keep]
+    if simplices.size == 0:
+        # sphere completely out of gamut; nothing to draw
+        return
+
+    used = np.unique(simplices.ravel())
+    idx_map = {old: i for i, old in enumerate(used)}
+    simplices_comp = np.vectorize(idx_map.__getitem__)(simplices)
+
+    x2 = [x[i] for i in used]
+    y2 = [y[i] for i in used]
+    z2 = [z[i] for i in used]
+    cmap2 = [cmap[i] for i in used]
+
+    class _Tri:
+        def __init__(self, simplices):
+            self.simplices = simplices
+
+    tri2 = _Tri(simplices_comp)
+
+    # Clipped sphere surface
+    create3d(
+        fig,
+        x2,
+        y2,
+        z2,
+        tri2,
+        cmap2,
+        edges=edges,
+        faces=faces,
+        ecolor=ecolor,
+        fcolor=fcolor,
+        opacity=opacity,
+        filters=filters
+    )
+
+    # ----- 3b) Boundary curve: edges where inside/outside differ -----
+    if draw_boundary:
+        boundary_edges = set()
+
+        for vs in simplices_all:
+            m = inside_mask[vs]
+            # If all in or all out, no boundary here
+            if np.all(m) or (not np.any(m)):
+                continue
+
+            # For each triangle edge, if it connects inside<->outside, add it
+            edge_pairs = ((vs[0], vs[1]), (vs[1], vs[2]), (vs[2], vs[0]))
+            for a, b in edge_pairs:
+                if inside_mask[a] != inside_mask[b]:
+                    # use sorted so (a,b) and (b,a) are treated the same
+                    boundary_edges.add(tuple(sorted((a, b))))
+
+        if boundary_edges:
+            xe, ye, ze = [], [], []
+            for a, b in boundary_edges:
+                xe.extend([x[a], x[b], None])
+                ye.extend([y[a], y[b], None])
+                ze.extend([z[a], z[b], None])
+
+            fig.add_trace(
+                go.Scatter3d(
+                    x=xe,
+                    y=ye,
+                    z=ze,
+                    mode='lines',
+                    line={'color': boundary_color, 'width': boundary_width},
+                    showlegend=False,
+                    name=''
+                )
+            )
+
+
+def set_equal_metric_aspect(fig):
+    xs = []
+    ys = []
+    zs = []
+
+    for tr in fig.data:
+        # Just be defensive in case some traces don't have full 3D coords
+        tx = getattr(tr, 'x', None)
+        ty = getattr(tr, 'y', None)
+        tz = getattr(tr, 'z', None)
+        if tx is None or ty is None or tz is None:
+            continue
+        xs.extend([v for v in tx if v is not None])
+        ys.extend([v for v in ty if v is not None])
+        zs.extend([v for v in tz if v is not None])
+
+    if not xs or not ys or not zs:
+        return
+
+    xmin, xmax = min(xs), max(xs)
+    ymin, ymax = min(ys), max(ys)
+    zmin, zmax = min(zs), max(zs)
+
+    dx = xmax - xmin or 1.0
+    dy = ymax - ymin or 1.0
+    dz = zmax - zmin or 1.0
+
+    m = max(dx, dy, dz)
+
+    fig.update_layout(
+        scene=dict(
+            aspectmode='manual',
+            aspectratio=dict(
+                x=dx / m,
+                y=dy / m,
+                z=dz / m
+            )
+        )
+    )
+
+def freeze_scene_axes(fig):
+    xs, ys, zs = [], [], []
+
+    for tr in fig.data:
+        tx = getattr(tr, 'x', None)
+        ty = getattr(tr, 'y', None)
+        tz = getattr(tr, 'z', None)
+        if tx is None or ty is None or tz is None:
+            continue
+        xs.extend([v for v in tx if v is not None])
+        ys.extend([v for v in ty if v is not None])
+        zs.extend([v for v in tz if v is not None])
+
+    if not xs or not ys or not zs:
+        return
+
+    xmin, xmax = min(xs), max(xs)
+    ymin, ymax = min(ys), max(ys)
+    zmin, zmax = min(zs), max(zs)
+
+    fig.update_layout(
+        scene=dict(
+            xaxis=dict(range=[xmin, xmax], autorange=False),
+            yaxis=dict(range=[ymin, ymax], autorange=False),
+            zaxis=dict(range=[zmin, zmax], autorange=False),
+        )
+    )
+
+
+
+        
 if __name__ == "__main__":
     sys.exit(main())

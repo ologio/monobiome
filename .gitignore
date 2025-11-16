@@ -19,3 +19,6 @@ docs/_build/
 
 data/
 archive/
+
+notebooks/color_spaces_manyview.ipynb
+notebooks/oklch_srgb_spherical.ipynb
