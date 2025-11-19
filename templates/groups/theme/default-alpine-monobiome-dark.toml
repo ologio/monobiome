@@ -11,6 +11,7 @@
 mode         = "dark"
 biome        = "alpine"
 contrast     = "default"
+version      = "f{{version}}"
 # --------------------------------------------
 
 # - SYS --------------------------------------

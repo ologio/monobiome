@@ -11,6 +11,7 @@
 mode         = "light"
 biome        = "savanna"
 contrast     = "soft"
+version      = "f{{version}}"
 # --------------------------------------------
 
 # - SYS --------------------------------------

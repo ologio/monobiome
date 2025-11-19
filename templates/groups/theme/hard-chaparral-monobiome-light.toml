@@ -11,6 +11,7 @@
 mode         = "light"
 biome        = "chaparral"
 contrast     = "hard"
+version      = "f{{version}}"
 # --------------------------------------------
 
 # - SYS --------------------------------------

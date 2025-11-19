@@ -11,6 +11,7 @@
 mode         = "dark"
 biome        = "grassland"
 contrast     = "soft"
+version      = "f{{version}}"
 # --------------------------------------------
 
 # - SYS --------------------------------------
