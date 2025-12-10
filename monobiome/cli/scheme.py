@@ -54,6 +54,7 @@ def register_parser(subparsers: _SubparserType) -> None:
     # particularly good measure of perceptual distinction, so we'd prefer the
     # former.
     parser.add_argument(
+        "-l",
         "--l-base",
         type=int,
         default=20,
@@ -82,7 +83,7 @@ def register_parser(subparsers: _SubparserType) -> None:
     parser.add_argument(
         "--term-fg-gap",
         type=int,
-        default=60,
+        default=65,
         help="Terminal foreground lightness gap (default: 60)",
     )
 
