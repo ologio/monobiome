@@ -1,7 +1,11 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "monobiome"
-version = "1.2.0"
-description = "Add your description here"
+version = "1.4.0"
+description = "Monobiome color palette"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -21,3 +25,39 @@ dependencies = [
 dev = [
     "ipykernel>=7.0.1",
 ]
+
+[project.scripts]
+monobiome = "monobiome.__main__:main"
+
+[project.urls]
+Homepage = "https://doc.olog.io/monobiome"
+Documentation = "https://doc.olog.io/monobiome"
+Repository = "https://git.olog.io/olog/monobiome"
+Issues = "https://git.olog.io/olog/monobiome/issues"
+
+[tool.setuptools.packages.find]
+include = ["monobiome*"]
+
+[tool.setuptools.package-data]
+"monobiome" = ["data/*.toml"]
+
+[tool.ruff]
+line-length = 79
+
+[tool.ruff.lint]
+select = ["ANN", "E", "F", "UP", "B", "SIM", "I", "C4", "PERF"]
+
+[tool.ruff.lint.isort]
+length-sort = true
+order-by-type = false
+force-sort-within-sections = false
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101"]
+"**/__init__.py" = ["F401"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
+

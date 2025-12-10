@@ -1,7 +1,7 @@
-import argparse
 import logging
+import argparse
 
-from monobiome.cli import generate, scheme
+from monobiome.cli import scheme, palette
 
 logger: logging.Logger = logging.getLogger(__name__)
 
@@ -26,7 +26,7 @@ def create_parser() -> argparse.ArgumentParser:
 
     subparsers = parser.add_subparsers(help="subcommand help")
 
-    generate.register_parser(subparsers)
+    palette.register_parser(subparsers)
     scheme.register_parser(subparsers)
 
     return parser

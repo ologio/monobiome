@@ -1,157 +1,121 @@
+import tomllib
+from importlib.resources import files
+
 import numpy as np
 
-# SET LIGHTNESS CONTROL POINTS
-# L_points = [10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 98]
-L_points = list(range(10, 98+1))
+from monobiome.curve import (
+    l_maxC_h,
+    bezier_y_at_x,
+)
 
-# FIXED MONOBIOME PARAMETERS
-L_resolution = 5  # step size along lightness dim
-L_space = np.arange(0, 100+L_resolution, L_resolution)
+parameters_file = files("monobiome.data") / "parameters.toml"
+parameters = tomllib.load(parameters_file.open("rb"))
 
-monotone_C_map = {
-    "alpine": 0,
-    "badlands": 0.011,
-    "chaparral": 0.011,
-    "savanna": 0.011,
-    "grassland": 0.011,
-    "tundra": 0.011,
-}
+L_min: int = parameters.get("L_min", 10)
+L_max: int = parameters.get("L_max", 98)
+L_step: int = parameters.get("L_step", 5)
 
-h_weights = {
-    "red": 3.0,
-    "orange": 3.8,  # 3.6
-    "yellow": 3.8,  # 4.0
-    "green": 3.8,
-    "blue": 3.4,  # 3.8
-}
-h_L_offsets = {
-    "red": 0,  # -1,
-    "orange": -5.5,  # -3,
-    "yellow": -13.5,  # -8
-    "green": -11,  # -8
-    "blue": 10,  # 14
-}
-h_C_offsets = {
-    "red": 0,  # 0
-    "orange": -0.01,  # -0.02
-    "yellow": -0.052,  # -0.08
-    "green": -0.088,  # -0.105
-    "blue": 0.0,  # 0.01
-}
+L_points: list[int] = list(range(L_min, L_max+1))
+L_space = np.arange(0, 100 + L_step, L_step)
 
-monotone_h_map = {
-    "alpine": 0,
-    "badlands": 29,
-    "chaparral": 62.5,
-    "savanna": 104,
-    "grassland": 148,
-    "tundra": 262,
-}
-accent_h_map = {
-    "red": 29,
-    "orange": 62.5,
-    "yellow": 104,
-    "green": 148,
-    "blue": 262,
-}
+monotone_C_map = parameters.get("monotone_C_map", {})
+h_weights = parameters.get("h_weights", {})
+h_L_offsets = parameters.get("h_L_offsets", {})
+h_C_offsets = parameters.get("h_C_offsets", {})
+monotone_h_map = parameters.get("monotone_h_map", {})
+accent_h_map = parameters.get("accent_h_map", {})
 h_map = {**monotone_h_map, **accent_h_map}
 
+"""
+Compute chroma maxima at provided lightness levels across hues.
 
-v111_L_space = list(range(15, 95+1, 5))
-v111_hC_points = {
-    "red": [
-        0.058,
-        0.074,
-        0.092,
-        0.11,
-        0.128,
-        0.147,
-        0.167,
-        0.183,
-        0.193,
-        0.193,
-        0.182,
-        0.164,
-        0.14,
-        0.112,
-        0.081,
-        0.052,
-        0.024,
-    ],
-    "orange": [
-        0.030,
-        0.038,
-        0.046,
-        0.058,
-        0.07,
-        0.084,
-        0.1,
-        0.114,
-        0.125,
-        0.134,
-        0.138,
-        0.136,
-        0.128,
-        0.112,
-        0.092,
-        0.064,
-        0.032,
-    ],
-    "yellow": [
-        0.02,
-        0.024,
-        0.03,
-        0.036,
-        0.044,
-        0.05,
-        0.06,
-        0.068,
-        0.076,
-        0.082,
-        0.088,
-        0.088,
-        0.086,
-        0.082,
-        0.072,
-        0.058,
-        0.04,
-    ],
-    "green": [
-        0.0401,
-        0.048,
-        0.056,
-        0.064,
-        0.072,
-        0.08,
-        0.09,
-        0.098,
-        0.104,
-        0.108,
-        0.11,
-        0.108,
-        0.102,
-        0.094,
-        0.084,
-        0.072,
-        0.05,
-    ],
-    "blue": [
-        0.06,
-        0.072,
-        0.084,
-        0.096,
-        0.106,
-        0.116,
-        0.124,
-        0.13,
-        0.132,
-        0.128,
-        0.122,
-        0.11,
-        0.096,
-        0.08,
-        0.064,
-        0.044,
-        0.023,
-    ],
+A map with max chroma values for each hue across lightness space
+
+{
+   "red": [ Cmax@L=10, Cmax@L=11, Cmax@L=12, ... ],
+   "orange": [ Cmax@L=10, Cmax@L=11, Cmax@L=12, ... ],
+   ...
 }
+"""
+Lspace_Cmax_Hmap = {
+    h_str: [l_maxC_h(_L, _h) for _L in L_space]
+    for h_str, _h in h_map.items()
+}
+
+
+"""
+Set QBR curves, *unbounded* chroma curves for all hues
+
+1. Raw bezier chroma values for each hue across the lightness space
+
+   Lpoints_Cqbr_Hmap = {
+      "red": [ Bezier@L=10, Bezier@L=11, Bezier@L=12, ... ],
+      ...
+   }
+
+2. Three bezier control points for each hue's chroma curve
+
+   QBR_ctrl_Hmap = {
+      "red": np.array([
+          [ x1, y1 ],
+          [ x2, y2 ],
+          [ x3, y3 ]
+       ]),
+      ...
+   }
+"""
+Lpoints_Cqbr_Hmap = {}
+QBR_ctrl_Hmap = {}
+
+for h_str, _h in monotone_h_map.items():
+    Lpoints_Cqbr_Hmap[h_str] = np.array(
+        [monotone_C_map[h_str]]*len(L_points)
+    )
+    
+for h_str, _h in accent_h_map.items():
+    Lspace_Cmax = Lspace_Cmax_Hmap[h_str]
+    
+    # get L value of max chroma; will be a bezier control
+    L_Cmax_idx = np.argmax(Lspace_Cmax)
+    L_Cmax = L_space[L_Cmax_idx]
+
+    # offset control point by any preset x-shift
+    L_Cmax += h_L_offsets[h_str]
+
+    # and get max C at the L offset
+    Cmax = l_maxC_h(L_Cmax, _h)
+
+    # set 3 control points; shift by any global linear offest
+    C_offset = h_C_offsets.get(h_str, 0)
+    
+    p_0 = np.array([0, 0])
+    p_Cmax = np.array([L_Cmax, Cmax + C_offset])
+    p_100 = np.array([100, 0])
+    
+    B_L_points = bezier_y_at_x(
+        p_0, p_Cmax, p_100,
+        h_weights.get(h_str, 1),
+        L_points
+    )
+    Lpoints_Cqbr_Hmap[h_str] = B_L_points
+    QBR_ctrl_Hmap[h_str] = np.vstack([p_0, p_Cmax, p_100])
+
+
+"""
+Bezier chroma values, but bounded to attainable gamut colors (bezier fit
+can produce invalid chroma values)
+
+h_L_points_Cstar = {
+   "red": [ bounded-bezier@L=10, bounded-bezier@L=11, ... ],
+   ...
+}
+"""
+Lpoints_Cstar_Hmap = {}
+
+for h_str, L_points_C in Lpoints_Cqbr_Hmap.items():
+    _h = h_map[h_str]
+
+    Lpoints_Cstar_Hmap[h_str] = [
+        max(0, min(_C, l_maxC_h(_L, _h)))
+        for _L, _C in zip(L_points, L_points_C, strict=True)
+    ]

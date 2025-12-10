@@ -1,5 +1,6 @@
 from monobiome.cli import create_parser, configure_logging
 
+
 def main() -> None:
     parser = create_parser()
     args = parser.parse_args()
@@ -16,4 +17,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
