@@ -16,6 +16,8 @@ L_max: int = parameters.get("L_max", 98)
 L_step: int = parameters.get("L_step", 5)
 
 L_points: list[int] = list(range(L_min, L_max+1))
+
+# L-space just affects accuracy of chroma max
 L_space = np.arange(0, 100 + L_step, L_step)
 
 monotone_C_map = parameters.get("monotone_C_map", {})

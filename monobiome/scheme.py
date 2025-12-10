@@ -98,7 +98,7 @@ def generate_scheme_groups(
 
     metric_map = {
         "wcag": lambda mc,ac: ac.contrast(mc, method='wcag21'),
-        "oklch": lambda mc,ac: mc.distance(ac, space="oklch"),
+        "oklch": oklch_distance,
         "lightness": lambda mc,ac: abs(mc.coords()[0]-ac.coords()[0])*100,
     }
     
@@ -131,6 +131,9 @@ def generate_scheme_groups(
         ("distance", distance),
         ("l_base", l_base),
         ("l_step", l_step),
+        ("fg_gap", fg_gap),
+        ("grey_gap", grey_gap),
+        ("term_fg_gap", term_fg_gap),
     ]
 
     # note how selection_bg steps up by `l_step`, selection_fg steps down by
@@ -157,7 +160,7 @@ def generate_scheme_groups(
     accent_pairs = [
         ("black", f"f{{{{{biome}.l{l_base}}}}}"),
         ("grey", f"f{{{{{biome}.l{l_base+grey_gap}}}}}"),
-        ("white", f"f{{{{{biome}.l{l_base+term_fg_gap-l_step}}}}}"),
+        ("white", f"f{{{{{biome}.l{l_base+term_fg_gap-2*l_step}}}}}"),
     ]
     for color_name, mb_accent in accent_color_map.items():
         aL = int(100*accent_colors[mb_accent].coords()[0])
@@ -184,29 +187,42 @@ def generate_scheme(
     term_color_map: dict[str, str],
     vim_color_map: dict[str, str],
 ) -> str:
+    l_sys = l_base
+    l_app = l_base + l_step
+
+    term_bright_offset = 10
+
+    # negate gaps if mode is light
+    if mode == "light":
+        l_step *= -1
+        fg_gap *= -1
+        grey_gap *= -1
+        term_fg_gap *= -1
+        term_bright_offset *= -1
+
     meta, _, mt, ac = generate_scheme_groups(
         mode, biome, metric, distance,
-        l_base, l_step,
+        l_sys, l_step,
         fg_gap, grey_gap, term_fg_gap,
         full_color_map
     )
 
     _, term, _, term_norm_ac = generate_scheme_groups(
         mode, biome, metric, distance,
-        l_base + l_step, l_step,
+        l_app, l_step,
         fg_gap, grey_gap, term_fg_gap,
         term_color_map
     )
     _, _, _, term_bright_ac = generate_scheme_groups(
         mode, biome, metric, distance,
-        l_base + l_step + 10, l_step,
+        l_app + term_bright_offset, l_step,
         fg_gap, grey_gap, term_fg_gap,
         term_color_map
     )
 
     _, _, vim_mt, vim_ac = generate_scheme_groups(
         mode, biome, metric, distance,
-        l_base + l_step, l_step,
+        l_app, l_step,
         fg_gap, grey_gap, term_fg_gap,
         vim_color_map
     )
