@@ -1,6 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from coloraide import Color
 
+from monobiome.palette import compute_hlc_map
 from monobiome.constants import (
     h_map,
     L_space,
@@ -52,8 +54,14 @@ def plot_hue_chroma_bounds() -> None:
     fig.subplots_adjust(top=0.9)
 
     handles, labels = axes[-1].get_legend_handles_labels()
-    unique = dict(zip(labels, handles))
-    fig.legend(unique.values(), unique.keys(), loc='lower center', bbox_to_anchor=(0.5, -0.06), ncol=3)
+    unique = dict(zip(labels, handles, strict=True))
+    fig.legend(
+        unique.values(),
+        unique.keys(),
+        loc='lower center',
+        bbox_to_anchor=(0.5, -0.06),
+        ncol=3
+    )
 
     plt.suptitle("$C^*$ curves for hue groups")
     plt.show()
@@ -87,11 +95,12 @@ def plot_hue_chroma_star() -> None:
     fig.show()
 
 
-def palette_image(palette, cell_size=40, keys=None):
-    if keys is None:
-        names = list(palette.keys())
-    else:
-        names = keys
+def palette_image(
+    palette: dict[str, dict[int, str]],
+    cell_size: int = 40,
+    keys: list[str] | None = None
+) -> None:
+    names = list(palette.keys()) if keys is None else keys
         
     row_count = len(names)
     col_counts = [len(palette[n]) for n in names]
@@ -117,8 +126,14 @@ def palette_image(palette, cell_size=40, keys=None):
     return img, names, lightness_keys_per_row, cell_size, max_cols
 
 
-def show_palette(palette, cell_size=40, keys=None):
-    img, names, keys, cell_size, max_cols = palette_image(palette, cell_size, keys=keys)
+def show_palette(
+    palette: dict[str, dict[int, str]],
+    cell_size: int = 40,
+    keys: list[str] | None = None
+) -> None:
+    img, names, keys, cell_size, max_cols = palette_image(
+        palette, cell_size, keys=keys
+    )
 
     fig_w = img.shape[1] / 100
     fig_h = img.shape[0] / 100
@@ -130,15 +145,12 @@ def show_palette(palette, cell_size=40, keys=None):
     ytick_pos = [(i + 0.5) * cell_size for i in range(len(names))]
     ax.set_yticks(ytick_pos)
     ax.set_yticklabels(names)
-
-    ax.set_ylim(img.shape[0], 0)   # ensures rows render correctly without half-cells
+    ax.set_ylim(img.shape[0], 0)   # ensures rows render w/o half-cells
 
     plt.show()
 
 
 if __name__ == "__main__":
-    from monobiome.constants import OKLCH_hL_dict
-
     keys = [
         "alpine",
         "badlands",
@@ -172,5 +184,6 @@ if __name__ == "__main__":
         "blue",
     ]
 
-    show_palette(OKLCH_hL_dict, cell_size=25, keys=keys)
-    # show_palette(OKLCH_hL_dict, cell_size=1, keys=term_keys)
+    hlc_map = compute_hlc_map("oklch")
+    show_palette(hlc_map, cell_size=25, keys=keys)
+    # show_palette(hlc_map, cell_size=1, keys=term_keys)

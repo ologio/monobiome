@@ -7,20 +7,22 @@ prefix=${1:-}
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 render_script="$script_dir/render.sh"
 
-#biomes=(alpine)
-#modes=(light dark)
-biomes=(alpine)
-modes=(dark)
+biomes=(alpine badlands chaparral savanna grassland tundra reef heathland moorland)
+modes=(light)
 
 for biome in "${biomes[@]}"; do
     for mode in "${modes[@]}"; do
         echo "Applying $biome-$mode theme"
+        monobiome scheme "$mode" "$biome" \
+            -d 0.42 \
+            -l 85 \
+            -o ~/.config/symconf/groups/theme/monobiome-none.toml
         symconf config \
             -a kitty,nvim \
             -m "$mode" \
-            -s "default-$biome-monobiome" \
+            -s monobiome \
             -T font=Berkeley
-        sleep 2
+        sleep 1
 
         echo "Taking screenshot..."
         "$render_script" 800 600 "images/render/$prefix-$biome-$mode.png" nvim \

@@ -8,7 +8,7 @@ are designed to achieve identical contrast with the accents, and thus any one
 of the options can be selected to change the feeling of the palette without
 sacrificing readability.
 
-![Theme preview](images/repo_preview_four_split.png)
+![Theme preview](images/repo_preview_primary.png)
 _(Preview of default light and dark theme variants)_
 
 See screenshots for the full set of theme variants in [THEMES](THEMES.md) (also
