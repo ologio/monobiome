@@ -7,7 +7,7 @@ prefix=${1:-}
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 render_script="$script_dir/render.sh"
 
-biomes=(alpine badlands chaparral savanna grassland tundra reef heathland moorland)
+biomes=(alpine) # badlands chaparral savanna grassland tundra reef heathland moorland)
 modes=(light)
 
 for biome in "${biomes[@]}"; do
@@ -15,7 +15,7 @@ for biome in "${biomes[@]}"; do
         echo "Applying $biome-$mode theme"
         monobiome scheme "$mode" "$biome" \
             -d 0.42 \
-            -l 85 \
+            -l 90 \
             -o ~/.config/symconf/groups/theme/monobiome-none.toml
         symconf config \
             -a kitty,nvim \
