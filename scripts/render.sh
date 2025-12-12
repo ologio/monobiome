@@ -16,6 +16,7 @@ kitty -o allow_remote_control=yes --listen-on "unix:$sock" --title "$title" "$@"
 # create a targeted rule for the marked window and resize
 sleep 2
 swaymsg "for_window [title=\"$title\"] mark --add $title, floating enable, resize set width ${w} px height ${h} px, move position center" >/dev/null
+kitty @ --to "unix:$sock" set-font-size 24
 
 # get the spawned window geometry
 sleep 2

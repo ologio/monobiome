@@ -7,7 +7,7 @@ prefix=${1:-}
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 render_script="$script_dir/render.sh"
 
-biomes=(alpine) # badlands chaparral savanna grassland tundra reef heathland moorland)
+biomes=(alpine badlands chaparral savanna grassland tundra reef heathland moorland)
 modes=(light)
 
 for biome in "${biomes[@]}"; do
@@ -25,7 +25,7 @@ for biome in "${biomes[@]}"; do
         sleep 1
 
         echo "Taking screenshot..."
-        "$render_script" 800 600 "images/render/$prefix-$biome-$mode.png" nvim \
+        "$render_script" 1920 1440 "images/render/$prefix-$biome-$mode.png" nvim \
             +':highlight Cursor blend=100' \
             +':set guicursor=n:block-Cursor' \
             +':silent! setlocal nonumber nocursorline signcolumn=no foldcolumn=no' \

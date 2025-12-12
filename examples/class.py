@@ -1,3 +1,4 @@
+
 class WLBPosteriorEstimator(PosteriorEstimatorTrainer):
     """
     Weighted likelihood bootstrap (WLB) estimator.
@@ -26,10 +27,12 @@ class WLBPosteriorEstimator(PosteriorEstimatorTrainer):
         point-wise basis for a given training run, and we load them later where
         we need them in the ``train()`` loop.
         """
+
         theta, x, prior_masks = self.get_simulations(starting_round)
 
         # generate session specific WLB weights to attach point-wise
         N = theta.shape[0]
+
         wlb_z = Exponential(1.0).sample((N,))
         wlb_w = (wlb_z / wlb_z.sum()) * N
 
