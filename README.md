@@ -44,9 +44,9 @@ lightness level, the contrast between two colors depends on their hue.)*
 
 ## Concrete themes
 
-![Split view of Alpine and Tundra biomes](images/theme-split-view.png)
+![Dark themes](images/dark_themes.png)
 
-*(Light and dark theme splits of Alpine and Tundra biomes)*
+![Light themes](images/light_themes.png)
 
 Themes are derived from the `monobiome` palette by varying both the monotone
 hue (the "biome") and the extent of the background/foreground lightness (the
