@@ -32,7 +32,7 @@ smoothly as a function of lightness within sRGB gamut bounds.
 
 | Chroma curves | Color trajectories |
 |---|---|
-| ![Chroma curves](images/cstar-curves-v140.png) | ![Trajectories](images/trajectories.gif) |
+| ![Chroma curves](images/curves/cstar-curves-v140.png) | ![Trajectories](images/trajectories.gif) |
 
 | Palette |
 |---|
@@ -78,7 +78,7 @@ background color (`alpine` biome with a lightness of 20) under variable radii:
 | | `-l 20 -d 0.3` | `-l 20 -d 0.4` | `-l 20 -d 0.5` |
 |---|---|---|---|
 | Color visualization | ![](images/oklch/mb_b20_d30.gif) | ![](images/oklch/mb_b20_d40.gif) | ![](images/oklch/mb_b20_d50.gif) |
-| Editor preview | ![](images/render/v140-demo-alpine-dark-d0.3.png) | ![](v140-demo-alpine-dark-d0.4.png) | ![](v140-demo-alpine-dark-d0.5.png) |
+| Editor preview | ![](images/render/v140-demo-alpine-dark-d0.3.png) | ![](images/render/v140-demo-alpine-dark-d0.4.png) | ![](images/render/v140-demo-alpine-dark-d0.5.png) |
 
 In short, the base lightness (`-l`) dictates the brightness of the background,
 and the contrast (`-d`) controls how perceptually distinct the accent colors
