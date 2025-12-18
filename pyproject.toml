@@ -6,8 +6,24 @@ build-backend = "setuptools.build_meta"
 name = "monobiome"
 version = "1.4.0"
 description = "Monobiome color palette"
-readme = "README.md"
 requires-python = ">=3.12"
+authors = [
+  { name="Sam Griesemer", email="git@olog.io" },
+]
+readme = "README.md"
+license = "MIT"
+keywords = [
+    "tempate-engine",
+    "color-palette",
+]
+classifiers = [
+    "Programming Language :: Python",
+    "Operating System :: OS Independent",
+    "Development Status :: 3 - Alpha",
+
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+]
 dependencies = [
     "coloraide>=5.1",
     "imageio[ffmpeg]>=2.37.2",
@@ -22,19 +38,34 @@ dependencies = [
     "scipy>=1.16.2",
 ]
 
-[dependency-groups]
-dev = [
-    "ipykernel>=7.0.1",
-]
-
 [project.scripts]
 monobiome = "monobiome.__main__:main"
+
+[project.optional-dependencies]
+dev = [
+    "ipykernel",
+]
+doc = [
+    "furo",
+    "myst-parser",
+    "sphinx",
+    "sphinx-togglebutton",
+    "sphinx-autodoc-typehints",
+]
+test = [
+    "pytest",
+]
 
 [project.urls]
 Homepage = "https://doc.olog.io/monobiome"
 Documentation = "https://doc.olog.io/monobiome"
 Repository = "https://git.olog.io/olog/monobiome"
 Issues = "https://git.olog.io/olog/monobiome/issues"
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.0.1",
+]
 
 [tool.setuptools.packages.find]
 include = ["monobiome*"]
