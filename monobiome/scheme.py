@@ -1,5 +1,6 @@
 from functools import cache
 from collections.abc import Callable
+from importlib.metadata import version
 
 from coloraide import Color
 
@@ -88,7 +89,7 @@ def generate_scheme_groups(
     grey_gap: int,
     term_fg_gap: int,
     accent_color_map: dict[str, str],
-) -> tuple[dict[str, str], ...]:
+) -> tuple[list[tuple[str, str]], ...]:
     """
     Parameters:
         mode: one of ["dark", "light"]
@@ -125,15 +126,16 @@ def generate_scheme_groups(
     accent_colors = Lma_map.get(biome, {})
     
     meta_pairs = [
+        ("version", version("monobiome")),
         ("mode", mode),
         ("biome", biome),
         ("metric", metric),
-        ("distance", distance),
-        ("l_base", l_base),
-        ("l_step", l_step),
-        ("fg_gap", fg_gap),
-        ("grey_gap", grey_gap),
-        ("term_fg_gap", term_fg_gap),
+        ("distance", str(distance)),
+        ("l_base", str(l_base)),
+        ("l_step", str(l_step)),
+        ("fg_gap", str(fg_gap)),
+        ("grey_gap", str(grey_gap)),
+        ("term_fg_gap", str(term_fg_gap)),
     ]
 
     # note how selection_bg steps up by `l_step`, selection_fg steps down by
@@ -233,7 +235,11 @@ def generate_scheme(
             for lhs, rhs in pair_list
         ]
 
-    scheme_pairs = []
+    mb_version = version("monobiome")
+    scheme_pairs = [
+        "# ++ monobiome scheme file ++",
+        f"# ++ generated CLI @ {mb_version} ++",
+    ]
     scheme_pairs += pair_strings(meta)
     scheme_pairs += pair_strings(mt)
     scheme_pairs += pair_strings(ac)

@@ -89,11 +89,6 @@ appear with respect to that background. These are free parameters of the
 `monobiome` model: themes can be generated under arbitrary settings that meet
 user preferences.
 
-The "soft" harshness level uses monotone shades closer to the mid-shade
-(lightness level 55), whereas "hard" harshness uses shades further from it.
-Once the biome and harshness level are chosen, we're left with a bounded
-monotone range over which common theme elements can be defined.
-
 ## Generation
 When generating full application themes, fixed lightness steps are used in the
 chosen monotone trajectory to establish consistent levels of distinction
@@ -122,18 +117,57 @@ theme pipeline can be seen in detail below:
 ![Generation pipeline](images/theme_generation_pipeline.png)
 
 This figure demonstrates how `kitty` themes are generated, but the process is
-generic to any palette, scheme, and app. The `monobiome` CLI
+generic to any palette, scheme, and app. This implemented in two stages using
+the `monobiome` CLI:
+
+- First generate the scheme file, the definitions that respect perceptual
+  uniformity of accents with respect to the base monotone:
+
+  ```sh
+  monobiome scheme dark grassland -d 0.42 -l 20 -o scheme.toml
+  ```
+
+  This calculates the accents a distance of `0.42` units in Oklab space from the
+  `grassland` monotone base at a lightness of `20`, and writes the output to
+  `scheme.toml`.
+- Then populate the scheme file with concrete palette colors and push it
+  through an app config template:
+
+  ```sh
+  monobiome fill scheme.toml templates/kitty/active.theme -o kitty.theme
+  ```
+
+  This writes a concrete theme to `kitty.theme` that matches the user
+  preferences, i.e., the contrast (`-d`), background lightness (`-l`), mode
+  (`dark`), and biome (`grassland`). Every part of this process can be
+  customized: the scheme parameters, the scheme definitions/file, the app
+  template.
+
+Running these commands in sequence from the repo root should work
+out-of-the-box, after having installed the CLI tool.
+
+The `monobiome` CLI
 produces the scheme file for requested parameters, and the [`symconf`][3] CLI
 pushes palette colors through the scheme and into the app templates to yield a
 concrete theme.
 
-This repo provides *relative*, palette-agnostic theme templates for `kitty`,
-`vim`/`neovim`, and `fzf` in the `templates/apps` directory, along with
-pre-generated *concrete* themes in `app-config/`. You can also find raw palette
-colors in `templates/apps/groups/` if you want to use them to define static
-themes for other applications.
-
 ## Applications
+This repo provides palette-agnostic theme templates for `kitty`,
+`vim`/`neovim`, and `fzf` in the `templates/` directory. Pre-generated
+*concrete* themes can be found in `app-config/`, if you'd like to try an
+example out-of-the-box without using the `monobiome` CLI. Raw
+palette colors can be found in `colors/` if you want to use them to define
+static themes for other applications.
+
+Themes files in the `app-config/` directory are generated for light and dark
+modes of each biome, and named according to the following pattern:
+
+```sh
+<biome>-monobiome-<mode>.<filename>
+```
+
+One can set these themes for the provided applications as follows:
+
 - `kitty`
 
   Find `kitty` themes in `app-config/kitty`. Themes can be activated in your
@@ -149,7 +183,9 @@ themes for other applications.
 - `vim`/`neovim`
 
   Find `vim`/`neovim` themes in `app-config/nvim`. Themes can be activated by placing a
-  theme file on Vim's runtime path and setting it in your `.vimrc`/`init.vim`
+  theme file on Vim's runtime path and setting it in your
+  `.vimrc`/`init.vim`/`init.lua`
+
   with
   
   ```sh
@@ -180,9 +216,84 @@ themes for other applications.
   each of which is generated using the [Firefox `manifest.json`
   template](templates/apps/firefox/templates/none-dark.manifest.json).
 
-  Static [light][4] and [dark][5] are additionally available.
+  Static [light][4] and [dark][5] themes are additionally available (i.e., that
+  don't change with system settings).
 
   ![Firefox theme previews](images/firefox/themes.png)
+
+## CLI installation
+A brief theme generation guide was provided in the [Generation
+section](#generation), making use of the `monobiome` CLI. This tool can be
+installed from PyPI, using `uv`/`pipx`/similar:
+
+```sh
+uv tool install monobiome
+# or
+pipx install monobiome
+```
+
+The `monobiome` has provides three subcommands:
+
+- `monobiome palette`: generate palette files from raw parameterized curves
+
+  ```
+  usage: monobiome palette [-h] [-n {hex,oklch}] [-f {json,toml}] [-o OUTPUT]
+
+  options:
+    -n {hex,oklch}, --notation {hex,oklch}
+                          color notation to export (either hex or oklch)
+    -f {json,toml}, --format {json,toml}
+                          format of palette file (either JSON or TOML)
+    -o OUTPUT, --output OUTPUT
+                          output file to write palette content
+  ```
+
+- `monobiome scheme`: generate scheme files that match perceptual parameters
+
+  ```
+  usage: monobiome scheme [-h] [-m {wcag,oklch,lightness}] [-d DISTANCE] [-o OUTPUT] [-l L_BASE]
+                          [--l-step L_STEP] [--fg-gap FG_GAP] [--grey-gap GREY_GAP]
+                          [--term-fg-gap TERM_FG_GAP]
+                          {dark,light}
+                          {alpine,badlands,chaparral,savanna,grassland,reef,tundra,heathland,moorland}
+  
+  positional arguments:
+    {dark,light}          scheme mode (light or dark)
+    {alpine,badlands,chaparral,savanna,grassland,reef,tundra,heathland,moorland}
+                          biome setting for scheme.
+  
+  options:
+    -m {wcag,oklch,lightness}, --metric {wcag,oklch,lightness}
+                          metric to use for measuring swatch distances.
+    -d DISTANCE, --distance DISTANCE
+                          distance threshold for specified metric
+    -o OUTPUT, --output OUTPUT
+                          output file to write scheme content
+    -l L_BASE, --l-base L_BASE
+                          minimum lightness level (default: 20)
+    --l-step L_STEP       lightness step size (default: 5)
+    --fg-gap FG_GAP       foreground lightness gap (default: 50)
+    --grey-gap GREY_GAP   grey lightness gap (default: 30)
+    --term-fg-gap TERM_FG_GAP
+                          terminal foreground lightness gap (default: 60)
+  ```
+
+- `monobiome fill`: produce concrete application themes from a given scheme and
+  app template
+
+  ```
+  usage: monobiome fill [-h] [-p PALETTE] [-o OUTPUT] scheme [template]
+
+  positional arguments:
+    scheme                scheme file path
+    template              template file path (defaults to stdin)
+  
+  options:
+    -p PALETTE, --palette PALETTE
+                          palette file to use for color definitions
+    -o OUTPUT, --output OUTPUT
+                          output file to write filled template
+  ```
 
 
 [1]: https://github.com/isa/TextMate-Themes/blob/master/monoindustrial.tmTheme
