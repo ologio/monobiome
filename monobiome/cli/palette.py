@@ -17,7 +17,7 @@ def register_parser(subparsers: _SubparserType) -> None:
         type=str,
         default="hex",
         choices=["hex", "oklch"],
-        help="Color notation to export (either hex or oklch)",
+        help="color notation to export (either hex or oklch)",
     )
     parser.add_argument(
         "-f",
@@ -25,13 +25,13 @@ def register_parser(subparsers: _SubparserType) -> None:
         type=str,
         default="toml",
         choices=["json", "toml"],
-        help="Format of palette file (either JSON or TOML)",
+        help="format of palette file (either JSON or TOML)",
     )
     parser.add_argument(
         "-o",
         "--output",
         type=str,
-        help="Output file to write palette content",
+        help="output file to write palette content",
     )
 
     parser.set_defaults(func=handle_palette)

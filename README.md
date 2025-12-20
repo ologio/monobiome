@@ -232,7 +232,7 @@ uv tool install monobiome
 pipx install monobiome
 ```
 
-The `monobiome` has provides three subcommands:
+`monobiome` provides three subcommands:
 
 - `monobiome palette`: generate palette files from raw parameterized curves
 
@@ -294,6 +294,14 @@ The `monobiome` has provides three subcommands:
     -o OUTPUT, --output OUTPUT
                           output file to write filled template
   ```
+
+## Config management
+The `monobiome` CLI tool attempts to provide the minimal functionality needed
+to produce customized themes for individual applications. If seeking a more
+holistic, system-wide approach, you might consider using [`symconf`][3], a
+general-purpose application config manager. `symconf` provides the templating
+subsystem used for `monobiome` internals, and can be configured to apply live
+theme updates to many apps with a single command line invocation.
 
 
 [1]: https://github.com/isa/TextMate-Themes/blob/master/monoindustrial.tmTheme

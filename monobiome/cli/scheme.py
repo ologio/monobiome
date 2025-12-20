@@ -16,13 +16,13 @@ def register_parser(subparsers: _SubparserType) -> None:
         "mode",
         type=str,
         choices=["dark", "light"],
-        help="Scheme mode (light or dark)"
+        help="scheme mode (light or dark)"
     )
     parser.add_argument(
         "biome",
         type=str,
         choices=list(monotone_h_map.keys()),
-        help="Biome setting for scheme."
+        help="biome setting for scheme"
     )
     parser.add_argument(
         "-m",
@@ -30,7 +30,7 @@ def register_parser(subparsers: _SubparserType) -> None:
         type=str,
         default="oklch",
         choices=["wcag", "oklch", "lightness"],
-        help="Metric to use for measuring swatch distances."
+        help="metric to use for measuring swatch distances"
     )
 
     # e.g., wcag=4.5; oklch=0.40; lightness=40
@@ -39,13 +39,13 @@ def register_parser(subparsers: _SubparserType) -> None:
         "--distance",
         type=float,
         default=0.40,
-        help="Distance threshold for specified metric",
+        help="distance threshold for specified metric",
     )
     parser.add_argument(
         "-o",
         "--output",
         type=str,
-        help="Output file to write scheme content",
+        help="output file to write scheme content",
     )
 
     # these params remain rooted in lightness; no need to accommodate metric
@@ -58,13 +58,13 @@ def register_parser(subparsers: _SubparserType) -> None:
         "--l-base",
         type=int,
         default=20,
-        help="Minimum lightness level (default: 20)",
+        help="minimum lightness level (default: 20)",
     )
     parser.add_argument(
         "--l-step",
         type=int,
         default=5,
-        help="Lightness step size (default: 5)",
+        help="lightness step size (default: 5)",
     )
 
     # gaps
@@ -72,19 +72,19 @@ def register_parser(subparsers: _SubparserType) -> None:
         "--fg-gap",
         type=int,
         default=50,
-        help="Foreground lightness gap (default: 50)",
+        help="foreground lightness gap (default: 50)",
     )
     parser.add_argument(
         "--grey-gap",
         type=int,
         default=30,
-        help="Grey lightness gap (default: 30)",
+        help="grey lightness gap (default: 30)",
     )
     parser.add_argument(
         "--term-fg-gap",
         type=int,
         default=65,
-        help="Terminal foreground lightness gap (default: 60)",
+        help="terminal foreground lightness gap (default: 60)",
     )
 
     parser.set_defaults(func=handle_scheme)
