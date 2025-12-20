@@ -1,5 +1,5 @@
-import argparse
 from pathlib import Path
+from argparse import Namespace, ArgumentParser
 
 from monobiome.util import _SubparserType
 from monobiome.scheme import generate_scheme
@@ -90,7 +90,7 @@ def register_parser(subparsers: _SubparserType) -> None:
     parser.set_defaults(func=handle_scheme)
 
 
-def handle_scheme(args: argparse.Namespace) -> None:
+def handle_scheme(args: Namespace, parser: ArgumentParser) -> None:
     output = args.output
 
     mode = args.mode

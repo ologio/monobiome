@@ -1,4 +1,5 @@
 import json
+from typing import Any
 from functools import cache
 from importlib.metadata import version
 
@@ -12,7 +13,7 @@ from monobiome.constants import (
 
 
 @cache
-def compute_hlc_map(notation: str) -> dict[str, dict[int, str]]:
+def compute_hlc_map(notation: str) -> dict[str, Any]:
     hlc_map = {}
 
     for h_str, Lpoints_Cstar in Lpoints_Cstar_Hmap.items():
@@ -44,7 +45,7 @@ def generate_palette(
         hlc_map["version"] = mb_version
         return json.dumps(hlc_map, indent=4)
     else:
-        toml_lines = [f"version = {mb_version}", ""]
+        toml_lines = [f"version = \"{mb_version}\"", ""]
         for _h, _lc_map in hlc_map.items():
             toml_lines.append(f"[{_h}]")
             for _l, _c in _lc_map.items():

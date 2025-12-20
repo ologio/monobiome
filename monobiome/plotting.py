@@ -99,7 +99,7 @@ def palette_image(
     palette: dict[str, dict[int, str]],
     cell_size: int = 40,
     keys: list[str] | None = None
-) -> None:
+) -> tuple[np.ndarray, list[str], list[list[int]], int, int]:
     names = list(palette.keys()) if keys is None else keys
         
     row_count = len(names)
@@ -114,9 +114,9 @@ def palette_image(
 
     for r, name in enumerate(names):
         shades = palette[name]
-        keys = sorted(shades.keys())
-        lightness_keys_per_row.append(keys)
-        for c, k in enumerate(keys):
+        lkeys = sorted(shades.keys())
+        lightness_keys_per_row.append(lkeys)
+        for c, k in enumerate(lkeys):
             col = Color(shades[k]).convert("srgb").fit(method="clip")
             rgb = [col["r"], col["g"], col["b"]]
             r0, r1 = r * cell_size, (r + 1) * cell_size
@@ -129,26 +129,45 @@ def palette_image(
 def show_palette(
     palette: dict[str, dict[int, str]],
     cell_size: int = 40,
-    keys: list[str] | None = None
-) -> None:
+    keys: list[str] | None = None,
+    show_labels: bool = True,
+    dpi: int = 100,
+) -> tuple[plt.Figure, plt.Axes]:
     img, names, keys, cell_size, max_cols = palette_image(
         palette, cell_size, keys=keys
     )
 
     fig_w = img.shape[1] / 100
     fig_h = img.shape[0] / 100
-    fig, ax = plt.subplots(figsize=(fig_w, fig_h))
 
-    ax.imshow(img, interpolation="none", origin="upper")
-    ax.set_xticks([])
+    if show_labels:
+        fig, ax = plt.subplots(figsize=(fig_w, fig_h), dpi=dpi)
 
-    ytick_pos = [(i + 0.5) * cell_size for i in range(len(names))]
-    ax.set_yticks(ytick_pos)
-    ax.set_yticklabels(names)
-    ax.set_ylim(img.shape[0], 0)   # ensures rows render w/o half-cells
+        ax.imshow(img, interpolation="none", origin="upper")
+        ax.set_xticks([])
 
-    plt.show()
+        ytick_pos = [(i + 0.5) * cell_size for i in range(len(names))]
+        ax.set_yticks(ytick_pos)
+        ax.set_yticklabels(names)
+        ax.set_ylim(img.shape[0], 0)  # ensures rows render w/o half-cells
 
+        return fig, ax
+
+    fig = plt.figure(figsize=(fig_w, fig_h), dpi=dpi, frameon=False)
+    ax = fig.add_axes((0, 0, 1, 1), frame_on=False)
+    ax.imshow(
+        img,
+        interpolation="nearest",
+        origin="upper",
+        extent=(0, img.shape[1], img.shape[0], 0),
+        aspect="auto",
+    )
+    ax.set_xlim(0, img.shape[1])
+    ax.set_ylim(img.shape[0], 0)
+    ax.axis("off")
+    fig.subplots_adjust(0, 0, 1, 1, hspace=0, wspace=0)
+
+    return fig, ax
 
 if __name__ == "__main__":
     keys = [

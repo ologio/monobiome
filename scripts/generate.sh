@@ -2,8 +2,40 @@
 # note: this script is not portable; to be run in the monobiome scripts/
 # directory (notice the `rm` invocations)
 
+# clean existing config
 rm -rf app-config/*
-symconf -c templates/ generate -o app-config
+
+biomes=(alpine badlands chaparral savanna grassland tundra reef heathland moorland)
+modes=(light dark)
+lightness=(90 20)
+rootdir="templates"
+
+for biome in "${biomes[@]}"; do
+  for i in "${!modes[@]}"; do
+    mode=${modes[i]}
+    light=${lightness[i]}
+
+    # generate scheme file for biome/mode/lightness
+    uv run monobiome scheme "${mode}" "${biome}" \
+        -d 0.42 \
+        -l "${light}" \
+        -o scheme.toml
+
+    # iterate over app config in "templates/"
+    find "$rootdir" -type f -print0 |
+    while IFS= read -r -d '' path; do
+      subpath=${path#"$rootdir"/}
+      dir=${subpath%/*}
+      file=${subpath##*/}
+      new_name=${biome}-monobiome-${mode}.${file}
+
+      mkdir -p "app-config/${dir}"
+      uv run monobiome fill scheme.toml "$path" \
+          -p "colors/hex-palette.toml" \
+          -o "app-config/${dir}/${new_name}"
+    done
+  done
+done
 
 cd app-config/firefox
 shopt -s nullglob
@@ -15,8 +47,6 @@ done
 
 # consolidate firefox artifacts
 rm *.*-manifest.json
-rm hard-* soft-*
 rm *-light.*
-perl-rename 's/^([^-.]+)-([^-.]+)-([^-.]+)-([^-.]+)\..*\.([^-.]+)-manifest\.xpi/$2-$3-$5.xpi/' *
+perl-rename 's/^([^-.]+)-([^-.]+)-([^-.]+)\.([^-.]+)-manifest\.xpi/$1-$2-$4.xpi/' *
 perl-rename 's/^([^-.]+)-([^-.]+)-auto\.xpi/$1-$2.xpi/' *
-

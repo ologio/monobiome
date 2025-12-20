@@ -1,7 +1,7 @@
 import logging
-import argparse
+from argparse import ArgumentParser
 
-from monobiome.cli import scheme, palette
+from monobiome.cli import fill, scheme, palette
 
 logger: logging.Logger = logging.getLogger(__name__)
 
@@ -12,8 +12,8 @@ def configure_logging(log_level: int) -> None:
 
     logger.setLevel(log_level)
 
-def create_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
+def create_parser() -> ArgumentParser:
+    parser = ArgumentParser(
         description="Accent modeling CLI",
     )
     parser.add_argument(
@@ -26,7 +26,8 @@ def create_parser() -> argparse.ArgumentParser:
 
     subparsers = parser.add_subparsers(help="subcommand help")
 
-    palette.register_parser(subparsers)
+    fill.register_parser(subparsers)
     scheme.register_parser(subparsers)
+    palette.register_parser(subparsers)
 
     return parser

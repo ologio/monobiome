@@ -1,5 +1,5 @@
-import argparse
 from pathlib import Path
+from argparse import Namespace, ArgumentParser
 
 from monobiome.util import _SubparserType
 from monobiome.palette import generate_palette
@@ -37,7 +37,7 @@ def register_parser(subparsers: _SubparserType) -> None:
     parser.set_defaults(func=handle_palette)
 
 
-def handle_palette(args: argparse.Namespace) -> None:
+def handle_palette(args: Namespace, parser: ArgumentParser) -> None:
     notation = args.notation
     file_format = args.format
     output = args.output

@@ -5,8 +5,8 @@ all hues at various levels of luminance, and does so for eight monotone bases
 and eight accent colors (plus one zero chroma default base). Each of the
 monotone base colors (named according to a natural biome whose colors they
 loosely resemble) are designed to achieve identical contrast with the accents,
-and thus any one of the options can be selected to change the feeling of the
-palette without sacrificing readability.
+and thus any one of the options can be selected to change the feeling of
+downstream themes without sacrificing readability.
 
 ![Theme preview](images/repo_preview_primary.png)
 _(Preview of light and dark alpine theme variants)_
@@ -38,7 +38,10 @@ smoothly as a function of lightness within sRGB gamut bounds.
 |---|
 | ![Palette](images/palette.png) |
 
-There are eight monotone-accent pairs, plus a single grey trajectory:
+Chroma curves are designed specifically to establish a distinct role for each
+accent and are non-intersecting over the lightness domain (hence the distinct
+"bands" in the above chroma curve figure). There are eight monotone-accent
+pairs, plus a single grey trajectory:
 
 | Monotone / biome | Accent color | Hue  |
 | ---              | ---          | ---  |
@@ -55,7 +58,7 @@ There are eight monotone-accent pairs, plus a single grey trajectory:
 The `alpine`/`grey` curve has zero chroma (and is thus invariant to hue),
 varying only in lightness from dark to light grey.
 
-## Concrete themes
+## Themes
 
 | Dark themes | Light themes |
 |---|---|
@@ -91,7 +94,7 @@ The "soft" harshness level uses monotone shades closer to the mid-shade
 Once the biome and harshness level are chosen, we're left with a bounded
 monotone range over which common theme elements can be defined.
 
-## Applications
+## Generation
 When generating full application themes, fixed lightness steps are used in the
 chosen monotone trajectory to establish consistent levels of distinction
 between background layers. For example, the following demonstrates how
@@ -111,23 +114,24 @@ assigned to these identifiers are preserved regardless of biome or harshness
 theme). As a result, applying `monobiome` themes to specific applications can
 effectively boil down to defining a single "relative template" that uses these
 identifiers, after which any user-provided parameters can be applied
-automatically. You can read more about how themes are created in
-[DESIGN](DESIGN.md).
+automatically. 
 
-# Usage
-This repo provides *relative* theme templates for `kitty`, `vim`/`neovim`, and
-`fzf` in the `templates/apps` directory, along with *concrete* themes in
-`app-config/`. You can also find raw palette colors in `templates/apps/groups/`
-if you want to use them to define static themes for other applications.
+The full palette $\rightarrow$ scheme $\rightarrow$ template $\rightarrow$
+theme pipeline can be seen in detail below: 
 
-Each of the files in the `app-config/` directory are named according to
+![Generation pipeline](images/theme_generation_pipeline.png)
 
-```sh
-<harshness>-<biome>-monobiome-<mode>.<ext>
-```
+This figure demonstrates how `kitty` themes are generated, but the process is
+generic to any palette, scheme, and app. The `monobiome` CLI
+produces the scheme file for requested parameters, and the [`symconf`][3] CLI
+pushes palette colors through the scheme and into the app templates to yield a
+concrete theme.
 
-For example, `monobiome-tundra-dark-soft.vim` is the Vim theme file for the
-dark `tundra` variant with a soft harshness level.
+This repo provides *relative*, palette-agnostic theme templates for `kitty`,
+`vim`/`neovim`, and `fzf` in the `templates/apps` directory, along with
+pre-generated *concrete* themes in `app-config/`. You can also find raw palette
+colors in `templates/apps/groups/` if you want to use them to define static
+themes for other applications.
 
 ## Applications
 - `kitty`
@@ -179,62 +183,6 @@ dark `tundra` variant with a soft harshness level.
   Static [light][4] and [dark][5] are additionally available.
 
   ![Firefox theme previews](images/firefox/themes.png)
-
-# Switching themes
-[`symconf`][3] is a general-purpose application config manager that can be used
-to generate all `monobiome` variants from a single palette file, and set themes
-for all apps at once. You can find example theme templates in
-`templates/groups/theme`, which provide general theme variables you can use in
-your own config templates.
-
-For instance, in an app like `kitty`, you can define a template like
-
-```conf
-# base settings
-background           f{{theme.term.background}}
-foreground           f{{theme.term.foreground}}
-
-selection_background f{{theme.term.selection_bg}}
-selection_foreground f{{theme.term.selection_fg}}
-
-cursor               f{{theme.term.cursor}}
-cursor_text_color    f{{theme.term.cursor_text_color}}
-
-# black
-color0               f{{theme.term.normal.black}}
-color8               f{{theme.term.bright.black}}
-
-# red
-color1               f{{theme.term.normal.red}}
-color9               f{{theme.term.bright.red}}
-
-# green
-color2               f{{theme.term.normal.green}}
-color10              f{{theme.term.bright.green}}
-
-# yellow
-color3               f{{theme.term.normal.yellow}}
-color11              f{{theme.term.bright.yellow}}
-
-# blue
-color4               f{{theme.term.normal.blue}}
-color12              f{{theme.term.bright.blue}}
-
-# purple (red)
-color5               f{{theme.term.normal.purple}}
-color13              f{{theme.term.bright.purple}}
-
-# cyan (blue)
-color6               f{{theme.term.normal.cyan}}
-color14              f{{theme.term.bright.cyan}}
-
-## white
-color7               f{{theme.term.normal.white}}
-color15              f{{theme.term.bright.white}}
-```
-
-and use `symconf` to dynamically fill these variables based on a selected
-biome/harshness/mode. This can be done for any app config file.
 
 
 [1]: https://github.com/isa/TextMate-Themes/blob/master/monoindustrial.tmTheme

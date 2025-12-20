@@ -1,0 +1,23 @@
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+  --color=fg:f{{term.foreground}}
+  --color=fg+:f{{term.selection_fg}}
+  --color=bg:f{{term.background}}
+  --color=bg+:f{{term.selection_bg}}
+
+  --color=hl:f{{term.normal.blue}}
+  --color=hl+:f{{term.bright.blue}}
+  --color=info:f{{term.normal.yellow}}
+  --color=marker:f{{term.bright.green}}
+
+  --color=prompt:f{{term.normal.red}}
+  --color=spinner:f{{term.normal.yellow}}
+  --color=pointer:f{{term.normal.red}}
+  --color=header:f{{term.bright.green}}
+
+  --color=border:f{{term.selection_bg}}
+  --color=label:#aeaeae
+  --color=query:f{{term.foreground}}
+
+  --preview-window="border-bold" --prompt="> " --marker=">" --pointer="◆"
+  --separator="" --scrollbar="│"'
+

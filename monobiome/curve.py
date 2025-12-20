@@ -9,8 +9,8 @@ def quad_bezier_rational(
     P1: float,
     P2: float,
     w: float,
-    t: np.array,
-) -> np.array:
+    t: np.ndarray,
+) -> np.ndarray:
     """
     Compute the point values of a quadratic rational Bezier curve.
 
@@ -32,7 +32,7 @@ def bezier_y_at_x(
     w: float,
     x: float,
     n: int = 400,
-) -> np.array:
+) -> np.ndarray:
     """
     For the provided QBR parameters, provide the curve value at the given
     input.

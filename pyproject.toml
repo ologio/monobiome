@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "monobiome"
-version = "1.4.0"
+version = "1.5.0"
 description = "Monobiome color palette"
 requires-python = ">=3.12"
 authors = [
@@ -27,7 +27,6 @@ classifiers = [
 dependencies = [
     "coloraide>=5.1",
     "imageio[ffmpeg]>=2.37.2",
-    "ipython>=9.6.0",
     "kaleido>=1.1.0",
     "matplotlib>=3.10.7",
     "nbformat>=5.10.4",
@@ -36,6 +35,7 @@ dependencies = [
     "plotly>=6.3.1",
     "pyqt5>=5.15.11",
     "scipy>=1.16.2",
+    "symconf>=0.8.4",
 ]
 
 [project.scripts]
@@ -62,11 +62,6 @@ Documentation = "https://doc.olog.io/monobiome"
 Repository = "https://git.olog.io/olog/monobiome"
 Issues = "https://git.olog.io/olog/monobiome/issues"
 
-[dependency-groups]
-dev = [
-    "ipykernel>=7.0.1",
-]
-
 [tool.setuptools.packages.find]
 include = ["monobiome*"]
 
@@ -92,4 +87,3 @@ force-sort-within-sections = false
 quote-style = "double"
 indent-style = "space"
 docstring-code-format = true
-

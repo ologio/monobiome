@@ -1,0 +1,41 @@
+# base settings
+background           f{{term.background}}
+foreground           f{{term.foreground}}
+
+selection_background f{{term.selection_bg}}
+selection_foreground f{{term.selection_fg}}
+
+cursor               f{{term.cursor}}
+cursor_text          f{{term.cursor_text}}
+
+# black
+color0               f{{term.normal.black}}
+color8               f{{term.bright.black}}
+
+# red
+color1               f{{term.normal.red}}
+color9               f{{term.bright.red}}
+
+# green
+color2               f{{term.normal.green}}
+color10              f{{term.bright.green}}
+
+# yellow
+color3               f{{term.normal.yellow}}
+color11              f{{term.bright.yellow}}
+
+# blue
+color4               f{{term.normal.blue}}
+color12              f{{term.bright.blue}}
+
+# magenta (red)
+color5               f{{term.normal.magenta}}
+color13              f{{term.bright.magenta}}
+
+# cyan (blue)
+color6               f{{term.normal.cyan}}
+color14              f{{term.bright.cyan}}
+
+## white
+color7               f{{term.normal.white}}
+color15              f{{term.bright.white}}

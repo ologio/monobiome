@@ -10,7 +10,7 @@ def main() -> None:
         configure_logging(args.log_level)
 
     if "func" in args:
-        args.func(args)
+        args.func(args, parser)
     else:
         parser.print_help()
 
