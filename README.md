@@ -30,12 +30,12 @@ both of which have fixed hue values and vary from 10% to 98% lightness.
 Monotone curves have fixed chroma, whereas the accent curves' chroma varies
 smoothly as a function of lightness within sRGB gamut bounds.
 
-| Chroma curves | Color trajectories |
-|---|---|
+| Chroma curves                                         | Color trajectories                       |
+|-------------------------------------------------------|------------------------------------------|
 | ![Chroma curves](images/curves/cstar-curves-v140.png) | ![Trajectories](images/trajectories.gif) |
 
-| Palette |
-|---|
+| Palette                        |
+|--------------------------------|
 | ![Palette](images/palette.png) |
 
 Chroma curves are designed specifically to establish a distinct role for each
@@ -60,8 +60,8 @@ varying only in lightness from dark to light grey.
 
 ## Themes
 
-| Dark themes | Light themes |
-|---|---|
+| Dark themes                            | Light themes                             |
+|----------------------------------------|------------------------------------------|
 | ![Dark themes](images/dark_themes.png) | ![Light themes](images/light_themes.png) |
 
 Themes are derived from the `monobiome` palette by selecting a monotone base
@@ -78,10 +78,10 @@ to the background.
 The following plots show the intersection of the sphere centered at a fixed
 background color (`alpine` biome with a lightness of 20) under variable radii:
 
-| | `-l 20 -d 0.3` | `-l 20 -d 0.4` | `-l 20 -d 0.5` |
-|---|---|---|---|
-| Color visualization | ![](images/oklch/mb_b20_d30.gif) | ![](images/oklch/mb_b20_d40.gif) | ![](images/oklch/mb_b20_d50.gif) |
-| Editor preview | ![](images/render/v140-demo-alpine-dark-d0.3.png) | ![](images/render/v140-demo-alpine-dark-d0.4.png) | ![](images/render/v140-demo-alpine-dark-d0.5.png) |
+|                     | `-l 20 -d 0.3`                                    | `-l 20 -d 0.4`                                    | `-l 20 -d 0.5`                                    |
+|---------------------|---------------------------------------------------|---------------------------------------------------|---------------------------------------------------|
+| Color visualization | ![](images/oklch/mb_b20_d30.gif)                  | ![](images/oklch/mb_b20_d40.gif)                  | ![](images/oklch/mb_b20_d50.gif)                  |
+| Editor preview      | ![](images/render/v140-demo-alpine-dark-d0.3.png) | ![](images/render/v140-demo-alpine-dark-d0.4.png) | ![](images/render/v140-demo-alpine-dark-d0.5.png) |
 
 In short, the base lightness (`-l`) dictates the brightness of the background,
 and the contrast (`-d`) controls how perceptually distinct the accent colors
@@ -178,7 +178,7 @@ One can set these themes for the provided applications as follows:
   ```
 
   Themes are generated using the [`kitty` theme
-  template](templates/apps/kitty/templates/active.theme).
+  template](templates/kitty/active.theme).
 
 - `vim`/`neovim`
 
@@ -193,7 +193,7 @@ One can set these themes for the provided applications as follows:
   ```
 
   Themes are generated using the [`vim` theme
-  template](templates/apps/nvim/templates/theme.vim).
+  template](templates/nvim/theme.vim).
 
 - `fzf`
 
@@ -206,7 +206,7 @@ One can set these themes for the provided applications as follows:
   ```
 
   Themes are generated using the [`fzf` theme
-  template](templates/apps/fzf/templates/active.theme).
+  template](templates/fzf/active.theme).
 
 - Firefox
 
@@ -214,12 +214,10 @@ One can set these themes for the provided applications as follows:
   add-ons][2], and switch between light/dark schemes based on system settings.
   You can also download raw XPI files for each theme in `app-config/firefox/`,
   each of which is generated using the [Firefox `manifest.json`
-  template](templates/apps/firefox/templates/none-dark.manifest.json).
+  template](templates/firefox/auto-manifest.json).
 
   Static [light][4] and [dark][5] themes are additionally available (i.e., that
   don't change with system settings).
-
-  ![Firefox theme previews](images/firefox/themes.png)
 
 ## CLI installation
 A brief theme generation guide was provided in the [Generation
