@@ -146,11 +146,6 @@ the `monobiome` CLI:
 Running these commands in sequence from the repo root should work
 out-of-the-box, after having installed the CLI tool.
 
-The `monobiome` CLI
-produces the scheme file for requested parameters, and the [`symconf`][3] CLI
-pushes palette colors through the scheme and into the app templates to yield a
-concrete theme.
-
 ## Applications
 This repo provides palette-agnostic theme templates for `kitty`,
 `vim`/`neovim`, and `fzf` in the `templates/` directory. Pre-generated
