@@ -117,10 +117,10 @@ theme pipeline can be seen in detail below:
 ![Generation pipeline](images/theme_generation_pipeline.png)
 
 This figure demonstrates how `kitty` themes are generated, but the process is
-generic to any palette, scheme, and app. This implemented in two stages using
-the `monobiome` CLI:
+generic to any palette, scheme, and app. This is implemented in two stages
+using the `monobiome` CLI:
 
-- First generate the scheme file, the definitions that respect perceptual
+- First generate the scheme file, the lightness choices that achieve perceptual
   uniformity of accents with respect to the base monotone:
 
   ```sh
@@ -137,11 +137,11 @@ the `monobiome` CLI:
   monobiome fill scheme.toml templates/kitty/active.theme -o kitty.theme
   ```
 
-  This writes a concrete theme to `kitty.theme` that matches the user
-  preferences, i.e., the contrast (`-d`), background lightness (`-l`), mode
-  (`dark`), and biome (`grassland`). Every part of this process can be
-  customized: the scheme parameters, the scheme definitions/file, the app
-  template.
+  This writes a concrete `kitty` theme to `kitty.theme` that matches the user
+  preferences as captured in the previously generated scheme file, i.e., the
+  contrast (`-d`), background lightness (`-l`), mode (`dark`), and biome
+  (`grassland`). Every part of this process can be customized: the scheme
+  parameters, the scheme definitions/file, the app template.
 
 Running these commands in sequence from the repo root should work
 out-of-the-box after having installed the CLI tool.

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# note: this script is not portable; to be run in the monobiome scripts/
-# directory (notice the `rm` invocations)
+# note: this script is not portable; script to be placed in the monobiome
+# scripts/ directory and run from the repo root (notice the `rm` invocations)
 
 # clean existing config
 rm -rf app-config/*
@@ -36,6 +36,9 @@ for biome in "${biomes[@]}"; do
     done
   done
 done
+
+# remove lingering scheme file
+rm scheme.toml
 
 cd app-config/firefox
 shopt -s nullglob
