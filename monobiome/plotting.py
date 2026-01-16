@@ -1,7 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from coloraide import Color
+from matplotlib.collections import LineCollection
 
+from importlib.metadata import version
 from monobiome.palette import compute_hlc_map
 from monobiome.constants import (
     h_map,
@@ -9,6 +11,7 @@ from monobiome.constants import (
     L_points,
     accent_h_map,
     monotone_h_map,
+    max_Cstar_Horder,
     Lspace_Cmax_Hmap,
     Lpoints_Cstar_Hmap,
 )
@@ -74,24 +77,50 @@ def plot_hue_chroma_star() -> None:
     colors = accent_h_map.keys()
     #colors = set(["red", "orange", "yellow", "green", "blue"])
 
-    for h_str in Lpoints_Cstar_Hmap:
+    for h_str, _ in max_Cstar_Horder:
+        Lpoints_Cstar = Lpoints_Cstar_Hmap[h_str]
+
         if h_str not in accent_h_map or h_str not in colors:
             continue
-        ax.fill_between(
-            L_points,
-            Lpoints_Cstar_Hmap[h_str],
-            alpha=0.2,
-            color='grey',
-            label=h_str
-        )
 
-        x, y = L_points, Lpoints_Cstar_Hmap[h_str]
-        n = int(0.45*len(x))
-        ax.text(x[n], y[n]-0.01, h_str, rotation=10, va='center', ha='left')
+        _h = h_map[h_str]
+        h_colors = [
+            Color('oklch', [_l/100, _c, _h]).convert("srgb")
+            for _l, _c in zip(L_points, Lpoints_Cstar, strict=True)
+        ]
+
+        # # ax.fill_between(
+        # ax.scatter(
+        #     L_points,
+        #     Lpoints_Cstar,
+        #     alpha=0.7,
+        #     c=h_colors,
+        #     #alpha=0.2,
+        #     #color='grey',
+        #     label=h_str
+        # )
+        # x, y = L_points, Lpoints_Cstar_Hmap[h_str]
+        # n = int(0.45*len(x))
+        # ax.text(x[n], y[n]-0.01, h_str, rotation=10, va='center', ha='left')
+        
+        x = np.asarray(L_points)
+        y = np.asarray(Lpoints_Cstar)
+        pts = np.column_stack([x, y]).reshape(-1, 1, 2)
+        segs = np.concatenate([pts[:-1], pts[1:]], axis=1)
+        rgb = np.asarray(h_colors)
+        seg_colors = (rgb[:-1] + rgb[1:]) / 2
+
+        lc = LineCollection(segs, colors=seg_colors, linewidth=3,
+                            capstyle="round", joinstyle="round",
+                            label=h_str)
+        ax.add_collection(lc)
+        ax.autoscale_view()
         
     ax.set_xlabel("Lightness (%)")
     ax.set_xticks([L_points[0], 45, 50, 55, 60, 65, 70, L_points[-1]])
-    plt.suptitle("$C^*$ curves (v1.4.0)")
+
+    mb_version = version("monobiome")
+    plt.suptitle(f"$C^*$ curves (v{mb_version})")
     fig.show()
 
 

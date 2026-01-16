@@ -32,7 +32,7 @@ smoothly as a function of lightness within sRGB gamut bounds.
 
 | Chroma curves                                         | Color trajectories                       |
 |-------------------------------------------------------|------------------------------------------|
-| ![Chroma curves](images/curves/cstar-curves-v140.png) | ![Trajectories](images/trajectories.gif) |
+| ![Chroma curves](images/curves/cstar-curves-v151.png) | ![Trajectories](images/trajectories.gif) |
 
 | Palette                        |
 |--------------------------------|
@@ -144,7 +144,7 @@ the `monobiome` CLI:
   template.
 
 Running these commands in sequence from the repo root should work
-out-of-the-box, after having installed the CLI tool.
+out-of-the-box after having installed the CLI tool.
 
 ## Applications
 This repo provides palette-agnostic theme templates for `kitty`,

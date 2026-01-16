@@ -121,3 +121,21 @@ for h_str, L_points_C in Lpoints_Cqbr_Hmap.items():
         max(0, min(_C, l_maxC_h(_L, _h)))
         for _L, _C in zip(L_points, L_points_C, strict=True)
     ]
+
+
+# strictly enforce curve bounds s.t. there are no intersections
+# order is determined by the max attained chromap
+max_Cstar_Horder = [
+    (h_str, max(Lpoints_Cstar))
+    for h_str, Lpoints_Cstar in Lpoints_Cstar_Hmap.items()
+]
+max_Cstar_Horder = sorted(max_Cstar_Horder, key=lambda t: t[1], reverse=True)
+
+for i in range(len(max_Cstar_Horder)-1):
+    outer_h, _ = max_Cstar_Horder[i]
+    inner_h, _ = max_Cstar_Horder[i+1]
+
+    Lpoints_Cstar_Hmap[inner_h] = [
+        min(inner_c, Lpoints_Cstar_Hmap[outer_h][ci])
+        for ci, inner_c in enumerate(Lpoints_Cstar_Hmap[inner_h])
+    ]
