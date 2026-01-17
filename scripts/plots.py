@@ -17,8 +17,8 @@ fig.savefig(Path(figure_dir, "chroma-curves.png"))
 # "oklch" causes some slight hex drift when later using an eyedropper
 hlc_map = compute_hlc_map("hex") # ("oklch")
 
-fig, ax = plotting.show_palette(hlc_map)
-fig.savefig(Path(figure_dir, "palette.png"))
+fig, ax = plotting.show_palette(hlc_map, cell_size=25)
+fig.savefig(Path(figure_dir, "palette.png"), pad_inches=0)
 
 fig, ax = plotting.show_palette(hlc_map, show_labels=False)
 fig.savefig(Path(figure_dir, "palette-bare.png"), pad_inches=0)

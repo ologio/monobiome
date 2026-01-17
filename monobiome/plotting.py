@@ -72,13 +72,12 @@ def plot_hue_chroma_bounds() -> tuple[plt.Figure, plt.Axes]:
 
     return fig, axes
 
-
 def plot_hue_chroma_star() -> tuple[plt.Figure, plt.Axes]:
     fig, ax = plt.subplots(1, 1, figsize=(8, 6))
 
-    # uncomment to preview 5 core term colors
     colors = accent_h_map.keys()
-    #colors = set(["red", "orange", "yellow", "green", "blue"])
+    # uncomment to preview just the 5 core term colors
+    # colors = set(["red", "orange", "yellow", "green", "blue"])
 
     for h_str, _ in max_Cstar_Horder:
         Lpoints_Cstar = Lpoints_Cstar_Hmap[h_str]
@@ -91,20 +90,6 @@ def plot_hue_chroma_star() -> tuple[plt.Figure, plt.Axes]:
             Color('oklch', [_l/100, _c, _h]).convert("srgb")
             for _l, _c in zip(L_points, Lpoints_Cstar, strict=True)
         ]
-
-        # # ax.fill_between(
-        # ax.scatter(
-        #     L_points,
-        #     Lpoints_Cstar,
-        #     alpha=0.7,
-        #     c=h_colors,
-        #     #alpha=0.2,
-        #     #color='grey',
-        #     label=h_str
-        # )
-        # x, y = L_points, Lpoints_Cstar_Hmap[h_str]
-        # n = int(0.45*len(x))
-        # ax.text(x[n], y[n]-0.01, h_str, rotation=10, va='center', ha='left')
         
         x = np.asarray(L_points)
         y = np.asarray(Lpoints_Cstar)
@@ -112,10 +97,10 @@ def plot_hue_chroma_star() -> tuple[plt.Figure, plt.Axes]:
         segs = np.concatenate([pts[:-1], pts[1:]], axis=1)
         rgb = np.asarray(h_colors)
         seg_colors = (rgb[:-1] + rgb[1:]) / 2
-
         lc = LineCollection(segs, colors=seg_colors, linewidth=3,
                             capstyle="round", joinstyle="round",
                             label=h_str)
+
         ax.add_collection(lc)
         ax.autoscale_view()
         
@@ -126,12 +111,11 @@ def plot_hue_chroma_star() -> tuple[plt.Figure, plt.Axes]:
 
     return fig, ax
 
-
 def palette_image(
     palette: dict[str, dict[int, str]],
     cell_size: int = 40,
     keys: list[str] | None = None
-) -> tuple[np.ndarray, list[str], list[list[int]], int, int]:
+) -> tuple[np.ndarray, list[str], list[list[int]]]:
     names = list(palette.keys()) if keys is None else keys
         
     row_count = len(names)
@@ -155,8 +139,7 @@ def palette_image(
             c0, c1 = c * cell_size, (c + 1) * cell_size
             img[r0:r1, c0:c1, :] = rgb
 
-    return img, names, lightness_keys_per_row, cell_size, max_cols
-
+    return img, names, lightness_keys_per_row
 
 def show_palette(
     palette: dict[str, dict[int, str]],
@@ -165,9 +148,7 @@ def show_palette(
     show_labels: bool = True,
     dpi: int = 100,
 ) -> tuple[plt.Figure, plt.Axes]:
-    img, names, keys, cell_size, max_cols = palette_image(
-        palette, cell_size, keys=keys
-    )
+    img, names, _ = palette_image(palette, cell_size, keys=keys)
 
     fig_w = img.shape[1] / 100
     fig_h = img.shape[0] / 100
