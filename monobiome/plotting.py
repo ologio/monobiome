@@ -1,9 +1,10 @@
+from importlib.metadata import version
+
 import numpy as np
 import matplotlib.pyplot as plt
 from coloraide import Color
 from matplotlib.collections import LineCollection
 
-from importlib.metadata import version
 from monobiome.palette import compute_hlc_map
 from monobiome.constants import (
     h_map,
@@ -11,13 +12,14 @@ from monobiome.constants import (
     L_points,
     accent_h_map,
     monotone_h_map,
-    max_Cstar_Horder,
     Lspace_Cmax_Hmap,
+    max_Cstar_Horder,
     Lpoints_Cstar_Hmap,
 )
 
+VERSION = version("monobiome")
 
-def plot_hue_chroma_bounds() -> None:
+def plot_hue_chroma_bounds() -> tuple[plt.Figure, plt.Axes]:
     name_h_map = {}
     ax_h_map = {}
     fig, axes = plt.subplots(
@@ -66,11 +68,12 @@ def plot_hue_chroma_bounds() -> None:
         ncol=3
     )
 
-    plt.suptitle("$C^*$ curves for hue groups")
-    plt.show()
+    plt.suptitle(f"$C^*$ curves for hue groups (v{VERSION})")
+
+    return fig, axes
 
 
-def plot_hue_chroma_star() -> None:
+def plot_hue_chroma_star() -> tuple[plt.Figure, plt.Axes]:
     fig, ax = plt.subplots(1, 1, figsize=(8, 6))
 
     # uncomment to preview 5 core term colors
@@ -119,9 +122,9 @@ def plot_hue_chroma_star() -> None:
     ax.set_xlabel("Lightness (%)")
     ax.set_xticks([L_points[0], 45, 50, 55, 60, 65, 70, L_points[-1]])
 
-    mb_version = version("monobiome")
-    plt.suptitle(f"$C^*$ curves (v{mb_version})")
-    fig.show()
+    plt.suptitle(f"$C^*$ curves (v{VERSION})")
+
+    return fig, ax
 
 
 def palette_image(

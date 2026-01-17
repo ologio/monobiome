@@ -30,13 +30,13 @@ both of which have fixed hue values and vary from 10% to 98% lightness.
 Monotone curves have fixed chroma, whereas the accent curves' chroma varies
 smoothly as a function of lightness within sRGB gamut bounds.
 
-| Chroma curves                                         | Color trajectories                       |
-|-------------------------------------------------------|------------------------------------------|
-| ![Chroma curves](images/curves/cstar-curves-v151.png) | ![Trajectories](images/trajectories.gif) |
+| Chroma curves                                            | Color trajectories                       |
+|----------------------------------------------------------|------------------------------------------|
+| ![Chroma curves](images/release/1.5.1/chroma-curves.png) | ![Trajectories](images/trajectories.gif) |
 
-| Palette                        |
-|--------------------------------|
-| ![Palette](images/palette.png) |
+| Palette                                      |
+|----------------------------------------------|
+| ![Palette](images/release/1.5.1/palette.png) |
 
 Chroma curves are designed specifically to establish a distinct role for each
 accent and are non-intersecting over the lightness domain (hence the distinct
