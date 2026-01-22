@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from coloraide import Color
 from matplotlib.collections import LineCollection
 
+from monobiome.util import srgb8_from_color
 from monobiome.palette import compute_hlc_map
 from monobiome.constants import (
     h_map,
@@ -87,7 +88,9 @@ def plot_hue_chroma_star() -> tuple[plt.Figure, plt.Axes]:
 
         _h = h_map[h_str]
         h_colors = [
-            Color('oklch', [_l/100, _c, _h]).convert("srgb")
+            Color(
+                'oklch', [_l/100, _c, _h]
+            ).convert("srgb").fit(method="oklch-chroma")
             for _l, _c in zip(L_points, Lpoints_Cstar, strict=True)
         ]
         
@@ -124,7 +127,7 @@ def palette_image(
 
     h = row_count * cell_size
     w = max_cols * cell_size
-    img = np.ones((h, w, 3), float)
+    img = np.ones((h, w, 3), int)
 
     lightness_keys_per_row = []
 
@@ -133,8 +136,7 @@ def palette_image(
         lkeys = sorted(shades.keys())
         lightness_keys_per_row.append(lkeys)
         for c, k in enumerate(lkeys):
-            col = Color(shades[k]).convert("srgb").fit(method="clip")
-            rgb = [col["r"], col["g"], col["b"]]
+            rgb = srgb8_from_color(shades[k])
             r0, r1 = r * cell_size, (r + 1) * cell_size
             c0, c1 = c * cell_size, (c + 1) * cell_size
             img[r0:r1, c0:c1, :] = rgb
@@ -156,7 +158,7 @@ def show_palette(
     if show_labels:
         fig, ax = plt.subplots(figsize=(fig_w, fig_h), dpi=dpi)
 
-        ax.imshow(img, interpolation="none", origin="upper")
+        ax.imshow(img, interpolation="nearest", origin="upper")
         ax.set_xticks([])
 
         ytick_pos = [(i + 0.5) * cell_size for i in range(len(names))]

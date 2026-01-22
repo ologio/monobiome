@@ -11,3 +11,6 @@ uv run monobiome palette -n oklch -f toml -o colors/oklch-palette.toml
 
 # generate provided app config
 "$script_dir/generate.sh"
+
+# generate release plots
+uv run "$script_dir/plots.py"

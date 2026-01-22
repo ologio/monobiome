@@ -5,6 +5,10 @@ from importlib.metadata import version
 
 from coloraide import Color
 
+from monobiome.util import (
+    hex_from_rgb8,
+    srgb8_from_color,
+)
 from monobiome.constants import (
     h_map,
     L_points,
@@ -24,8 +28,8 @@ def compute_hlc_map(notation: str) -> dict[str, Any]:
             oklch = Color('oklch', [_l/100, _c, _h])
 
             if notation == "hex":
-                srgb = oklch.convert('srgb')
-                c_str = srgb.to_string(hex=True)
+                rgb8 = srgb8_from_color(oklch)
+                c_str = hex_from_rgb8(rgb8)
             elif notation == "oklch":
                 ol, oc, oh = oklch.convert('oklch').coords()
                 c_str = f"oklch({ol*100:.1f}% {oc:.4f} {oh:.1f})"

@@ -2,6 +2,7 @@ import math
 from types import GenericAlias
 from argparse import ArgumentParser, _SubParsersAction
 
+import numpy as np
 from coloraide import Color
 
 _SubParsersAction.__class_getitem__ = classmethod(GenericAlias)
@@ -33,3 +34,13 @@ def oklch_distance(xc: Color, yc: Color) -> float:
     dz = l1 - l2
     
     return (dx**2 + dy**2 + dz**2)**0.5
+
+def srgb8_from_color(c: str | Color) -> np.ndarray:
+    c = Color(c).convert("srgb").fit(method="oklch-chroma")
+    rgb = np.array([c["r"], c["g"], c["b"]], dtype=float)
+    rgb8 = np.clip(np.round(rgb * 255), 0, 255).astype(np.uint8)
+
+    return rgb8
+
+def hex_from_rgb8(rgb8: np.ndarray) -> str:
+    return f"#{int(rgb8[0]):02x}{int(rgb8[1]):02x}{int(rgb8[2]):02x}"
