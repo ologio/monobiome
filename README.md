@@ -154,12 +154,12 @@ Running these commands in sequence from the repo root should work
 out-of-the-box after having installed the CLI tool.
 
 ## Applications
-This repo provides palette-agnostic theme templates for `kitty`,
-`vim`/`neovim`, and `fzf` in the `templates/` directory. Pre-generated
-*concrete* themes can be found in `app-config/`, if you'd like to try an
-example out-of-the-box without using the `monobiome` CLI. Raw
-palette colors can be found in `colors/` if you want to use them to define
-static themes for other applications.
+This repo provides palette-agnostic theme templates for `ghostty`,
+`kitty`, `vim`/`neovim`, and `fzf` in the `templates/` directory.
+Pre-generated *concrete* themes can be found in `app-config/`, if you'd
+like to try an example out-of-the-box without using the `monobiome` CLI.
+Raw palette colors can be found in `colors/` if you want to use them to
+define static themes for other applications.
 
 Themes files in the `app-config/` directory are generated for light and dark
 modes of each biome, and named according to the following pattern:
