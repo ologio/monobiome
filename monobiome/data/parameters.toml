@@ -1,0 +1,65 @@
+L_min = 10
+L_max = 98
+L_step = 5
+
+[monotone_C_map]
+alpine = 0
+badlands = 0.011
+chaparral = 0.011
+savanna = 0.011
+grassland = 0.011
+reef = 0.011
+tundra = 0.011
+heathland = 0.011
+moorland = 0.011
+
+[h_weights]
+red = 3.0
+orange = 3.8
+yellow = 3.8
+green = 3.8
+cyan = 3.8
+blue = 3.6
+violet = 3.0
+magenta = 3.6
+
+[h_L_offsets]
+red = 0
+orange = -5.5
+yellow = -13.5
+green = -12.5
+cyan = -10.5
+blue = 9
+violet = 7
+magenta = 2
+
+[h_C_offsets] 
+red = 0
+orange = -0.015
+yellow = -0.052
+green = -0.08
+cyan = -0.009
+blue = -0.01
+violet = -0.047
+magenta = -0.1
+
+[monotone_h_map]
+alpine = 0
+badlands = 29
+chaparral = 62.5
+savanna = 104
+grassland = 148
+reef = 205
+tundra = 262
+heathland = 306
+moorland = 350
+
+[accent_h_map]
+red = 29
+orange = 62.5
+yellow = 104
+green = 148
+cyan = 205
+blue = 262
+violet = 306
+magenta = 350

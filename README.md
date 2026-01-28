@@ -143,6 +143,13 @@ using the `monobiome` CLI:
   (`grassland`). Every part of this process can be customized: the scheme
   parameters, the scheme definitions/file, the app template.
 
+The separation of duties here facilitates robustness: the palette colors can be
+tweaked (across versions, say) without changing how those colors get used in
+app themes. Scheme files don't hardcode color values, and app templates don't
+refer to palette variables at all. Scheme files bridge palette colors with
+*intended uses*, and templates need only align those uses under an app's
+expected config syntax.
+
 Running these commands in sequence from the repo root should work
 out-of-the-box after having installed the CLI tool.
 

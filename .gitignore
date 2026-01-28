@@ -17,7 +17,6 @@ docs/_build/
 # local
 /Makefile
 
-data/
 archive/
 
 notebooks/color_spaces_manyview.ipynb
