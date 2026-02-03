@@ -32,11 +32,11 @@ smoothly as a function of lightness within sRGB gamut bounds.
 
 | Chroma curves                                            | Color trajectories                       |
 |----------------------------------------------------------|------------------------------------------|
-| ![Chroma curves](images/release/1.5.2/chroma-curves.png) | ![Trajectories](images/trajectories.gif) |
+| ![Chroma curves](images/release/1.5.3/chroma-curves.png) | ![Trajectories](images/trajectories.gif) |
 
 | Palette                                      |
 |----------------------------------------------|
-| ![Palette](images/release/1.5.2/palette.png) |
+| ![Palette](images/release/1.5.3/palette.png) |
 
 Chroma curves are designed specifically to establish a distinct role for each
 accent and are non-intersecting over the lightness domain (hence the distinct
