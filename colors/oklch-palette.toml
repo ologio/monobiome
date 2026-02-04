@@ -1,4 +1,4 @@
-version = "1.5.3"
+version = "1.5.4"
 
 [alpine]
 l10 = "oklch(10.0% 0.0000 0.0)"
