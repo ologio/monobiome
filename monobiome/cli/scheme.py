@@ -111,7 +111,7 @@ def handle_scheme(args: Namespace, parser: ArgumentParser) -> None:
         "cyan": "cyan",
         "blue": "blue",
         "violet": "violet",
-        "magenta": "orange",
+        "magenta": "magenta",
     }
     term_color_map = {
         "red": "red",
