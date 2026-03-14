@@ -7,7 +7,7 @@ rm -rf app-config/*
 
 biomes=(alpine badlands chaparral savanna grassland tundra reef heathland moorland)
 modes=(light dark)
-lightness=(90 20)
+lightness=(92 22)
 rootdir="templates"
 
 for biome in "${biomes[@]}"; do
@@ -17,7 +17,7 @@ for biome in "${biomes[@]}"; do
 
     # generate scheme file for biome/mode/lightness
     uv run monobiome scheme "${mode}" "${biome}" \
-        -d 0.42 \
+        -d 0.40 \
         -l "${light}" \
         -o scheme.toml
 

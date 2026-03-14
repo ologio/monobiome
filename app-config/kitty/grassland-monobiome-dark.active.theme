@@ -1,16 +1,16 @@
 # base settings
-background           #1e231f
-foreground           #d9e0da
+background           #232823
+foreground           #e0e7e0
 
-selection_background #2a2f2b
-selection_foreground #c9d0ca
+selection_background #2f3430
+selection_foreground #d0d6d0
 
-cursor               #c9d0ca
-cursor_text          #2a2f2b
+cursor               #d0d6d0
+cursor_text          #2f3430
 
 # black
-color0               #1e231f
-color8               #373c37
+color0               #232823
+color8               #3c413c
 
 # red
 color1               #e15344
@@ -37,5 +37,5 @@ color6               #5e8de4
 color14              #8ab1f8
 
 ## white
-color7               #b9c0ba
-color15              #d9e0da
+color7               #c0c6c0
+color15              #e0e7e0

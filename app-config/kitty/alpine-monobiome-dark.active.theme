@@ -1,16 +1,16 @@
 # base settings
-background           #222222
-foreground           #dedede
+background           #262626
+foreground           #e4e4e4
 
-selection_background #2e2e2e
-selection_foreground #cecece
+selection_background #333333
+selection_foreground #d4d4d4
 
-cursor               #cecece
-cursor_text          #2e2e2e
+cursor               #d4d4d4
+cursor_text          #333333
 
 # black
-color0               #222222
-color8               #3a3a3a
+color0               #262626
+color8               #404040
 
 # red
 color1               #e15344
@@ -37,5 +37,5 @@ color6               #5e8de4
 color14              #8ab1f8
 
 ## white
-color7               #bebebe
-color15              #dedede
+color7               #c4c4c4
+color15              #e4e4e4

@@ -1,41 +1,41 @@
 # base settings
-background           #eeeeee
-foreground           #2e2e2e
+background           #f5f5f5
+foreground           #333333
 
-selection_background #dedede
-selection_foreground #3a3a3a
+selection_background #e4e4e4
+selection_foreground #404040
 
-cursor               #3a3a3a
-cursor_text          #dedede
+cursor               #404040
+cursor_text          #e4e4e4
 
 # black
-color0               #eeeeee
-color8               #cecece
+color0               #f5f5f5
+color8               #d4d4d4
 
 # red
-color1               #ce3c30
-color9               #a11d15
+color1               #db4b3d
+color9               #b62920
 
 # green
-color2               #457a4e
-color10              #315b38
+color2               #4e8757
+color10              #396740
 
 # yellow
-color3               #736e3a
-color11              #555129
+color3               #7f7a42
+color11              #615d2f
 
 # blue
-color4               #436ec2
-color12              #2c4f93
+color4               #4d7ad1
+color12              #365da9
 
 # magenta (red)
-color5               #995f25
-color13              #714415
+color5               #a4672a
+color13              #83501b
 
 # cyan (blue)
-color6               #436ec2
-color14              #2c4f93
+color6               #4d7ad1
+color14              #365da9
 
 ## white
-color7               #484848
-color15              #2e2e2e
+color7               #4d4d4d
+color15              #333333

@@ -31,40 +31,40 @@
 "   built-in LSP hover info.
 
 " GUI color definitions
-let s:gui00        = "#f0edf4"
-let g:base16_gui00 = "#f0edf4"
-let s:gui01        = "#e0dce4"
-let g:base16_gui01 = "#e0dce4"
-let s:gui02        = "#cfccd4"
-let g:base16_gui02 = "#cfccd4"
-let s:gui03        = "#bfbcc3"
-let g:base16_gui03 = "#bfbcc3"
-let s:gui04        = "#57545a"
-let g:base16_gui04 = "#57545a"
-let s:gui05        = "#49464c"
-let g:base16_gui05 = "#49464c"
-let s:gui06        = "#3c393f"
-let g:base16_gui06 = "#3c393f"
-let s:gui07        = "#2f2c32"
-let g:base16_gui07 = "#2f2c32"
-let s:gui08        = "#ce3c30"
-let g:base16_gui08 = "#ce3c30"
-let s:gui09        = "#995f25"
-let g:base16_gui09 = "#995f25"
-let s:gui0A        = "#736e3a"
-let g:base16_gui0A = "#736e3a"
-let s:gui0B        = "#477d50"
-let g:base16_gui0B = "#477d50"
-let s:gui0C        = "#477d50"
-let g:base16_gui0C = "#477d50"
-let s:gui0D        = "#436ec2"
-let g:base16_gui0D = "#436ec2"
-let s:gui0E        = "#436ec2"
-let g:base16_gui0E = "#436ec2"
-let s:gui0F        = "#ce3c30"
-let g:base16_gui0F = "#ce3c30"
+let s:gui00        = "#f7f3fb"
+let g:base16_gui00 = "#f7f3fb"
+let s:gui01        = "#e6e3eb"
+let g:base16_gui01 = "#e6e3eb"
+let s:gui02        = "#d6d2da"
+let g:base16_gui02 = "#d6d2da"
+let s:gui03        = "#c6c2ca"
+let g:base16_gui03 = "#c6c2ca"
+let s:gui04        = "#5c5960"
+let g:base16_gui04 = "#5c5960"
+let s:gui05        = "#4e4c52"
+let g:base16_gui05 = "#4e4c52"
+let s:gui06        = "#413e44"
+let g:base16_gui06 = "#413e44"
+let s:gui07        = "#343137"
+let g:base16_gui07 = "#343137"
+let s:gui08        = "#db4b3d"
+let g:base16_gui08 = "#db4b3d"
+let s:gui09        = "#a4672a"
+let g:base16_gui09 = "#a4672a"
+let s:gui0A        = "#7f7a42"
+let g:base16_gui0A = "#7f7a42"
+let s:gui0B        = "#4e8757"
+let g:base16_gui0B = "#4e8757"
+let s:gui0C        = "#4e8757"
+let g:base16_gui0C = "#4e8757"
+let s:gui0D        = "#4d7ad1"
+let g:base16_gui0D = "#4d7ad1"
+let s:gui0E        = "#4d7ad1"
+let g:base16_gui0E = "#4d7ad1"
+let s:gui0F        = "#db4b3d"
+let g:base16_gui0F = "#db4b3d"
 
-let s:grey         = "#918d95"
+let s:grey         = "#97949b"
 
 " Terminal color definitions
 let s:cterm00        = "00"
@@ -103,22 +103,22 @@ let g:base16_cterm0F = "14"
 
 " Neovim terminal colours
 if has("nvim")
-  let g:terminal_color_0 =  "#f0edf4"
-  let g:terminal_color_1 =  "#ce3c30"
-  let g:terminal_color_2 =  "#477d50"
-  let g:terminal_color_3 =  "#736e3a"
-  let g:terminal_color_4 =  "#436ec2"
-  let g:terminal_color_5 =  "#436ec2"
-  let g:terminal_color_6 =  "#477d50"
-  let g:terminal_color_7 =  "#49464c"
-  let g:terminal_color_8 =  "#bfbcc3"
-  let g:terminal_color_9 =  "#ce3c30"
-  let g:terminal_color_10 = "#477d50"
-  let g:terminal_color_11 = "#736e3a"
-  let g:terminal_color_12 = "#436ec2"
-  let g:terminal_color_13 = "#436ec2"
-  let g:terminal_color_14 = "#477d50"
-  let g:terminal_color_15 = "#2f2c32"
+  let g:terminal_color_0 =  "#f7f3fb"
+  let g:terminal_color_1 =  "#db4b3d"
+  let g:terminal_color_2 =  "#4e8757"
+  let g:terminal_color_3 =  "#7f7a42"
+  let g:terminal_color_4 =  "#4d7ad1"
+  let g:terminal_color_5 =  "#4d7ad1"
+  let g:terminal_color_6 =  "#4e8757"
+  let g:terminal_color_7 =  "#4e4c52"
+  let g:terminal_color_8 =  "#c6c2ca"
+  let g:terminal_color_9 =  "#db4b3d"
+  let g:terminal_color_10 = "#4e8757"
+  let g:terminal_color_11 = "#7f7a42"
+  let g:terminal_color_12 = "#4d7ad1"
+  let g:terminal_color_13 = "#4d7ad1"
+  let g:terminal_color_14 = "#4e8757"
+  let g:terminal_color_15 = "#343137"
   let g:terminal_color_background = g:terminal_color_0
   let g:terminal_color_foreground = g:terminal_color_5
 
@@ -129,22 +129,22 @@ if has("nvim")
 
 elseif has("terminal")
   let g:terminal_ansi_colors = [
-    \ "#f0edf4",
-    \ "#ce3c30",
-    \ "#477d50",
-    \ "#736e3a",
-    \ "#436ec2",
-    \ "#436ec2",
-    \ "#477d50",
-    \ "#49464c",
-    \ "#bfbcc3",
-    \ "#ce3c30",
-    \ "#477d50",
-    \ "#736e3a",
-    \ "#436ec2",
-    \ "#436ec2",
-    \ "#477d50",
-    \ "#2f2c32",
+    \ "#f7f3fb",
+    \ "#db4b3d",
+    \ "#4e8757",
+    \ "#7f7a42",
+    \ "#4d7ad1",
+    \ "#4d7ad1",
+    \ "#4e8757",
+    \ "#4e4c52",
+    \ "#c6c2ca",
+    \ "#db4b3d",
+    \ "#4e8757",
+    \ "#7f7a42",
+    \ "#4d7ad1",
+    \ "#4d7ad1",
+    \ "#4e8757",
+    \ "#343137",
     \ ]
 endif
 
